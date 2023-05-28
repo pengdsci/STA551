@@ -89,7 +89,7 @@
                </li>
                  <li class="navitem active"> <a href="https://d2l.wcupa.edu/d2l/login"  target="popup" onclick="window.open('https://d2l.wcupa.edu/d2l/login','name','width=900,height=500')" class="nav-link">D2L </a></li>
 
-                  <li class="navitem active"> <a href="https://projectdat.s3.amazonaws.com/datasets.html"  target="popup" onclick="window.open('https://projectdat.s3.amazonaws.com/datasets.html','name','width=900,height=500')" class="nav-link">Datasets </a></li>
+                  <li class="navitem active"> <a href="https://pengdsci.github.io/datasets/"  target="popup" onclick="window.open('https://pengdsci.github.io/datasets/','name','width=900,height=500')" class="nav-link">Datasets </a></li>
 
 <!--#######################################################################-->
 <!--SSSSSSSSSSSSSSSSSSSSSS    Dropdown tag: Software   SSSSSSSSSSSSSSSSSSSS-->
@@ -158,17 +158,17 @@
 
                <ul class="nav flex-column">
                    <div class="a">
-                   <li class="nav-item" data-level="2"><a href="#week01" class="nav-link">1. Introduction &amp DS Tools </a></li>
-                   <li class="nav-item" data-level="2"><a href="#week02" class="nav-link">2. Data Preparation with SQL</a></li>
-                   <li class="nav-item" data-level="2"><a href="#week03" class="nav-link">3. EDA and Visualization</a></li>
-                   <li class="nav-item" data-level="2"><a href="#week04" class="nav-link">4. Statistical Methods for DS</a></li>
-                   <li class="nav-item" data-level="2"><a href="#week05" class="nav-link">5. Bootstrap Method for DS</a> </li>				                      
-                   <li class="nav-item" data-level="2"><a href="#week06" class="nav-link">6. Cross-validation and Performance Metrics</a> </li>
-                   <li class="nav-item" data-level="2"><a href="#week07" class="nav-link">7. Supervised Algorithms in DS</a></li>				   				    
-                   <li class="nav-item" data-level="2"><a href="#week08" class="nav-link">8. Unsupervised Algorithms in DS</a></li>
-                   <li class="nav-item" data-level="2"><a href="#week09" class="nav-link">9. Anomaly Detection Algorithms</a></li>
-                   <li class="nav-item" data-level="2"><a href="#week10" class="nav-link">10. Feature Engineering in DS</a></li>				   				   
-                   <li class="nav-item" data-level="2"><a href="#week11" class="nav-link">11. Project Guideline and Case-study: Part I</a> </li>
+                   <li class="nav-item" data-level="2"><a href="#topic01" class="nav-link">1. Introduction &amp DS Tools </a></li>
+                   <li class="nav-item" data-level="2"><a href="#topic02" class="nav-link">2. Data Preparation with SQL</a></li>
+                   <li class="nav-item" data-level="2"><a href="#topic03" class="nav-link">3. EDA and Visualization</a></li>
+                   <li class="nav-item" data-level="2"><a href="#topic04" class="nav-link">4. Statistical Methods for DS</a></li>
+                   <li class="nav-item" data-level="2"><a href="#topic05" class="nav-link">5. Bootstrap Method for DS</a> </li>				                      
+                   <li class="nav-item" data-level="2"><a href="#topic06" class="nav-link">6. Cross-validation and Performance Metrics</a> </li>
+                   <li class="nav-item" data-level="2"><a href="#topic07" class="nav-link">7. Supervised Algorithms in DS</a></li>				   				    
+                   <li class="nav-item" data-level="2"><a href="#topic08" class="nav-link">8. Unsupervised Algorithms in DS</a></li>
+                   <li class="nav-item" data-level="2"><a href="#topic09" class="nav-link">9. Anomaly Detection Algorithms</a></li>
+                   <li class="nav-item" data-level="2"><a href="#topic10" class="nav-link">10. Feature Engineering in DS</a></li>				   				   
+                   <!--li class="nav-item" data-level="2"><a href="#week11" class="nav-link">11. Project Guideline and Case-study: Part I</a> </li>
 	                <li class="nav-item" data-level="2"><a href="#week12" class="nav-link">12. Case-study: Part II (Decision Trees)</a> </li>
                  	<li class="nav-item" data-level="2"><a href="#week13" class="nav-link">13. Modeling Time Series</a> </li>
                     <li class="nav-item" data-level="2"><a href="#week14" class="nav-link">14. Ethics in Data Science</a> </li>
@@ -190,43 +190,53 @@
 
 <div class="col-md-9" role="main">
 
-<h3 id="week01" class="section"><center>Week 01: Introduction and Tools of Data Science</center></h3>
-
+<h3 id="tpoic01" class="section"><center>Topic 1: Introduction and Tools - A Big Picture</center></h3>
+    <center> <font color="red">[Mon, 7/3]</font>   </center>
 <hr><left>
-<b>TOPICS:</b> The following topics will be covered this week.<br> 
+
+<b>TENTATIVE TOPICS:</b>
 <ul>
-<li> Introduction </li>
+<li>Introduction </li>
    <ul>
-     <li> Course logistics, coverage, and policies</li>
-     <li> What is data science?  <a href="w01/Intro-data-science-PPT.pdf" target="popup" 
-                          onclick="window.open('w01/Intro-data-science-PPT.pdf','name','width=900,height=500')">
-                         <b> Class note #1 </b></a></li>
-     <li> Data science is still in high demand: 
-      <a href="https://www.burtchworks.com/wp-content/uploads/2021/06/2021-DSA-BW-Study-Webinar-PDF.pdf" target="popup" 
-                          onclick="window.open('https://www.burtchworks.com/wp-content/uploads/2021/06/2021-DSA-BW-Study-Webinar-PDF.pdf','name','width=900,height=500')"><b> 2021 Burtch Works Report </b></a></li>
-     </ul>
-
-<li> Software and Platforms</li>
+    <li>Course logistics and coverage</li>
+    <li>Course policies</li>
+    </ul>
+<li>Software and Platforms</li>
    <ul>
-      <li>  Computing: R/Rstudio and SAS Studio (via SAS OnDemand)</li>
-      <li>  Tech Writing and Reporting: RMarkdown and LaTex.</li>
-      <li>  RDBMS: MySQL, ORACLE，etc.</li>
-      <li>  Viz: Tableau Public and R graphic libraries</li>
-      <li>  Repository and Collaboration: Github.</li>
+       <li>Computing: R/Rstudio and SAS Studio (via SAS OnDemand)</li>
+       <li>Tech Writing and Reporting: Markdown and LaTex.</li>
+       <li>DBMS and Data Acquisition Tools</li>
+       <li>Viz: Tableau Public and R graphic libraries</li>
+       <li>Repository and Collaboration: Github</li>
+       <li>Free web server for publishing your report: RPubs</li>
+    </ul>
+<li>Data Science Foundations - Key Pillars</li>
+  <ul>
+    <li>Math and stats foundation - models and algorithms</li>
+    <li>Machine learning algorithms</li>
+    <li>Databases technology</li>
+    <li>Effective communication</li>
    </ul>
-<li> Data Science foundations and Tools</li>
-     <ul>
-       <li>  Database, DBMS, and Database Programming: SQL</li>
-       <li>  Statistical models and machine learning algorithms</li>
-       <li>  Data visualization: static and interactive viz</li>
-       <li>  Data science platforms and model deployment</li>
-       <li>  Concepts of cloud computing with AWS</li>
-     </ul>
-<li>  Basics of relational database and SQL: <a href="w01/Relational-Database-SQL-Clauses2slides.pdf" target="popup" 
-                          onclick="window.open('w01/Relational-Database-SQL-Clauses2slides.pdf', 'name','width=900,height=500')">
-                         <b> Class note #2</b></a> </li>
+<li>Data Science Roles and Skills</li>
+   <ul>
+     <li>Different roles with different skills</li>
+     <li>Programming languages: R/Python/Julia, SAS, SQL</li>
+     <li>Data science technologies for effective communication</li>
+     <li>Domain knowledge</li>
+     <li>Strategies and technologies for effective communication</li>
+    </ul>
+<li>Data Science Process</li>
+   <ul>
+      <li>Identification of practical questions</li>
+      <li>Data acquisition: data sources, security, and ethics</li>
+      <li>Data management (wrangling): missing values, inconsistency, etc.</li>
+      <li>Feature engineering: feature creation, extraction, transformation, etc.</li>
+      <li>iterative Model/algorithm building process: EDA, statistics and machine learning</li>
+      <li>Visualization and communication: make the business implications intuitive</li>
+      <li>Implementation and strategies</li>
+      <li>Model maintenance and updating</li>
+    </ul>
 </ul>
-
 
 <b> ASSIGNMENTS</b>: Software Installation and Registration
   <ul>
@@ -235,28 +245,62 @@
       <li>Required: R, RStudio, LaTex(MikTex), SAS (Citrix or OnDemand SAS Studio), Tableau Public </li>
       <li>Optional: Anaconda (Python tools), MySQL(community Installation)</li>
    </ul>
+      
+   <li> Create a GitHub repository for this class</li>
+   <li> Create an RPubs account publish your analysis report through RMarkdown</li>
+      
+   <li>Data Exploration: Bank Loan Data</li>
+      <ul>
+          <li> Download all 9 data sets and upload to SAS Studio (if SAS will be used for data management</li>
+          <li> Merge all data sets</li>
+          <li> Check potential data issues</li>
+      </ul>
   <li><b> <font color = "red">No</font> D2L Submission Due  <font color = "red">This Week!</font></b>
   </ul>
-</left><hr>
-
+</left><hr>    
 <!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
-<h3 id="week02"  class="section">Week 02: Data Wrangling - Creating an Analytic Dataset</h3>
+<h3 id="topic02"  class="section">Topic 2: Understanding Data Generation Process, Storage and
+Preparation</h3>
+    <center><font color="red">[Thu, 7/6]</font></center>
 
 <hr><left>
-<b>TOPICS:</b> The following topics will be covered this week.<br>
+    
+<b>TENTATIVE TOPICS</b>
 <ul>
- <li> Working data sets: COVID-19 related data tables
+ <li>Data Generation Process and Storage</li>
    <ul>
-      <li> Download datasets from my data set web page <font color = "blue">(link on the top navigation panel)</font>
-      <li> Sreen data sets to understand the variables and variable types
-      <li> Type of data (cross-sectional, longitudinal, etc)
-      <li> Special variables (time, dollar amount, etc)
-   </ul>   
- <li> Basic SQL queries using SAS PROC SQL - Class notes:<a href="w02/w02-SQLCrashCourse.sas" target="popup" 
-                          onclick="window.open('w02/w02-SQLCrashCourse.sas','name','width=900,height=500')">
-                         <b> |SQL Crash Course.sas </b></a> <a href="w02/A-Crash-Course-in-SQL.pdf" target="popup" 
+       <li>How data were generated/collected</li>
+       <li>what are data types</li>
+       <li>Where data are stored</li>
+  </ul>
+<li>Querying Databases</li>
+   <ul>
+      <li>Basics of rational databases and DBMS</li>
+      <li>Query databases: Basics of SQL</li>
+   </ul>
+<li>Best Practices of Data Wrangling</li>
+   <ul>
+       <li>Potential issues of data:</li>
+       <li>Exploratory data visualization and analysis for EDA</li>
+       <li>Mistakenly recorded data and inconsistency</li>
+       <li>Missing value handling</li>
+   </ul>
+<li>Feature Engineering</li>
+   <ul>
+       <li>Handling categorical variables - aggregation</li>
+       <li>Handling extremely skewed numerical variable - discretization</li>
+       <li>Feature extraction - PCA</li>
+    </ul>
+<li>Data Preparation Process</li>
+   <ul>
+       <li>Iterative process</li>
+       <li>Roles of EVA and EDA</li>
+   </ul>
+
+ <li> Basic SQL queries using SAS PROC SQL - Class notes:<a href="w02/w02-SQLCrashCourse.sas" target="popup" onclick="window.open('w02/w02-SQLCrashCourse.sas','name','width=900,height=500')">
+      <b> |SQL Crash Course.sas </b></a> <a href="w02/A-Crash-Course-in-SQL.pdf" target="popup" 
                           onclick="window.open('w02/A-Crash-Course-in-SQL.pdf','name','width=900,height=500')">
-                         <b> |SQL Crash Course.pdf |</b></a> <br>
+     <b> |SQL Crash Course.pdf |</b></a> <br>
                          Data sets used in the SQL Crash Course: <a href="w02/surveys.csv" target="popup" 
                           onclick="window.open('w02/surveys.csv','name','width=900,height=500')">
                           |surveys.csv  </a> <a href="w02/species.csv" target="popup" 
@@ -264,257 +308,229 @@
                            |species.csv  </a> <a href="w02/plots.csv" target="popup" 
                           onclick="window.open('w02/plots.csv','name','width=900,height=500')">
                            |plots.csv | </a>
-
-
-
-    <ul>
-    <li> Basic SQL clauses
-    <li> Create and drop tables
-    <li> SQL Joins
-    <li> Sub-queries
-  </ul>
-  <li> Case Study - Combining COVID-19 Data Sets: <a href="w02/SQL.sas" target="popup" 
-                          onclick="window.open('w02/SQL.sas','name','width=900,height=500')">
-                         <b> |SQL.sas </b></a> <a href="w02/SQL.txt" target="popup" 
-                          onclick="window.open('w02/SQL.txt','name','width=900,height=500')">
-                         <b> |SQL.txt |</b></a>
-
-</ul>
-
-<b>ASSIGNMENT:</b> Create an analytic data set meeting the following requirements <br>
-<ul>
-  <li> required information: choose a 7-day window and include the following information in the data set
-   <ul>
-      <li> average infection count and death count of each county <b>within</b> the selected time window.
-      <li> total number of vaccinated people at the beginning and end of the time window for each county.
-      <li> county level demographic information: poverty, education, unemployment, population size, population density.
-      <li> county level political affiliation data (democrats, republicans and other).
-   </ul>
-   <li> Optional: in addition to the required information, you can include the infroamtion in the data set
-    <ul>
-       <li> Race and ethnicity.
-       <li> Income information.
-       <li> Other information relevant to COVID-19.
-    </ul>
-   <li><b>D2L Submission Due: <font color = "red">9/11/2021</font></b> Please submit your SAS script through D2L dropbox.
- </ul>
-
-
-</left><hr>
-
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
-<h3 id="week03"  class="section">Week 03: Exploratory Data Analysis and Visualization</h3>
-
-<hr><left>
-<b>TOPICS:</b> The following topics will be covered this week.<br>
-<ul>
- <li> Iterative process of EDA and Visualization
-    <ul>
-      <li> Best Practices of EDA 
-      <li> Static and interactive visualization
-      <li> ethics of data visualization
-     </ul>   
- <li> Feature Engineering via EDA and Visualization 
-    <ul>
-    <li> Discretization
-    <li> Grouping
-    <li> Aggregation
-   </ul>
- <li> Class notes:
-     <ul>
-       <li> <a href="w03-EDA-EVA.pdf" target="popup" 
-                          onclick="window.open('w03-EDA-EVA.pdf','name','width=900,height=500')">
-                         Exploratory Data Analysis</a>
-       <li> <a href="w03-VisualizationBrief.pdf" target="popup" 
-                          onclick="window.open('w03-VisualizationBrief.pdf','name','width=900,height=500')">
-                         Data Visualizations</a>
+      <ul>
+         <li> Basic SQL clauses
+         <li> Create and drop tables
+         <li> SQL Joins
+         <li> Sub-queries
      </ul>
- </ul>
-
-<b>ASSIGNMENT:</b> Based on the data set you created last week to perform some exploratory data analyses of the the
-variables in your data set. You can use any sofware programs to complete this assignment. <br>
-<ul>
-  <li> Use appropriate methods to explore the relationship between variables that satisfy the following conditions. Note that you can EDA methods to discretize continous variables. You can also combine some categories of a categorical variable in a meaningful way to create a new categorical with less categories for this assignment.
+</ul>     
+ 
+<b>ASSIGNMENTS:</b> Using SQL to create an analytical data based on the merged bank loan data 
    <ul>
-      <li> Both variables are continous.
-      <li> Both variables are categorical.
-      <li> One is continuous and one is categorical.
-   </ul>
-   <li> Choose a continous variable to expplore its distribution. 
-    <ul>
-       <li> use appropriate visual method to display the distribution
-       <li> summariz the patterns you observed from visual representation
+       <li>Write SAS code to performthe the following data management</li>
+   <ul>
+    <li>Using SQL joins to merge the subsets</li>
+    <li>Drop irrelevant variables </li>
+    <li>Create a new variable of business types (categories)</li>
+    <li>Discretizing nunerical variables if needed</li>
+    <li>Regroup categorical variables in a meaningful ways</li>
+    <li>Export the resulting SAS data set as a CSV format data file</li>
+    <li>Save the CSV file in a directory of your local computer</li>
     </ul>
-   <li> Optional: transformation 
+       
+       <li>Formatting Requirements of SAS Code</li>
+     <ul>
+     <li>Program header with detailed informaton about author, date, major tasks, etc</li>  
+     <li>Code must be well commented.</li>
+     <li>Code must follow the best practices and conventions</li>
+     <li>The submitted code should be error-free (tip: run the entire code before submitting it to the D2L drop box).</li>  
+    </ul>  
+       
+ </ul>   
+    
+    
+</left><hr>
+
+<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
+<h3 id="topic03"  class="section">Topic 3: Statistical Methods for Data Science</h3>
+<center><font color="red">[Mon, 7/10]</font></center>
+    
+<hr><left>
+ 
+    <b>TENTATIVE TOPICS</b>
+    
+<ul>
+    <li>Mathematical and Statistical Foundations of Data Science</li>
+      <ul>
+           <li>Calculus and matrix algebra: vectorization and optimization</li>
+           <li>Statistical models and algorithms</li>
+           <li>Methods of estimation: Frequentist and Bayesian approaches</li>
+           <li>Model/algorithm assumptions</li>
+      </ul>
+    <li>Traditional Regression Models for Prediction</li>
+       <ul>
+          <li>Linear regression models</li>
+          <li>Generalized linear regression models</li>
+          <li>Time series forecasting</li>
+        </ul>
+     <li>Re-sampling A glgorithms</li>
+       <ul>
+           <li>Overview of re-sampling algorithms</li>
+           <li>Bootstrapping methods</li>
+           <li>Extensions of Bootstrapping algorithms</li>
+       </ul>
+</ul>
+    
+<b>ASSIGNMENTS:</b> Estimating the probability of loan default using logistic regression with bootstrapping. The analysis report should contain the following major components.
     <ul>
-       <li> Compare the distribution you obtained in the above with normal distribution (visual comparison)
-       <li> Try appropriate transformation to see whether that variable can be transformed to a new variable that is approximately normally distributed.
-    </ul>
-   <li><b>D2L Submission Due: <font color = "red">9/22/2021</font></b> Please submit your work through D2L dropbox.
- </ul>
-
-
-
+        <li>Introduction</li>
+        <ul>
+            <li> Description of the data set</li>
+            <li> Definitions of variables</li>
+            <li> A brief summary of data management you performed earlier</li>
+        </ul>
+        <li>Exploratory Data Anlysis</li>
+        <ul>
+          <li>Histograms of numerical variables</li>
+          <li>Bar charts for categorical variables </li>
+        </ul>
+        <li>Logistics Regression Modeling</li>
+         <ul>
+             <li>Response variable: loan default status.</li>
+             <li>Predictor variables: based on your experience (to be explained later)</li>
+             <li>Predict the default probability of new loans</li>
+         </ul>
+         <li>Bootstrapping Predictive Probability</li>                                                    <ul>                                                   
+            <li> Bootstrapping cases</li>     
+            <li> Bootstrap logstic regression models </li>
+            <li> Finding bootstrap predictive probabilities</li>
+        </ul>
+         <li><font color = "red">To be continue after the next topic .....</font></li> 
+    </ul>  
+     
+    <b><font color = "blue">Due: Thursday, 7/13</font></b>
+    
 </left><hr>
 
 
 <!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
-<h3 id="week04"  class="section"> Week 04: Statistical Methods for Data Science </h3>
-
+<h3 id="topic04"  class="section"> Topic 4: Cross Validation and Performance Measures </h3>
+<center><font color="red">[Thu, 7/13]</font></center>
+    
 <hr><left>
-<b>TOPICS:</b> The following topics will be covered this week.<br>
+
+<b>TENTATIVE TOPICS</b>
 <ul>
- <li> Case-study: visulization with the created COVID-19 data in week #2 <font color = "red">[Postponed to next week]</font>
-    <ul>
-       <li> Creating a map to display the death rates 
-       <li> Other relevant EDA and visualizations           
-    </ul> 
- <li> Credit card fraud data: Credit card transaction data 
-     |<a href="w04-FraudDataPrepration.html" target="popup" 
-                          onclick="window.open('w04-FraudDataPrepration.html','name','width=900,height=500')">
-                         HTML</a>
-     |<a href="w04-FraudDataPrepration.Rmd" target="popup" 
-                          onclick="window.open('w04-FraudDataPrepration.Rmd','name','width=900,height=500')">
-                         RMD</a>|
-    <ul>
-       <li> Data exploration  
-       <li> Data transformation - fraud index as a covariate
-            
-    </ul> 
- <li> Regression models for prediction
-    <ul>
-       <li> Study designs and data structures for modeling
-       <li> Linear regression models
-          |<a href="w04-MLR-LOGIT.html" target="popup" 
-                          onclick="window.open('w04-MLR-LOGIT.html','name','width=900,height=500')">
-                         HTML</a>
-          |<a href="w04-MLR-LOGIT.Rmd" target="popup" 
-                          onclick="window.open('w04-MLR-LOGIT.Rmd','name','width=900,height=500')">
-                         RMD</a>|       
- 
-       <li> Generalized linear regression models
-          |<a href="w04-LogisticRegressionNew.html" target="popup" 
-                          onclick="window.open('w04-LogisticRegressionNew.html','name','width=900,height=500')">
-                         HTML</a>
-          |<a href="w04-LogisticRegressionNew.Rmd" target="popup" 
-                          onclick="window.open('w04-LogisticRegressionNew.Rmd','name','width=900,height=500')">
-                         RMD</a>|       
- 
-
-       <li> Time series forecasting
-       <li> Other statistical models
-     </ul> 
- <li> Prediction performance metrics of the logistic regression <font color = "red">[Postponed to next week]</font>
+  <li>Cross-validation</li>
      <ul>
-        <li> confusion matrix
-        <li> sensitivity and specificity
-        <li> ROC curve and AUC
-     </ul> 
- </ul>
-
-<b>ASSIGNMENT:</b> Build a logistic regression model based on the final fraud data. Interpret the results when the model is used for
-  <ul>
-     <li> association analysis
-     <li> predictive analysis
-  </ul>
-  <li><b>D2L Submission Due: <font color = "red">9/29/2021</font></b> Please submit your work through D2L dropbox.
-  </ul>
+          <li>The logic of cross-validation</li>
+          <li>The use cases of cross-validation: optimal cut-off probability for classification</li>
+     </ul>
+  <li>Performance Measure</li>
+     <ul>
+          <li>Error-based measures</li>
+          <li>likelihood-based</li>
+     </ul>
+   <li>Global Performance measures and visualizations</li>
+     <ul>
+          <li>ROC and AUC</li>
+          <li>Profit curve(if time permits)</li>
+          <li>Lift curves (optional)</li>
+     </ul>
+    
+</ul>
+    
+<b>ASSIGNMENTS:</b>   
+    Review the code in the above lecture notes to understand the concepts of cross-validatio programtically. No D2L submission associated with this topic.  This topic will be the key component in the case study and your first term project.
+    
 </left><hr>  
 
-
-
 <!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
-<h3 id="week05"  class="section"> Week 05: Bootstrap Mathod for Data Science </h3>
+<h3 id="topic05"  class="section"> Topic 5: Case Study and First Term Project </h3>
+<center><font color="red">[Mon, 7/17]</font></center>
+<hr><left>    
 
+<b>CASE STUDY</b>: Predicting Type-II Diabetes<br><br>
+   
+    I will perform a formal analysis and draft a formal statistical report.
+    
+    
+<BR><BR>
+<b>PROJECT #1</b>: Predicting Bank Loan Default<br>
+    This project involves revision of your first submitted assignment and addition of the new analysis based on the case study.
+   <ul>
+    <li>Revision</li>
+      <ul>
+       <li>Keep introduction and EDA sections</li>
+       <li>Drop the boottrapping logisr=tic model</li>
+       <li>Using variable selection to find the final model</li>
+       </ul> 
+     <li>Additional Analysis</li>
+       <ul>
+       <li>Using cross-validation method to identify the optimal cut-off probability based on the final model idetified earlier.</li>
+       <li>Report the common error-based measures</li>
+       <li>Draw the ROC curve of the final model</li>
+       <li> Revise / add additional discussion on the fianl predictive model</li>
+       </ul>
+   </ul> 
+    
+    
+ <b><font color = "blue">Due: Thursday, 7/20</font></b>   
+    
+
+</left><hr>
+<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
+<h3 id="topic06"  class="section"> Topic 6 Survey of Supervised Algorithms </h3>
+<center><font color="red">[Thu, 7/20]</font></center>
 <hr><left>
-<b>TOPICS:</b> The following topics will be covered this week.<br>
+    
 <ul>
- <li> Bootstrap Algorithm      |<a href="w05-551BootstrapAlgorithm.html" target="popup" 
-                          onclick="window.open('w05-551BootstrapAlgorithm.html','name','width=900,height=500')">
-                         HTML</a>
-     |<a href="w05-551BootstrapAlgorithm.Rmd" target="popup" 
-                          onclick="window.open('w05-551BootstrapAlgorithm.Rmd','name','width=900,height=500')">
-                         RMD</a>|
-    <ul>
-       <li> Introduction to Bootstrap sampling 
-       <li> Bootstrap confidence interval for the population mean   
-	   <li> Bootstrap confidence interval for the correlation coefficient
-    </ul> 
- <li> Bootstrap regression 
-     |<a href="w05-551BootstrapRegModel.html" target="popup" 
-                          onclick="window.open('w05-551BootstrapRegModel.html','name','width=900,height=500')">
-                         HTML</a>
-     |<a href="w05-551BootstrapRegModel.Rmd" target="popup" 
-                          onclick="window.open('w05-551BootstrapRegModel.Rmd','name','width=900,height=500')">
-                         RMD</a>|
-    <ul>
-       <li>  EDA and VEA for the working data set - feature creation
-	    <li>  Bootstrap regression - introduction  
-       <li>  Taking bootstrap samples from residuals: inference on regression coefficients nad prediction 
-       <li>  Taking bootstrap samples from : inference on regression coefficients nad prediction 
-	    <li>
-    </ul> 
-
- <li> Prediction performance metrics of the logistic regression <font color = "red">[if time permits]</font>
-     <ul>
-        <li> confusion matrix
-        <li> sensitivity and specificity
-        <li> ROC curve and AUC
-     </ul> 
- </ul>
-
-<b>ASSIGNMENT:</b> Use the fraud data to perform the following bootstrap analyses
-  <ul>
-     <li> Create a map based on the COVID-19 data set you created to show the spatial distribution of infection (rates) or death rates.
-     <li> Find the bootstrap confidence interval of the mean indx for genuine and compromized cards respectively.
-     <li> use bootstrap method to estimate coefficients of logistic regression
-  </ul>
-  <li><b>D2L Submission Due: <font color = "red">10/6/2021</font></b> Please submit your work through D2L dropbox.
-  </ul>
+    <li>Overview machine learning and its relation to statistics</li>
+      <ul>
+          <li>What is machine learning?</li>
+          <li>Difference between machine learning and statistics</li>
+          <li>Three major types of machine learning</li>
+      </ul>
+    <li>Decision Tree-based Classification</li>
+      <ul>
+          <li>Decision tree classification</li>
+          <li>Bootstrap Aggregation (BAGGING)</li>
+          <li>Random forests</li>
+      </ul>
+    <li>Regression-based classification</li>
+       <ul>
+          <li>Logistic regression</li>
+          <li>Artificial neural networks (ANN)</li>
+          <li>Extensions of ANN</li>
+       </ul>
+     <li>Mathematical Algorithms</li>
+        <ul>
+             <li>Naive Bayes</li>
+             <li>KNN</li>
+             <li>Support vector machines</li>
+        </ul>
+    </ul>
+    
 </left><hr>  
 
 
 <!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
-<h3 id="week06"  class="section"> Week 06: Training-Testing and Cross-validation Framework in DS </h3>
-
+<h3 id="topic07"  class="section"> Topic 7: Survey Unsupervised learning algorithm </h3>
+<center><font color="red">[Mon, 7/24]</font></center>
 <hr><left>
-<b>TOPICS:</b> The following topics will be covered this week.<br>
+    
 <ul>
- <li> Training,testing, and cross validation mechanisms in DS    <font color = "red"><b>[updated] </b></font>
-                     |<a href="w06-551TrainigValidationTesting.html" target="popup" 
-                          onclick="window.open('w06-551TrainigValidationTesting.html','name','width=900,height=500')">
-                         HTML</a>
-                     |<a href="w06-551TrainigValidationTesting.Rmd" target="popup" 
-                          onclick="window.open('w06-551TrainigValidationTesting.Rmd','name','width=900,height=500')">
-                         RMD</a>|
-  <ul>
-       <li> The logic of training-testing framework - data driven methods
-       <li> Data set splitting: training data set and testing data set   
-	    <li> Cut-off probability (decision) for binary decision - confusion matrix		
-		<li> case stuy
-    </ul> 
- <li> Performance metrics of Binary logistic predictive model <font color = "red"><b>[updated] </b></font>
-     |<a href="w06-551DS-Performance-Measures.html" target="popup" 
-                          onclick="window.open('w06-551DS-Performance-Measures.html','name','width=900,height=500')">
-                         HTML</a>
-     |<a href="w06-551DS-Performance-Measures.Rmd" target="popup" 
-                          onclick="window.open('w06-551DS-Performance-Measures.Rmd','name','width=900,height=500')">
-                         RMD</a>|
-    <ul>
-       <li>  local measures based a confusion matrix
-	    <li>  global measure: ROC and AUC 
-       <li>  case study
-    </ul> 
- </ul>
-
-<b>ASSIGNMENT:</b> There will be NO new writen assignment to submit this week. 
-<li> Please revise your previously submitted assignments based on my comments given in 
-the class and the feedback on D2L. <font color = "red">I will update your grades based on your latest revisions.</font> 
-<li> Read the two notes and practice R code in the case studies.
-<li> Guidelines for revising weekly assignments
-</left><hr>  
+    <li>Unsupervised learning algorithms</li>
+     <ul>
+         <li>Clustering</li>
+         <li>K-means</li>
+     </ul>
+    <li>Dimensional Reduction</li>
+      <ul>
+          <li>Principle component analysis</li>
+          <li>Regularization approaches</li>
+      </ul>
+      <li>Project #1 due: Monday</li>
+</ul> 
 
 
+    
+    
+    
+    
+    
+    
 
 <!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
 <h3 id="week07"  class="section"> Week 07: Overview of Supervised ML Algorithms </h3>
@@ -833,7 +849,7 @@ suggested to use 70%-30% to split the data.
           onclick="window.open('w13-ExponentialSmoothing.pdf','name','width=900,height=500')"> 
         PDF Class Notes</a> 
         |<a href="w13-ExponentialSmoothing.Rmd" target="popup" 
-          onclick="window.open('w13-ExponentialSmoothing.Rmd','name','width=900,height=500')"> 
+          onclick="window.open('w13-ExponentialSmoothing.Rmd','name','width=900,height=500')">       
         RMarkdown Document</a> |
  <li> Time series decomposition
 		|<a href="w13-TSDecomposition.pdf" target="popup" 
