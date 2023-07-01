@@ -1,0 +1,406 @@
+---
+title: "Running SQL Query in R"
+author: "Cheng Peng"
+date: "West Chester Univeristy"
+output:
+  html_document: 
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+    fig_width: 4
+    fig_caption: yes
+    number_sections: yes
+    theme: readable
+    fig_height: 4
+  word_document: 
+    toc: yes
+    toc_depth: 4
+    fig_caption: yes
+    keep_md: yes
+  pdf_document: 
+    toc: yes
+    toc_depth: 4
+    fig_caption: yes
+    number_sections: yes
+    fig_width: 3
+    fig_height: 3
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{=html}
+
+<style type="text/css">
+
+/* Cascading Style Sheets (CSS) is a stylesheet language used to describe the presentation of a document written in HTML or XML. it is a simple mechanism for adding style (e.g., fonts, colors, spacing) to Web documents. */
+
+h1.title {  /* Title - font specifications of the report title */
+  font-size: 24px;
+  color: DarkRed;
+  text-align: center;
+  font-family: "Gill Sans", sans-serif;
+}
+h4.author { /* Header 4 - font specifications for authors  */
+  font-size: 20px;
+  font-family: system-ui;
+  color: DarkRed;
+  text-align: center;
+}
+h4.date { /* Header 4 - font specifications for the date  */
+  font-size: 18px;
+  font-family: system-ui;
+  color: DarkBlue;
+  text-align: center;
+}
+h1 { /* Header 1 - font specifications for level 1 section title  */
+    font-size: 22px;
+    font-family: "Times New Roman", Times, serif;
+    color: navy;
+    text-align: center;
+}
+h2 { /* Header 2 - font specifications for level 2 section title */
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    color: navy;
+    text-align: left;
+}
+
+h3 { /* Header 3 - font specifications of level 3 section title  */
+    font-size: 18px;
+    font-family: "Times New Roman", Times, serif;
+    color: navy;
+    text-align: left;
+}
+
+h4 { /* Header 4 - font specifications of level 4 section title  */
+    font-size: 18px;
+    font-family: "Times New Roman", Times, serif;
+    color: darkred;
+    text-align: left;
+}
+
+body { background-color:white; }
+
+.highlightme { background-color:yellow; }
+
+p { background-color:white; }
+
+</style>
+```
+
+
+
+
+```{r setup, include=FALSE}
+# Detect, install and load packages if needed.
+if (!require("knitr")) {
+   install.packages("knitr")
+   library(knitr)
+}
+if (!require("odbc")) {
+   install.packages("odbc")
+   library(odbc)
+}
+if (!require("DBI")) {
+   install.packages("DBI")
+   library(DBI)
+}
+if (!require("RSQLite")) {
+   install.packages("RSQLite")
+   library(RSQLite)
+}
+
+if (!require("tidyverse")) {
+   install.packages("tidyverse")
+   library(tidyverse)
+}
+#
+# specifications of outputs of code in code chunks
+knitr::opts_chunk$set(echo = TRUE,      # include code chunk in the output file
+                      warnings = FALSE,  # sometimes, you code may produce warning messages,
+                                         # you can choose to include the warning messages in
+                                         # the output file. 
+                      messages = FALSE,  #
+                      results = TRUE     # you can also decide whether to include the output
+                                         # in the output file.
+                      )   
+db <- dbConnect(RSQLite::SQLite(), dbname = "sql.sqlite")
+knitr::opts_chunk$set(connection = "db")
+
+
+```
+
+# Introducion
+
+
+To run SQL clauses in R, we need to use several R libraries (installed and loaded in the above R setup code chunk). There are different ways to run SQL query in R. We only introduce one methods that is close to the authentic SQL code that can be run a DBMS. 
+
+## Connect R to Existing Database
+
+If there is an existing database, the following code connects R to the database.
+
+```{}
+con <- DBI::dbConnect(drv = odbc::odbc(),
+                      Driver = "driver_name",
+                      Server = "server_url",
+                      Database = "database_name",
+                      user = "user", #optional
+                      password = "password") #optional
+```
+
+## Create A Database to Run SQL Queries in R
+
+
+This short note shows the three basic steps to run SQL in R using R Markdown starting with a set of relational tables.
+
+1. Load relational data tables as usual to R.
+
+2. Create a SQLite (relational) database that contain these relational table.
+
+3. Create R code chunk and connect to the created database using Chunk options.
+
+
+
+# Create SQLite Database with R
+
+If modeling requires a data set that contains information from multiple relational data tables, we need to perform data management to aggregate the required information from different data tables. We can load the different data sets in different formats using appropriate R functions. 
+
+As an example, We use three ecological survey data sets to create a database.
+
+```{r}
+#Load the sample data
+plots <- read.csv("https://pengdsci.github.io/datasets/AnimalSurvey/plots.csv")
+species <- read.csv("https://pengdsci.github.io/datasets/AnimalSurvey/species.csv")
+surveys <- read.csv("https://pengdsci.github.io/datasets/AnimalSurvey/surveys.csv")
+```
+
+
+Next, we create a SQLit database using several R libraries.
+
+```{r}
+#Create database
+con <- dbConnect(drv = SQLite(),
+                 dbname = ":memory:")
+
+#store sample data in database
+dbWriteTable(conn = con, 
+             name = "plots",
+             value = plots)
+
+dbWriteTable(conn = con, 
+             name = "species",
+             value = species)
+
+dbWriteTable(conn = con, 
+             name = "surveys",
+             value = surveys)
+ 
+#remove the local data from the environment
+rm(plots, species, surveys)
+```
+
+We can use table view function `tbl()` to explore the information of relational data tables in the database. Note that, we 
+
+```{r}
+tbl(src = con, #the source if the database connection profile
+    c("surveys")) #the name of the table to preview
+```
+
+# Running SQL Queries in R Code chunks
+
+To use SQL in RMarkdown, we need the following chunk options:
+
+* sql
+* connection = "database-name"
+* output.var = "output-dataset-name"
+
+If we create a data view only, we simply ignore option `output.var = `
+
+Following are few examples of SQL queries based on the animal survey data tales in the database.
+
+
+## Subsetting and Duplicating Data 
+
+1. Extract year, month and day from `survey` table
+
+```{sql, connection = "con", output.var="YMD"}
+SELECT 
+  surveys.year, surveys.month, surveys.Day
+FROM 
+ surveys
+WHERE
+  surveys.species_id IN ('NL', 'DM') AND
+  surveys.sex = 'M'
+```
+
+
+2. Duplicate a data and rename it
+
+```{sql, connection = "con", output.var="survey.copy"}
+SELECT 
+  surveys.*
+FROM 
+ surveys
+```
+
+3. Create a table view (i.e., no data set will be created and saved)
+
+```{sql, connection = "con", output.var = "YMD"}
+SELECT 
+  surveys.year, surveys.month, surveys.Day
+FROM 
+ surveys
+WHERE
+  surveys.species_id = 'NL' AND
+  surveys.sex = 'M'
+```
+
+
+## Define A New Variable 
+
+1. Define a new variable with simple arithmetic operations
+
+
+```{sql, connection = "con", output.var = "CalulatedTable"}
+SELECT 
+    surveys.plot_id, 
+    surveys.species_id, 
+    surveys.sex, 
+    surveys.weight, 
+    surveys.weight/100 AS wt_kilo  /*should not the pointer in front of the name of the new variable*/ 
+FROM 
+   surveys
+```
+
+
+2. Define new variables using string functions in SQL
+
+```{sql, connection = "con", output.var = "NewStringVar"}
+SELECT surveys.*, 
+       surveys.species_id||'-'||surveys.sex AS newKey
+FROM surveys
+```
+
+
+3. Define new variables with aggregated information 
+
+```{sql, connection = "con", output.var = "NewSummaryVar"}
+SELECT surveys.species_id, 
+       COUNT(surveys.species_id) AS species_ctr
+FROM surveys
+GROUP BY surveys.species_id
+HAVING species_ctr > 10
+```
+
+
+
+## Sorting Variables
+
+1. Sort data based on the summarized statistics of a variable
+
+Summary functions are restricted to the SELECT and HAVING clauses only;
+
+```{sql, connection = "con", output.var = "SortingData"}
+SELECT surveys.species_id
+FROM surveys
+GROUP BY surveys.species_id
+ORDER BY COUNT(surveys.species_id);
+```
+
+
+2. Sort data based on a new variable defined using summarized statistics of a variable.
+
+
+```{sql, connection = "con", output.var = "SortingNewVar"} 
+/* create a table view*/
+SELECT surveys.species_id AS subtotal, 
+       COUNT(*) 
+FROM surveys
+GROUP BY surveys.species_id
+ORDER BY subtotal;
+```
+
+
+## Join Tables
+
+This section introduce commonly used join operation to merge tables using the common key(s).
+
+1. Inner Join
+
+
+```{sql, connection = "con", output.var = "innerJoin"} 
+SELECT *
+FROM surveys AS A
+JOIN species AS B
+ON A.species_id = B.species_id;
+```
+
+
+2. Left Join
+
+```{sql, connection = "con", output.var = "leftJoin"} 
+SELECT *
+FROM surveys AS A
+LEFT JOIN species AS B
+ON A.species_id = B.species_id;
+```
+
+
+3. Right Join
+
+```{sql, connection = "con", output.var = "rightJoin"} 
+SELECT *
+FROM surveys AS A
+RIGHT JOIN species AS B
+ON A.species_id = B.species_id;
+```
+
+
+4. Full Join
+
+```{sql, connection = "con", output.var = "fullJoin"} 
+SELECT *
+FROM surveys AS A
+FULL JOIN species AS B
+ON A.species_id = B.species_id;
+```
+
+
+5. Join sub-tables
+
+```{sql, connection = "con", output.var = "JoinSubtable"} 
+SELECT A.species_id, 
+       A.sex, 
+       AVG(A.weight) as mean_wgt  
+FROM surveys AS A
+JOIN species AS B
+ON A.species_id=B.species_id 
+WHERE taxa = 'Rodent' AND A.sex IS NOT NULL 
+GROUP BY A.species_id, A.sex;   /* sorted by two variables */
+```
+
+
+
+## Subqueries
+
+1. Sample size
+
+```{sql, connection = "con", output.var = "smpleSize"} 
+SELECT COUNT(*) 
+FROM surveys
+```
+
+
+2. Relative Frequency with sub-query
+
+```{sql, connection = "con", output.var = "subQuery"} 
+SELECT B.taxa, 
+       100.0*COUNT(*)/(SELECT COUNT(*) FROM surveys)  AS Percentage
+FROM surveys AS A
+JOIN species AS B
+ON A.species_id = B.species_id 
+GROUP BY taxa;
+```
+
+
+
