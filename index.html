@@ -165,11 +165,11 @@
                    <li class="nav-item" data-level="2"><a href="#topic03" class="nav-link">3. Exploratory Data Analysis</a></li>
                    <li class="nav-item" data-level="2"><a href="#topic04" class="nav-link">4. Statistical Methods</a></li>
                    <li class="nav-item" data-level="2"><a href="#topic05" class="nav-link">5. Cross-validation and Performance</a> </li>				                      
-                   <li class="nav-item" data-level="2"><a href="#topic06" class="nav-link">6. Case-Study 1</a> </li>
+                   <li class="nav-item" data-level="2"><a href="#topic06" class="nav-link">6. From Statistics to Machine Learning</a> </li>
                    <li class="nav-item" data-level="2"><a href="#topic07" class="nav-link">7. Supervised Algorithms</a></li>				   				    
                    <li class="nav-item" data-level="2"><a href="#topic08" class="nav-link">8. Unsupervised Algorithms</a></li>
-                   <li class="nav-item" data-level="2"><a href="#topic09" class="nav-link">9. Case Study 2</a></li>
-                   <li class="nav-item" data-level="2"><a href="#topic10" class="nav-link">10. Ethics in Data Science</a></li>				   				   
+                   <li class="nav-item" data-level="2"><a href="#topic09" class="nav-link">9. Advanced Feature Engineering</a></li>
+                   <li class="nav-item" data-level="2"><a href="#topic10" class="nav-link">10. Analytic Question Formulation Revisited </a></li>				   				   
                    <!--li class="nav-item" data-level="2"><a href="#week11" class="nav-link">11. Project Guideline and Case-study: Part I</a> </li>
 	                <li class="nav-item" data-level="2"><a href="#week12" class="nav-link">12. Case-study: Part II (Decision Trees)</a> </li>
                  	<li class="nav-item" data-level="2"><a href="#week13" class="nav-link">13. Modeling Time Series</a> </li>
@@ -378,6 +378,11 @@
              <li>The submitted code should be error-free (tip: run the entire code before submitting it to the D2L drop box).</li>  
            </ul>  
        <br><b> <font color = "blue">Due: Monday, 7/10</font> </b>
+       
+       <br><b> <a href="w02/Assignment01SuggestedKey.txt" target="popup" onclick="window.open('w02/Assignment01SuggestedKey.txt','name','width=900,height=500')"><font color = "darkred"> Suggested Answer [SAS PROC SQL]</font> </a></b>
+       
+       
+       
     </ul>   
 
     
@@ -490,12 +495,13 @@
          <a href="w04/w04-MLR-LOGIT.pdf" target="popup"  onclick="window.open('w04/w04-MLR-LOGIT.pdf','name','width=900,height=500')">
              <font color = "darkred"> [PDF]</font></a></li>
            
-          <li>Logistic regression models:<a href="w04/w04-LogisticRegressionNew.html" target="popup" onclick="window.open('w04/w04-LogisticRegressionNew.html','name','width=900,height=500')"> <font color = "darkred">[HTML]</font></a> 
+       <li>Logistic regression models:<a href="w04/w04-LogisticRegressionNew.html" target="popup" onclick="window.open('w04/w04-LogisticRegressionNew.html','name','width=900,height=500')"> <font color = "darkred">[HTML]</font></a> 
          <a href="w04/w04-LogisticRegressionNew.Rmd" target="popup"  onclick="window.open('w04/w04-LogisticRegressionNew.Rmd','name','width=900,height=500')">
              <font color = "darkred"> [RMD]</font></a> 
          <a href="w04/w04-LogisticRegressionNew.pdf" target="popup"  onclick="window.open('w04/w04-LogisticRegressionNew.pdf','name','width=900,height=500')">
              <font color = "darkred"> [PDF]</font></a></li>
         </ul>
+    
      <li>Re-sampling Algorithms: <a href="w05/w05-551BootstrapAlgorithm.html" target="popup" onclick="window.open('w05/w05-551BootstrapAlgorithm.html','name','width=900,height=500')"> <font color = "darkred">[HTML]</font></a>
     <a href="w05/w05-551BootstrapAlgorithm.pdf" target="popup" onclick="window.open('w05/w05-551BootstrapAlgorithm.pdf','name','width=900,height=500')"> <font color = "darkred">[PDF]</font></a>
     <a href="w05/w05-551BootstrapAlgorithm.Rmd" target="popup" onclick="window.open('w05/w05-551BootstrapAlgorithm.Rmd','name','width=900,height=500')"> <font color = "darkred">[RMD]</font></a></li>
@@ -520,44 +526,52 @@
              <li> Model Building</li>
                 <ul>
                    <li> Build several models and use then using variable selection to find the best model.</li>
-                   <li> Performance measure of predictive power</li>
+                   <li> Report performance measures of the predictive power</li>
                 </ul>
+             
              <li> Calculating Predictive Probabilities</li>
                   <ul>
-                   <li> Use the final model to calculate predictive probabilities</li>
-                   </ul> 
+                   <li> Use the final model to calculate predictive probabilities by providing an examples</li>
+                  </ul> 
          </ul> 
-     
         <br><b><font color = "blue">Due: Monday, 7/17</font></b>
         </ul> 
 </left><hr>
 
 
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM>
-<h3 id="topic04"  class="section"> Topic 4: Cross Validation and Performance Measures </h3>
+<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM->
+<h3 id="topic05"  class="section"> Topic 5: Cross Validation and Performance Measures </h3>
 <center><font color="red">[Thu, 7/13]</font></center>
     
 <hr><left>
 
 <b>TENTATIVE TOPICS</b>
 <ul>
-  <li>Cross-validation</li>
+    
+  <li>Cross-validation: </li>
      <ul>
           <li>The logic of cross-validation</li>
           <li>The use cases of cross-validation: optimal cut-off probability for classification</li>
+          <li><b>Class Note</b>: <a href="w06/w06-551TrainigValidationTesting.html" target="popup" onclick="window.open('w06/w06-551TrainigValidationTesting.html','name','width=900,height=500')"> <font color = "darkred">[HTML]</font></a> 
+         <a href="w06/w06-551TrainigValidationTesting.Rmd" target="popup" onclick="window.open('w06/w06-551TrainigValidationTesting.Rmd','name','width=900,height=500')"> <font color = "darkred"> [RMD]</font></a> 
+         <a href="w06/w06-551TrainigValidationTesting.pdf" target="popup" onclick="window.open('w06/w06-551TrainigValidationTesting.pdf','name','width=900,height=500')"> <font color = "darkred"> [PDF]</font></a></li>
      </ul>
+    
   <li>Performance Measure</li>
      <ul>
-          <li>Error-based measures</li>
-          <li>likelihood-based</li>
+          <li>Error-based measures: </li>
+          <li>likelihood-base: Deviance </li>
+          <li>Global performance measures: ROC and AUC</li>
+          <li><b>Class Note</b>: <a href="w06/w06-551DS-Performance-Measures.html" target="popup" onclick="window.open('w06/w06-551DS-Performance-Measures.html','name','width=900,height=500')"> <font color = "darkred">[HTML]</font></a> 
+         <a href="w06/w06-551DS-Performance-Measures.Rmd" target="popup" onclick="window.open('w06/w06-551DS-Performance-Measures.Rmd','name','width=900,height=500')"> <font color = "darkred"> [RMD]</font></a> 
+         <a href="w06/w06-551DS-Performance-Measures.Rmd.pdf" target="popup" onclick="window.open('w06/w06-551DS-Performance-Measures.Rmd.pdf','name','width=900,height=500')"> <font color = "darkred"> [PDF]</font></a></li>
      </ul>
-   <li>Global Performance measures and visualizations</li>
+    
+   <li>Other Performance measures and visualizations</li>
      <ul>
-          <li>ROC and AUC</li>
           <li>Profit curve(if time permits)</li>
           <li>Lift curves (optional)</li>
      </ul>
-    
 </ul>
     
 <b>ASSIGNMENT:</b>   
@@ -566,9 +580,8 @@
 </left><hr>  
 
     
-    
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM>
-<h3 id="topic05"  class="section"> Topic 5: Case Study - Statistical Approaches </h3>
+<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM->
+<h3 id="topic06"  class="section"> Topic 6: Case Study - Statistical Approaches </h3>
 <center><font color="red">[Mon, 7/17]</font></center>
 <hr><left>    
 
