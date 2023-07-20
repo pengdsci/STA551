@@ -564,7 +564,7 @@
           <li>Global performance measures: ROC and AUC</li>
           <li><b>Class Note</b>: <a href="w06/w06-551DS-Performance-Measures.html" target="popup" onclick="window.open('w06/w06-551DS-Performance-Measures.html','name','width=900,height=500')"> <font color = "darkred">[HTML]</font></a> 
          <a href="w06/w06-551DS-Performance-Measures.Rmd" target="popup" onclick="window.open('w06/w06-551DS-Performance-Measures.Rmd','name','width=900,height=500')"> <font color = "darkred"> [RMD]</font></a> 
-         <a href="w06/w06-551DS-Performance-Measures.Rmd.pdf" target="popup" onclick="window.open('w06/w06-551DS-Performance-Measures.Rmd.pdf','name','width=900,height=500')"> <font color = "darkred"> [PDF]</font></a></li>
+         <a href="w06/w06-551DS-Performance-Measures.pdf" target="popup" onclick="window.open('w06/w06-551DS-Performance-Measures.pdf','name','width=900,height=500')"> <font color = "darkred"> [PDF]</font></a></li>
      </ul>
     
    <li>Other Performance measures and visualizations</li>
@@ -594,36 +594,51 @@
 </left><hr>  
 
     
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM->
-<h3 id="topic06"  class="section"> Topic 6: Case Study - Statistical Approaches </h3>
+<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
+<h3 id="topic06"  class="section"> Topic 6: From Statistics Models to Machine Learning Algoriths </h3>
 <center><font color="red">[Mon, 7/17]</font></center>
 <hr><left>    
 
-<b>CASE STUDY</b>: Predicting Type-II Diabetes<br><br>
-   
-    I will perform a formal analysis and draft a formal statistical report.
-    
+<b>Tentative Topics</b><br>
+    <ul>
+      <li> Review of Cross-validation and ROC analysis </li> 
+      <li> Debugging RMD source and R Code</li>
+      <li> From statistics models to machine learning algorithms</li> 
+         <ul>
+          <li> Description of machine learning</li>
+          <li> Types of machine learning methods</li>
+          <li> Logistic regression is a special neural network model</li>
+         </ul>
+       <li> Building neural network model in R</li>
+         <ul>
+          <li> Architecture of neural networks</li>
+          <li> Simple R libraries for neural network models </li>
+          <li> Building a neural network model by an example: Pima Indian Diabetes Data</li>
+        </ul>
+       <li><b>Class Note:</b><a href="w07/w07-FromStats2MachineLearning.html" target="popup" onclick="window.open('w07/w07-FromStats2MachineLearning.html','name','width=900,height=500')"> <font color = "darkred">[HTML]</font></a> 
+         <a href="w07/w07-FromStats2MachineLearning.Rmd" target="popup" onclick="window.open('w07/w07-FromStats2MachineLearning.Rmd','name','width=900,height=500')"> <font color = "darkred"> [RMD]</font></a> 
+         <a href="w07/w07-FromStats2MachineLearning.pdf" target="popup" onclick="window.open('w07/w07-FromStats2MachineLearning.pdf','name','width=900,height=500')"> <font color = "darkred"> [PDF]</font></a></li>
+    </ul>    
     
 <BR><BR>
-<b>PROJECT #1</b>: Predicting Bank Loan Default<br>
-    This project involves revision of your first submitted assignment and addition of the new analysis based on the case study.
+<b>ASSIGNMENT #5</b>: This analysis should be appended to the report of the previous assignments.
    <ul>
-    <li>Revision</li>
-      <ul>
-       <li>Keep introduction and EDA sections</li>
-       <li>Drop the boottrapping logisr=tic model</li>
-       <li>Using variable selection to find the final model</li>
-       </ul> 
-     <li>Additional Analysis</li>
+    <li>Revision of the previous report</li>
+
+    <li>Neural network method with <b><i>neuralnet</i></b> (open a new section)</li>
+       This is a new model that is independent of the logistic model you built in assignments #3 and #4.
        <ul>
-       <li>Using cross-validation method to identify the optimal cut-off probability based on the final model idetified earlier.</li>
-       <li>Report the common error-based measures</li>
-       <li>Draw the ROC curve of the final model</li>
-       <li> Revise / add additional discussion on the fianl predictive model</li>
+       <li> Using the analytic data set obtained in assignment #2</li>
+       <li> Scale all numeric features and then use <b><i>model.matrix</i></b> to define the data matrix for neural work modeling</li>
+       <li> Build a single-layer neural network model using <b><i>neuralnet()</i></b></li>
+       <li> Plot the network model </li>
+       <li> Identify optimal cut-off score for binary decision.</li>
+       <li> Construct the ROC of the model.</li>
+       <li> Open a subsection to compare the predictive performance between the logistic model and the neural network model.</li>
        </ul>
    </ul> 
     
- <b><font color = "blue"><b>Due: Thursday, 7/20</b></font></b>   
+ <b><font color = "blue"><b>Due: Monday, 7/24</b></font></b>   
     
     
 
