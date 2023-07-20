@@ -3,6 +3,18 @@ title: "From Statistics Models to Machine Learning Algorithms"
 author: "Cheng Peng"
 date: " STA511 Foundations of Data Science"
 output:
+  pdf_document: 
+    toc: yes
+    toc_depth: 4
+    fig_caption: yes
+    number_sections: yes
+    fig_width: 5
+    fig_height: 4
+  word_document: 
+    toc: yes
+    toc_depth: 4
+    fig_caption: yes
+    keep_md: yes
   html_document: 
     toc: yes
     toc_float: yes
@@ -12,18 +24,6 @@ output:
     fig_caption: yes
     number_sections: yes
     theme: readable
-  word_document: 
-    toc: yes
-    toc_depth: 4
-    fig_caption: yes
-    keep_md: yes
-  pdf_document: 
-    toc: yes
-    toc_depth: 4
-    fig_caption: yes
-    number_sections: yes
-    fig_width: 5
-    fig_height: 4
 ---
 <style type="text/css">
 
@@ -449,8 +449,6 @@ The detailed `help document` can be found at <https://www.rdocumentation.org/pac
 
 To explain the modeling process in detail, we will outline major steps in the following subsections.  
 
-<https://www.learnbymarketing.com/tutorials/neural-networks-in-r-tutorial/>
-
 
 ## Numeric Feature Scaling
 
@@ -519,9 +517,6 @@ modelFormula
 \
 
 ## Training and Testing NN Model
-
-<https://datascienceplus.com/neuralnet-train-and-test-neural-networks-using-r/>
-
 
 We follow the routine steps for building a neural network model to predict diabetes.
 
