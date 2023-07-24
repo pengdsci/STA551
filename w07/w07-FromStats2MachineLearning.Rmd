@@ -194,7 +194,7 @@ Supervised learning is a subcategory of machine learning. It is defined by its u
 
 Supervised learning helps organizations solve a variety of real-world problems at scale, such as classifying spam in a separate folder from an email inbox, classifying credit transactions into fraud or non-fraud categories, etc.
 
-```{r echo=FALSE, fig.align='center', fig.width=3, fig.height=3, fig.cap="Figure 1.  Illustration of supervised machine learning."}
+```{r echo=FALSE, fig.align='center', out.height="80%", fig.cap="Figure 1.  Illustration of supervised machine learning."}
 include_graphics("img/w07-superised.jpg")
 ```
 
@@ -608,7 +608,6 @@ text(max.id, avg.accuracy[max.id]+0.03, as.character(round(avg.accuracy[max.id],
 ```
 
 
-
 \
 
 ### Testing Model Performance
@@ -645,10 +644,17 @@ for (i in 1:length(cut0)){
     SenSpe[,i] = c(sen, spe)
 }
 # plotting ROC
-plot(1-SenSpe[2,], SenSpe[1,], type ="b", xlim=c(0,1), ylim=c(0,1),
+plot(1-SenSpe[2,], SenSpe[1,], type ="l", xlim=c(0,1), ylim=c(0,1),
      xlab = "1 - specificity", ylab = "Sensitivity", lty = 1,
      main = "ROC Curve", col = "blue")
 abline(0,1, lty = 2, col = "red")
+## Calculate AUC
+xx = 1-SenSpe[2,]
+yy = SenSpe[1,]
+width = xx[-length(xx)] - xx[-1]
+height = yy[-1]
+AUC =mean(sum(width*height), sum(width*yy[-length(yy)]))
+text(0.8, 0.3, paste("AUC = ", round(AUC,4)), col = "purple", cex = 0.9)
 legend("bottomright", c("ROC of the model", "Random guessing"), lty=c(1,2),
        col = c("blue", "red"), bty = "n", cex = 0.8)
 ```
