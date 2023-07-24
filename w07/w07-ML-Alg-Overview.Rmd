@@ -426,7 +426,7 @@ We can similarly calculate the Gini index for other feature variables in the dat
 
 
 
-## Entropy and Information Gain
+### Entropy and Information Gain
 
 **Entropy** is another impurity measure that is defined by
 
@@ -713,7 +713,7 @@ lines(1-giniROC110$senspe.mtx[2,], giniROC110$senspe.mtx[1,], col = "olivedrab",
 lines(1-infoROC110$senspe.mtx[2,], infoROC110$senspe.mtx[1,], col = "orange4", lwd = 2)
 lines(1-giniROC101$senspe.mtx[2,], giniROC101$senspe.mtx[1,], col = "royalblue4", lwd = 2)
 lines(1-infoROC101$senspe.mtx[2,], infoROC101$senspe.mtx[1,], col = "sienna3", lwd = 2)
-legend("bottomright", c(paste("gini.1.1, AUC =",giniROC11$AUC), paste("info.1.1, AUC =",infoROC11$AUC), 
+legend("bottomright", c(paste("gini.1.1,  AUC =",giniROC11$AUC), paste("info.1.1,   AUC =",infoROC11$AUC), 
                         paste("gini.1.10, AUC =",giniROC110$AUC), paste("info.1.10, AUC =",infoROC110$AUC),
                         paste("gini.10.1, AUC =",giniROC101$AUC), paste("info.10.1, AUC =",infoROC101$AUC)),
                         col=c("blue","firebrick2","olivedrab","orange4","royalblue4","sienna3"), 
