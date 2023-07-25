@@ -132,6 +132,10 @@ if (!require("glmnet")) {
    install.packages("glmnet")
    library(glmnet)
 }
+if (!require("pROC")) {
+   install.packages("pROC")
+   library(pROC)
+}
 
 # knitr::opts_knit$set(root.dir = "C:/Users/75CPENG/OneDrive - West Chester University of PA/Documents")
 # knitr::opts_knit$set(root.dir = "C:\\STA490\\w05")
@@ -499,8 +503,7 @@ pander(cbind(infoGainAge = entAge, infoGainIncome = entIncome, infoGainStudent =
 
 In principle, trees are not restricted to binary splits but can also be grown with multi-way splits - based on the Gini index or other selection criteria. However, the (locally optimal) search for multi-way splits in numeric variables would become much more burdensome. Hence, tree algorithms often rely on the greedy forward selection of binary splits where subsequent binary splits in the same variable can also represent multi-way splits. 
 
-
-
+\
 
 
 ## Boosted Trees - Ensemble Algorithms
@@ -672,7 +675,7 @@ SenSpe = function(in.data, fp, fn, purity){
   for (i in 1:length(cutoff)){
   # CAUTION: "pos" and "neg" are values of the label in this data set!
   # The following line uses only "pos" probability: pred[, "pos"] !!!!
-  pred.out =  ifelse(pred[,"pos"] > cutoff[i], "pos", "neg")  
+  pred.out =  ifelse(pred[,"pos"] >= cutoff[i], "pos", "neg")  
   TP = sum(pred.out =="pos" & in.data$diabetes == "pos")
   TN = sum(pred.out =="neg" & in.data$diabetes == "neg")
   FP = sum(pred.out =="pos" & in.data$diabetes == "neg")
@@ -680,13 +683,15 @@ SenSpe = function(in.data, fp, fn, purity){
   senspe.mtx[1,i] = TP/(TP + FN)
   senspe.mtx[2,i] = TN/(TN + FP)
   }
-  sen = senspe.mtx[1,]
-  spe = senspe.mtx[2,]
-  AUC = mean(sum(sen[-20]*(spe[-1]-spe[-20])), sum(sen[-1]*(spe[-1]-spe[-20])))
+  ## A better approx of ROC, need library {pROC}
+  prediction = pred[, "pos"]
+  category = in.data$diabetes == "pos"
+  ROCobj <- roc(category, prediction)
+  AUC = auc(ROCobj)
+  ##
   list(senspe.mtx= senspe.mtx, AUC = round(AUC,3))
-}
+ }
 ```
-
 
 The above function has three arguments for users to choose different types of decision trees including the 4 trees discussed in the previous subsection. Next we use this function to build 6 different trees and plot their corresponding ROC curves so we can see the global performance of these tree algorithms.
 
@@ -710,15 +715,20 @@ plot(1-giniROC11$senspe.mtx[2,], giniROC11$senspe.mtx[1,], type = "l", xlim=c(0,
 abline(0,1, lty = 2, col = "orchid4", lwd = 2)
 lines(1-infoROC11$senspe.mtx[2,], infoROC11$senspe.mtx[1,], col = "firebrick2", lwd = 2, lty=2)
 lines(1-giniROC110$senspe.mtx[2,], giniROC110$senspe.mtx[1,], col = "olivedrab", lwd = 2)
-lines(1-infoROC110$senspe.mtx[2,], infoROC110$senspe.mtx[1,], col = "orange4", lwd = 2)
-lines(1-giniROC101$senspe.mtx[2,], giniROC101$senspe.mtx[1,], col = "royalblue4", lwd = 2)
+lines(1-infoROC110$senspe.mtx[2,], infoROC110$senspe.mtx[1,], col = "skyblue", lwd = 2)
+lines(1-giniROC101$senspe.mtx[2,], giniROC101$senspe.mtx[1,], col = "red", lwd = 2, lty = 4)
 lines(1-infoROC101$senspe.mtx[2,], infoROC101$senspe.mtx[1,], col = "sienna3", lwd = 2)
-legend("bottomright", c(paste("gini.1.1,  AUC =",giniROC11$AUC), paste("info.1.1,   AUC =",infoROC11$AUC), 
-                        paste("gini.1.10, AUC =",giniROC110$AUC), paste("info.1.10, AUC =",infoROC110$AUC),
-                        paste("gini.10.1, AUC =",giniROC101$AUC), paste("info.10.1, AUC =",infoROC101$AUC)),
-                        col=c("blue","firebrick2","olivedrab","orange4","royalblue4","sienna3"), 
-                        lty=c(1,2,rep(1,4)), lwd=rep(2,6), cex = 0.6, bty = "n")
+legend("bottomright", c(paste("gini.1.1,  AUC =", giniROC11$AUC), 
+                        paste("info.1.1,   AUC =",infoROC11$AUC), 
+                        paste("gini.1.10, AUC =",giniROC110$AUC), 
+                        paste("info.1.10, AUC =",infoROC110$AUC),
+                        paste("gini.10.1, AUC =",giniROC101$AUC), 
+                        paste("info.10.1, AUC =",infoROC101$AUC)),
+                        col=c("blue","firebrick2","olivedrab","skyblue","red","sienna3"), 
+                        lty=rep(1,6), lwd=rep(2,6), cex = 0.5, bty = "n")
 ```
+
+
 
 The above ROC curves represent various decision trees and their corresponding AUC. The model with the largest AUC is considered the best decision tree among the existing ones. 
 
@@ -791,6 +801,5 @@ Optm.cutoff(in.data = train, fp=10, fn=1, purity="information")
 ```
 
 As anticipated, different trees have their own optimal cut-off. Please keep in mind that the cut-off is random (based on the randomly split training data), there may have different cut-offs in different runs. It is dependent on the tree size, sometimes, we may end up with multiple optimal cut-offs. Technically speaking, we choose any one of them for implementation. A better recommendation is to choose the average of these multiple cut-offs and the final cut-off to be used on the testing data set.
-
 
 

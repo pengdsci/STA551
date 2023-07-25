@@ -123,6 +123,10 @@ if (!require("pander")) {
    install.packages("pander")
    library(pander)
 }
+if (!require("pROC")) {
+   install.packages("pROC")
+   library(pROC)
+}
 source_url("https://pengdsci.github.io/STA551/plotNeuralnetRfun.txt")
 
 # knitr::opts_knit$set(root.dir = "C:/Users/75CPENG/OneDrive - West Chester University of PA/Documents")
@@ -194,7 +198,7 @@ Supervised learning is a subcategory of machine learning. It is defined by its u
 
 Supervised learning helps organizations solve a variety of real-world problems at scale, such as classifying spam in a separate folder from an email inbox, classifying credit transactions into fraud or non-fraud categories, etc.
 
-```{r echo=FALSE, fig.align='center', out.height="80%", fig.cap="Figure 1.  Illustration of supervised machine learning."}
+```{r echo=FALSE, fig.align='center', out.height="30%", fig.cap="Figure 1.  Illustration of supervised machine learning."}
 include_graphics("img/w07-superised.jpg")
 ```
 
@@ -653,7 +657,14 @@ xx = 1-SenSpe[2,]
 yy = SenSpe[1,]
 width = xx[-length(xx)] - xx[-1]
 height = yy[-1]
-AUC =mean(sum(width*height), sum(width*yy[-length(yy)]))
+
+## A better approx of ROC, need library {pROC}
+  prediction = as.vector(nn.results)
+  category = trainDat[,"diabetespos"] == 1
+  ROCobj <- roc(category, prediction)
+  AUC = auc(ROCobj)[1]
+  ##
+###
 text(0.8, 0.3, paste("AUC = ", round(AUC,4)), col = "purple", cex = 0.9)
 legend("bottomright", c("ROC of the model", "Random guessing"), lty=c(1,2),
        col = c("blue", "red"), bty = "n", cex = 0.8)
