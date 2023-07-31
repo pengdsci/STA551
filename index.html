@@ -156,7 +156,7 @@
 
   <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
           <ul class="nav flex-column">
-            <li class="nav-item" data-level="1"><a href="" class="nav-link active">List of Weekly Topics</a>
+            <li class="nav-item" data-level="1"><a href="" class="nav-link active">List of Topics</a>
 
                <ul class="nav flex-column">
                    <div class="a">
@@ -168,8 +168,8 @@
                    <li class="nav-item" data-level="2"><a href="#topic06" class="nav-link">6. From Statistics to Machine Learning</a> </li>
                    <li class="nav-item" data-level="2"><a href="#topic07" class="nav-link">7. Supervised Algorithms</a></li>				   				    
                    <li class="nav-item" data-level="2"><a href="#topic08" class="nav-link">8. Unsupervised Algorithms</a></li>
-                   <li class="nav-item" data-level="2"><a href="#topic09" class="nav-link">9. Advanced Feature Engineering</a></li>
-                   <li class="nav-item" data-level="2"><a href="#topic10" class="nav-link">10. Analytic Question Formulation Revisited </a></li>				   				   
+                   <li class="nav-item" data-level="2"><a href="#topic09" class="nav-link">9. Bootstrapping and Anomaly Detection</a></li>
+                   <li class="nav-item" data-level="2"><a href="#topic10" class="nav-link">10. DS Consulting Practicum </a></li>				   				   
                    <!--li class="nav-item" data-level="2"><a href="#week11" class="nav-link">11. Project Guideline and Case-study: Part I</a> </li>
 	                <li class="nav-item" data-level="2"><a href="#week12" class="nav-link">12. Case-study: Part II (Decision Trees)</a> </li>
                  	<li class="nav-item" data-level="2"><a href="#week13" class="nav-link">13. Modeling Time Series</a> </li>
@@ -737,46 +737,63 @@
    <font color = "red">The final clean version of the project report due: </font><font color = "blue"><b> Friday, 8/4/2023.</b></font>    
        
 <hr>
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM->
+<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
 <h3 id="topic09"  class="section"> Topic 09: Bootstrap Algorithms and Anomaly Detection </h3>
 <hr> 
        
 <b>TOPICS:</b> The following topics will be covered this week.<br>
 <ul>
-<b>TOPICS:</b> The following topics will be covered this week.<br>
-<ul>
 
- <li> Dimension Reduction Methods
-  <ul>
+ <li> Bootstrap Methods with Applications
+     <ul>
+        <li> The Bootstrap algorithm</li>
+        <li> Boostrap confidence intervals</li>
+        <li> Bootstrap decision trees - ensemble algorithms</li>
+     </ul>
+     
+  <li>Algorithms for Anomaly Detection  </li>   
+     <ul>
        <li> Introduction: Anomaly detection use case - fraud detection
        <li> Types of anomaly detection   
-	    <li> Learning styles in anomaly detection 		
-    </ul> 
- <li> Outlier Detection
-    <ul>
-       <li>  General logic distance-based outlier detection algorithms 
+	   <li> Learning styles in anomaly detection 		
+        <li> distance-based outlier detection algorithms 
 	    <li>  Local outlier factor scoring methods 
-       <li>  case study
-    </ul> 
-   <li> Novelty Detection
-    <ul>
-       <li>  Descrition of kernel function 
-	    <li>  Concepts of support vector machine data description (SVDD)
-       <li>  One-class SVM and case study
-    </ul>
- </ul>
+      </ul> 
+   <li> Novelty Detection (if time permits) 
+      <ul>
+          <li>  Descrition of kernel function 
+	      <li>  Concepts of support vector machine data description (SVDD)
+          <li>  One-class SVM and case study
+       </ul>
     
- <li> Lecture Note: <font color = "red"><b></b></font>
-                     |<a href="w08-ML-Alg-Overview-Unsupervised.html" target="popup" 
-                          onclick="window.open('w08-ML-Alg-Overview-Unsupervised.html','name','width=900,height=500')">
+ <li> Lecture Note
+     <ul>
+        <li> Bootstrap methods with applications  
+                     |<a href="w09/w09-BootstrapLogisticRegression.html" target="popup" 
+                          onclick="window.open('w09/w09-BootstrapLogisticRegression.html','name','width=900,height=500')">
                          HTML</a>
-                     |<a href="w08-ML-Alg-Overview-Unsupervised.Rmd" target="popup" 
-                          onclick="window.open('w08-ML-Alg-Overview-Unsupervised.Rmd','name','width=900,height=500')">
-                         RMD</a>|  </ul> 
+                     |<a href="w09/w09-BootstrapLogisticRegression.Rmd" target="popup" 
+                          onclick="window.open('w09/w09-BootstrapLogisticRegression.Rmd','name','width=900,height=500')">
+                         RMD</a>
+                     |<a href="w09/w09-BootstrapLogisticRegression.pdf" target="popup" 
+                          onclick="window.open('w09/w09-BootstrapLogisticRegression.pdf','name','width=900,height=500')">
+                         PDF</a>|  
+            </li>
+         <li>Anomaly detection methods
+                     |<a href="w09/w09-Anormaly-detection-fraud-detection.html" target="popup" 
+                          onclick="window.open('w09/w09-Anormaly-detection-fraud-detection.html','name','width=900,height=500')">
+                         HTML</a>
+                     |<a href="w09/w09-Anormaly-detection-fraud-detection.Rmd" target="popup" 
+                          onclick="window.open('w09/w09-Anormaly-detection-fraud-detection.Rmd','name','width=900,height=500')">
+                         RMD</a>
+                     |<a href="w09/w09-Anormaly-detection-fraud-detection.pdf" target="popup" 
+                          onclick="window.open('w09/w09-Anormaly-detection-fraud-detection.pdf','name','width=900,height=500')">
+                         PDF</a>| </li>
+       </ul>
+    </ul> 
 	
- </ul>
 
-<b>ASSIGNMENT:</b> No new after class assignment. Revise and polish the project report.  
+<b>ASSIGNMENT:</b> No new class assignment. Revise and polish the project report.  
  <br>
  <br>
    <b><font color = "blue">Project Report Due: Friday, 8/4</font> <font color = "red">(no extension!) </font></b>
@@ -807,8 +824,7 @@
 	   <li>  Identify departments with low engagement levels and the key drivers.  </li>
        <li>  Provide recommendations to improve employee performance and engagement. </li>	
     </ul>
- 
-    
+  
     <li> <font color = "red"><b>Data Set</b></font> contains information from the	<i>Human Resource Information System</i> (employee demographic information, employment history, and compensation details), <i>Performance Management System</i> (employee performance ratings, goals, and achievements), <i>Employee Surveys</i> (feedback on job satisfaction, work-life balance, and engagement), and <i>Exit Interviews</i> (reasons for employee departures and feedback on their experiences). The combined clean data set in csv format is available at 
     |<a href="https://pengdsci.github.io/STA551/w10/HR-EmployeeAttritionData.csv" target="popup" 
                           onclick="window.open('https://pengdsci.github.io/STA551/w10/HR-EmployeeAttritionData.csv','name','width=900,height=500')">
@@ -816,7 +832,7 @@
        </ul>
  <br>      
          
-<b>ASSIGNMENT:</b> Informal presentation of the consulting project will be assessed in the class. 
+<b>ASSIGNMENT:</b> Informal presentation of the consulting project will be assessed in the class. The team consulting projects will be conducted in a simulated workplace environemnt. Please bring your laptop to class since you will conduct some exploratory data analysis and use the results to support your analysis plan and propsal.   
 
 
          
