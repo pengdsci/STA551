@@ -1,1042 +1,357 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>STA551</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">		
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
-<html lang="en" style="scroll-padding-top: 76px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+      a:link {
+          color: blue;
+          background-color: transparent;
+          text-decoration: none;
+          cursor: pointer;
+        }
+       a:visited {
+          color: navy;
+          background-color: transparent;
+          text-decoration: none;
+        }
+       a:hover {
+          color: red;
+          background-color: transparent;
+          text-decoration: underline;
+         }
+       a:active {
+          color: purple;
+          background-color: transparent;
+          text-decoration: underline;
+        }
         
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--meta name="description" content="Project documentation with Markdown.">
-        <meta name="author" content="MkDocs Team">
-        <link rel="canonical" href="https://www.mkdocs.org/">
-        <link rel="shortcut icon" href="https://www.mkdocs.org/img/favicon.ico"-->
+   link-btn {
+        background-color: purple;
+        color: gold;
+        border: 1px solid DodgerBlue;
+        padding: 5px 5px 5px 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        height: 14px;
+        font-size: 12px;
+        font-weight: normal;
+        margin: 2px 2px 2px 2px;
+        cursor: pointer;
+        }
+        
+        th, td {
+           padding-top: 0px;
+           padding-bottom: 0px;
+           font-size: 13px;
+        }
+        
+           body {
+         background-image: url('images/BgImg.jpg');
+        }
+     </style>
 
-        <title>STA551-FDS</title>
-        <link href="./stat/bootstrap.min.css" rel="stylesheet">
-        <link href="./stat/font-awesome.min.css" rel="stylesheet">
-        <link href="./stat/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="./stat/github.min.css">
-        <link href="./stat/extra.css" rel="stylesheet">
+  </head>
 
-        <script async="" src="./stat/analytics.js.download"></script><script src="./stat/jquery-1.10.2.min.js.download" defer=""></script>
-        <script src="./stat/bootstrap.min.js.download" defer=""></script>
-        <script src="./stat/highlight.min.js.download"></script>
-        <script src="./stat/yaml.min.js.download"></script>
-        <script src="./stat/django.min.js.download"></script>
-        <script>hljs.initHighlightingOnLoad();</script>
-
-        <style>
-            div.a {
-              line-height: 90%;
-            }
-
-            .section {
-               background-color: white;
-               border: 0px solid black;
-               margin: 0px;
-               padding: 0px;
-               font-size: 28px;
-               font-weight: 450;
-               text-align: center;
-             }
-            .sub {
-               background-color: white;
-               border: 0px solid black;
-               margin: 0px;
-               padding: 5px;
-               font-size: 20px;
-               font-weight: 490;
-               text-align: left;
-             }
-
-           .graytoc {
-            background-color: LightCyan;
-            color:red;
-            font-weight: 300;
-           }
-
-        </style>
-			
-    </head>
-
-    <body class="homepage" style="">
-
-<!--####################################################-->
-<!-- VVVVVVVVVVVVVVVVV    TOP Panel   VVVVVVVVVVVVVVVVVV-->
-<!--####################################################-->
-    <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-             <a class="navbar-brand" href=""><center><b>STA 551 Foundations in Data Science</b>
-			     <br> <sub> Dr. Cheng Peng </sub></center> </a>
-             <!-- Expander button -->
-             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse"><span class="navbar-toggler-icon"></span> </button>
-
-             <!-- Expanded navigation -->
-             <div id="navbar-collapse" class="navbar-collapse collapse">
-
-              <!-- Main navigation -->
-
-             <ul class="nav navbar-nav ml-auto">
+  <body>	
+      
+ <center>
+ <table width="1100" border="3" bordercolor="E39A21" style="background-color:#FFFFE0;">
+   <tbody>
+    <TR>            
+       <TD> 
+      <!-- NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-->
+      <!-- MMMMMMMMMMMMMMMM  Siderbar Navigation Panel   MMMMMMMMMMMMMMMMM-->
+      <!-- NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-->
+      <div class="wrapper d-flex align-items-stretch">
+	   <nav id="sidebar">
+		 <div class="p-3 pt-8">
     
-<!--########################################################################-->
-<!--SSSSSSSSSSSSSSSSSSSSSS    Dropdown tag: Syllabus  SSSSSSSSSSSSSSSSSSSS-->
-<!--########################################################################-->
+		 <a href="#" class="img logo rounded-circle mb-3" 
+                    style="background-image: url(images/sta551logo.jpg);"></a>
+                 <center><font size = 4 color = "#ffcc80"> <b>Fall 2024</b>
+                 </font></center>
+                 <BR>
+	         <ul class="list-unstyled components mb-3">
+	         <!--li class="active">
+	             <!--a href="#weeklySubmenu" data-toggle="collapse" 
+                        aria-expanded="false" class="dropdown-toggle">Module List (Archive)</a>
+	                <ul class="collapse list-unstyled" id="weeklySubmenu"-->
+                        <!--center><font size = 4 color = "yellow"><b>Module List</b></font>
+                            <br><br-->
+                          <table  style="width:110%; border: 0px solid skyblue; text-align:left; padding-top: 5px; padding-bottom: 5px;">
+                               <tr>
+                                    <td> <a href="index.html"><font color = "yellow">&nbsp;1. Platforms and Tools for DS</font></a></td>
+                                </tr>
+                               <tr>
+                                    <td> <a href="sta551-w02.html"><font color = "yellow">&nbsp;2. Technologies for communication</font></a></td>  
+                             </tr>
+                               <tr>
+                                    <td> <a href="sta551-w03.html"><font color = "yellow">&nbsp;3. Data acquisition and integration</font></a></td>                     
+                                   </tr>
+                               <tr>
+                               
+                                    <td> <a href="sta551-w04.html"><font color = "yellow">&nbsp;4. EDA and Dataviz</font></a></td>
+                                   </tr>
+                               <tr>
+                                    <td> <a href="sta551-w05.html"><font color = "yellow">&nbsp;5. Methods for feature engineering</font></a></td>   
+                                   </tr>
+                               <tr>
+                                    <td> <a href="sta551-w06.html"><font color = "yellow">&nbsp;6. Statistical models for DS</font></a></td>                              
+                               </tr>
+                               <tr>
+                                    <td> <a href="sta551-w07.html"><font color = "yellow">&nbsp;7. Cross-validation</font></a></td>
+                                   </tr>
+                               <tr>
+                                    <td> <a href="sta551-w08.html"><font color = "yellow">&nbsp;8. From Statistics to Machine Learning</font></a></td> 
+                                   </tr>
+                               <tr>
+                                    <td> <a href="sta551-w09.html"><font color = "yellow">&nbsp;9. Unsupervised Algorithms Overview</font></a></td>                         </tr>
+                               <tr>     
+                                    <td> <a href="sta551-w10.html"><font color = "yellow">10. Supervised Algorithms</font></a></td>
+                                   </tr>
+                               <tr>
+                                    <td> <a href="sta551-w11.html"><font color = "yellow">11. Unsupervised Algorithms</font></a></td>  
+                                   
+                                </tr>
+                               <tr>
+                                    <td> <a href="sta551-w12.html"><font color = "yellow">12. Resampling Methods </font></a></td>                              
+                               </tr>
+                               <tr>
+                                    <td> <a href="sta551-w13.html"><font color = "yellow">13. Anomaly Detection</font></a></td>
+                                   </tr>
+                               <tr>
+                                    <td> <a href="sta551-w14.html"><font color = "yellow">14. DS Consulting Practicum </font></a></td>        
+                               </tr>
+                              </table> 
+                              </center> 
+                              </ul>
+            
+<!-- Footer panel --> 
+<div class="line-footer"></div>
+<footer id="footer">
+<center>
+    <a href='http://www.freevisitorcounters.com'>&nbsp;</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=bdd86ca03bf3709e4523bf44ac939417956604f4'></script>
+<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/832947/t/5"></script>
+      <!--script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=bdd86ca03bf3709e4523bf44ac939417956604f4'></script>
+      <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/832947/t/5"></script--><br>
+ </center>
+</footer> 
+<!-- END OF FOOTER  -->                     
+	        <div class="footer">
+		    <center><font size=1>   Copyright &copy;2019-<script>document.write(new Date().getFullYear());</script> 
+                All rights reserved.</font></center>
+	        </div>
 
-               <li class="dropdown"><a href="" class="nav-link dropdown-toggle" data-toggle="dropdown"> Syllabus<b class="caret"></b></a>
-                   <ul class="dropdown-menu">
-                     <li class="navitem active"> <a href="STA551-Summer2023-Syllabus.html"  target="popup" onclick="window.open('STA551-Summer2023-Syllabus.html','name','width=900,height=500')"  class="dropdown-item">HTML</a></li>
+              
+                    
+                    
+	      </div>
+    	</nav>
 
-                    <li class="navitem active"> <a href="STA551-Summer2023-Syllabus.pdf"  target="popup" onclick="window.open('STA551-Summer2023-Syllabus.pdf','name','width=900,height=500')"  class="dropdown-item">PDF</a></li>
-                     </ul>
-               </li>
-                 
-               <li class="navitem active"> <a href="https://wcupa.zoom.us/j/6840171840?pwd=ZC90eHk4OUJ5QUlnUzdCUEd2cW5VZz09"  target="popup" onclick="window.open('https://wcupa.zoom.us/j/6840171840?pwd=ZC90eHk4OUJ5QUlnUzdCUEd2cW5VZz09','name','width=900,height=500')" class="nav-link"> Zoom </a></li>
-                 
-                 <li class="navitem active"> <a href="https://d2l.wcupa.edu/d2l/login"  target="popup" onclick="window.open('https://d2l.wcupa.edu/d2l/login','name','width=900,height=500')" class="nav-link">D2L </a></li>
+        <!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM--> 
+        <!-- MMMMMMMMMMMMMMMMMMM  Top Naviagtion Panel MMMMMMMMMMMMMMMMM-->
+        <!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM--> 
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-8">
 
-                  <li class="navitem active"> <a href="https://pengdsci.github.io/datasets/"  target="popup" onclick="window.open('https://pengdsci.github.io/datasets/','name','width=900,height=500')" class="nav-link">Datasets </a></li>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
 
-<!--#######################################################################-->
-<!--SSSSSSSSSSSSSSSSSSSSSS    Dropdown tag: Software   SSSSSSSSSSSSSSSSSSSS-->
-<!--#######################################################################-->
-                 <li class="dropdown"><a href="" class="nav-link dropdown-toggle" data-toggle="dropdown"> Software<b class="caret"></b></a>
-                       <ul class="dropdown-menu">
-                           <li class="navitem active"> <a href="https://dev.mysql.com/downloads/installer/"  target="popup" onclick="window.open('https://dev.mysql.com/downloads/installer/','name','width=900,height=500')"  class="dropdown-item">MySQL </a></li>
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+              <i class="fa fa-bars"><b>&nbsp;  Module 01</b></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+      
+            <!--button>
+                <i class="fa fa-bars"></i>
+            </button-->
 
-                           <li class="navitem active"> <a href="https://www.rstudio.com/products/rstudio/download/"  target="popup" onclick="window.open('https://www.rstudio.com/products/rstudio/download/','name','width=900,height=500')"  class="dropdown-item">RStudio</a></li>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
 
-                           <li class="navitem active"> <a href="https://www.anaconda.com/products/individual"  target="popup" onclick="window.open('https://www.anaconda.com/products/individual','name','width=900,height=500')"  class="dropdown-item">Anaconda (Python tools)</a></li>
+               
+                  
+                <li class="nav-item active" >
+                    <a class="nav-link" href="STA311-Syllabus-Spring-2021.pdf"  target="popup" 
+                       onclick="window.open('STA311-Syllabus-Spring-2021.pdf','name','width=900,height=500')"><font color = "purple"><b>Syllabus</b></font></a>
+                </li>
 
-                           <li class="navitem active"> <a href="https://miktex.org/download"  target="popup" onclick="window.open('https://miktex.org/download','name','width=900,height=500')"  class="dropdown-item">MikTex</a></li>
-
-                           <li class="navitem active"> <a href="https://public.tableau.com/en-us/s/download"  target="popup" onclick="window.open('https://public.tableau.com/en-us/s/download','name','width=900,height=500')"  class="dropdown-item">Tableau Public</a></li>
-
-                           <li class="navitem active"> <a href="https://www.sas.com/en_us/software/on-demand-for-academics.html"  target="popup" onclick="window.open('https://www.sas.com/en_us/software/on-demand-for-academics.html','name','width=900,height=500')"  class="dropdown-item">SAS Studio (OnDemand)</a></li>
-                           </ul>
-                    </li>
+                <!--li class="nav-item active">
+                    <a class="nav-link" href="https://ramcloud.wcupa.edu/"  target="popup" 
+                       onclick="window.open('https://ramcloud.wcupa.edu/','name','width=900,height=500')"><font color = "purple"><b>RamCloud</b></font></a>
+                </li>
+                  
+                  <li class="nav-item active">
+                    <a class="nav-link" href="https://www.sas.com/en_us/software/on-demand-for-academics.html"  target="popup" 
+                       onclick="window.open('https://www.sas.com/en_us/software/on-demand-for-academics.html','name','width=900,height=500')"><font color = "purple"><b>SAS Studio</b></font></a>
+                </li-->
 <!--########################################################################-->
 <!--SSSSSSSSSSSSSSSSSSSSSS    Dropdown tag: Computing   SSSSSSSSSSSSSSSSSSSS-->
 <!--########################################################################-->
-           <li class="dropdown"><a href="" class="nav-link dropdown-toggle" data-toggle="dropdown"> DS Tools<b class="caret"></b></a>
-                   <ul class="dropdown-menu">
-                     <li class="navitem active"> <a href="https://bookdown.org/yihui/rmarkdown/"  target="popup" onclick="window.open('https://bookdown.org/yihui/rmarkdown/','name','width=900,height=500')"  class="dropdown-item">RMarkdown</a></li>
 
-                    <li class="navitem active"> <a href="https://github.com/pengdsci"  target="popup" onclick="window.open('https://github.com/pengdsci','name','width=900,height=500')"  class="dropdown-item">Github</a></li>
+               <li class="dropdown"><a href=""  class="nav-link dropdown-toggle" data-toggle="dropdown"><font color = "purple"><b>DS Tools</b></font><b class="caret"></b></a>
+                   <ul class="dropdown-menu">
+                   <li class="nav-item active">
+                    <a class="nav-link" href="https://ramcloud.wcupa.edu/"  target="popup" 
+                       onclick="window.open('https://ramcloud.wcupa.edu/','name','width=900,height=500')"><font color = "purple">RamCloud (SAS)</font></a>
+                   </li>
+                  
+                  <li class="nav-item active">
+                    <a class="nav-link" href="https://www.sas.com/en_us/software/on-demand-for-academics.html"  target="popup" 
+                       onclick="window.open('https://www.sas.com/en_us/software/on-demand-for-academics.html','name','width=900,height=500')"><font color = "purple">SAS Studio</font></a>
+                   
+                    <li class="nav-item active">
+                    <a class="nav-link" href="https://public.tableau.com/app/discover"  target="popup" 
+                    onclick="window.open('https://public.tableau.com/app/discover','name','width=900,height=500')"><font color = "purple">Tableau Public</font></a>
+                      
+                   <li class="nav-item active"> <a class="nav-link" href="https://bookdown.org/yihui/rmarkdown/" target="popup" onclick="window.open('https://bookdown.org/yihui/rmarkdown/','name','width=900,height=500')" class="dropdown-item"><font color = "purple">RMarkdown</font></a></li>               
+                   
+                    <li class="nav-item active"> <a class="nav-link" href="https://github.com/pengdsci" target="popup" onclick="window.open('https://github.com/pengdsci','name','width=900,height=500')" class="dropdown-item"><font color = "purple">Github</font></a></li>
+                       
+                    <li class="nav-item active"> <a class="nav-link" href="https://rpubs.com/" target="popup" onclick="window.open('https://rpubs.com/','name','width=900,height=500')" class="dropdown-item"><font color = "purple">RPubs</font></a></li>                       
                      </ul>
                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://pengdsci.github.io/datasets/"  target="popup" onclick="window.open('https://pengdsci.github.io/datasets/','name','width=900,height=500')"><font color = "purple"><b>Data</b></font></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://wcupa.zoom.us/j/6840171840?pwd=ZC90eHk4OUJ5QUlnUzdCUEd2cW5VZz09" target="popup" 
+                       onclick="window.open('https://wcupa.zoom.us/j/6840171840?pwd=ZC90eHk4OUJ5QUlnUzdCUEd2cW5VZz09',                                             'name','width=900,height=500')"><font color = "purple"><b>Zoom</b></font></a>
+                </li>
+                  
+                <li class="dropdown"><a href="" class="nav-link dropdown-toggle" data-toggle="dropdown"> <font color = "purple"><b>Office Hours</b></font><b class="caret"></b></a>
+                   <ul class="dropdown-menu">   
 
-<!--######################################################################-->
-<!--SSSSSSSSSSSSSSSSSSSSSS    Dropdown tag: Contact   SSSSSSSSSSSSSSSSSSSS-->
-<!--######################################################################-->
-              <li class="dropdown"><a href="" class="nav-link dropdown-toggle" data-toggle="dropdown"> Contact <b class="caret"></b></a>
-                   <ul class="dropdown-menu">
-                     <li class="navitem active"> <a href="mailto: cpeng@wcupa.edu"  target="popup" onclick="window.open('mailto: cpeng@wcupa.edu','name','width=900,height=500')"  class="dropdown-item">My Email (link)</a></li> 
-                       
-                     <li class="navitem active"> <a href="https://wcupa.zoom.us/j/6840171840?pwd=ZC90eHk4OUJ5QUlnUzdCUEd2cW5VZz09"  target="popup" onclick="window.open('https://wcupa.zoom.us/j/6840171840?pwd=ZC90eHk4OUJ5QUlnUzdCUEd2cW5VZz09','name','width=900,height=500')"  class="dropdown-item">My Zoom (link)</a></li>
-                       
-                     <!--li class="navitem active"> <a href="" class="dropdown-item"><b>Office Hours</b></a> <font size=2, color="purple"> 
-                                  <center>Tu/TH 8AM-9:30AM<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11AM-12PM </center></font></li-->
-                     <li class="navitem active"> <a href="" class="dropdown-item"><b>Office</b></a> <font size=2, color="purple"><center>R111, 25 Univ. Ave</center></font></li>
-                  </ul>
-              </li>
-<!--SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$S-->
-               </ul>
-         </div>
-      </div>
- </div>
-
-<!--####################################################-->
-<!-- VVVVVVVVVVVVVVVVV    TOC Panel   VVVVVVVVVVVVVVVVVV-->
-<!--####################################################-->
-<div class="container">
-            <div class="row">
-                <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary" style="top: 76px;">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
-         <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-
-  <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
-          <ul class="nav flex-column">
-              <li class="nav-item" data-level="1"><a href="https://pengdsci.github.io/STA551EB/"  target="popup" onclick="window.open('https://pengdsci.github.io/STA551EB/','name','width=900,height=500')" class="nav-link"><center><img src = "551.png"  width="70" height="100"></center></a>
-
-               <ul class="nav flex-column">
-                   <div class="a">
-                   <li class="nav-item" data-level="2"><a href="#topic01" class="nav-link">1. Introduction </a></li>
-                   <li class="nav-item" data-level="2"><a href="#topic02" class="nav-link">2. Data Preparation</a></li>
-                   <li class="nav-item" data-level="2"><a href="#topic03" class="nav-link">3. Exploratory Data Analysis</a></li>
-                   <li class="nav-item" data-level="2"><a href="#topic04" class="nav-link">4. Statistical Methods</a></li>
-                   <li class="nav-item" data-level="2"><a href="#topic05" class="nav-link">5. Cross-validation and Performance</a> </li>				                      
-                   <li class="nav-item" data-level="2"><a href="#topic06" class="nav-link">6. From Statistics to Machine Learning</a> </li>
-                   <li class="nav-item" data-level="2"><a href="#topic07" class="nav-link">7. Supervised Algorithms</a></li>				   				    
-                   <li class="nav-item" data-level="2"><a href="#topic08" class="nav-link">8. Unsupervised Algorithms</a></li>
-                   <li class="nav-item" data-level="2"><a href="#topic09" class="nav-link">9. Bootstrapping and Anomaly Detection</a></li>
-                   <li class="nav-item" data-level="2"><a href="#topic10" class="nav-link">10. DS Consulting Practicum </a></li>				   				   
-                   <!--li class="nav-item" data-level="2"><a href="#week11" class="nav-link">11. Project Guideline and Case-study: Part I</a> </li>
-	                <li class="nav-item" data-level="2"><a href="#week12" class="nav-link">12. Case-study: Part II (Decision Trees)</a> </li>
-                 	<li class="nav-item" data-level="2"><a href="#week13" class="nav-link">13. Modeling Time Series</a> </li>
-                    <li class="nav-item" data-level="2"><a href="#week14" class="nav-link">14. Ethics in Data Science</a> </li>
-                 <!--div class = "graytoc">
-                   <li class="nav-item" data-level="2"><a href="#week15" class="nav-link">15. Project presentation</a> </li>
-                       </div-->
-                   </div>
-                </ul>
-             </li>
-           </ul>
-
-        </ul>
-    </div>
-</div></div>
-
-
-
-<!-- VVVVVVVVVVVVVVVVV    Main Body   VVVVVVVVVVVVVVVVVV-->
-
-<div class="col-md-9" role="main">
-
-<h3 id="topic01" class="section"><center>Topic 1: Introduction and Tools - A Big Picture</center></h3>
-    <center> <font color="red">[Mon, 7/3]</font>   </center>
-<hr><left>
-
-<b>TENTATIVE TOPICS:</b>
-<ul>
-<li>Introduction </li>
-   <ul>
-    <li>Course logistics and coverage</li>
-    <li>Course policies</li>
-    <li>Project guideline document: <a href="w01/w01-project-guidelines.pdf" target="popup" 
-                          onclick="window.open('w01/w01-project-guidelines.pdf','name','width=900,height=500')">
-        <font color = "darkred">[PDF]</font></a> 	
-    </ul>
-    
-<li>Software and Platforms</li>
-   <ul>
-       <li>Computing: <a href="https://pengdsci.github.io/SP23STA490-off/w01-R-RStudio-Github.html" target="popup"  onclick="window.open('https://pengdsci.github.io/SP23STA490-off/w01-R-RStudio-Github.html','name','width=900,height=500')">
-           <font color = "darkred">R/Rstudio and SAS Studio (via SAS OnDemand)</font></a> </li>
-
-       <li>DBMS and Data Acquisition Tools</li>
-       <li>Viz: Tableau Public and R graphic libraries</li>
-       <li>Repository and Collaboration: GitHub</li>
-       <li>Free web server for publishing your report: RPubs</li>
-              
-       <li>Tech Writing and Reporting: Markdown and LaTex: <a href="https://pengdsci.github.io/SP23STA490-off/w01-IntroRMD.html" target="popup" 
-                          onclick="window.open('https://pengdsci.github.io/SP23STA490-off/w01-IntroRMD.html','name','width=900,height=500')">
-           <font color = "darkred">[Intro to RMarkdown]</font></a>   </li>
-    </ul>
-    
-    <li>Data Science - A Big Picture</li> 
-     <ul>
-         <li><b>Class Note</b>: What is data science?  <a href="w01/What-is-data-sience.pptx" target="popup" 
-                          onclick="window.open('w01/What-is-data-sience.pptx','name','width=900,height=500')">
-             <font color = "darkred"> [PPT] </font></a></li>
-     <li> Data science is still in high demand: 
-      <a href="https://www.burtchworks.com/wp-content/uploads/2021/06/2021-DSA-BW-Study-Webinar-PDF.pdf" target="popup" 
-         onclick="window.open('https://www.burtchworks.com/wp-content/uploads/2021/06/2021-DSA-BW-Study-Webinar-PDF.pdf','name','width=900,height=500')"><font color = "darkred"> [2021 Burtch Works Report] </font></a></li>     
-    </ul>
-    
-<li>Data Science Foundations - Key Pillars</li>
-  <ul>
-    <li>Math and stats foundation - models and algorithms</li>
-    <li>Machine learning algorithms</li>
-    <li>Databases technology</li>
-    <li>Effective communication</li>
-   </ul>
-    
-<li>Data Science Roles and Skills</li>
-   <ul>
-     <li>Different roles with different skills</li>
-     <li>Programming languages: R/Python/Julia, SAS, SQL</li>
-     <li>Data science technologies for effective communication</li>
-     <li>Domain knowledge</li>
-     <li>Strategies and technologies for effective communication</li>
-    </ul>
-    
-<li>Data Science Process</li>
-   <ul>
-      <li>Identification of practical questions</li>
-      <li>Data acquisition: data sources, security, and ethics</li>
-      <li>Data management (wrangling): missing values, inconsistency, etc.</li>
-      <li>Feature engineering: feature creation, extraction, transformation, etc.</li>
-      <li>iterative Model/algorithm building process: EDA, statistics and machine learning</li>
-      <li>Visualization and communication: make the business implications intuitive</li>
-      <li>Implementation and strategies</li>
-      <li>Model maintenance and updating</li>
-    </ul>
-
- <li>Data Science Ethics</li>   
-    <ul>
-        <li> <a href="https://www.amstat.org/asa/files/pdfs/EthicalGuidelines.pdf" target="popup" onclick="window.open('https://www.amstat.org/asa/files/pdfs/EthicalGuidelines.pdf','name','width=900,height=500')"><font color = "darkred"> [ASA: Ethical Guidelines for Statistical Practice] </font></a></li>
-  </ul>    
-    
-    
-</ul>
-
-<b> ASSIGNMENT 0</b>: Software Installation and Registration
-  <ul>
-  <li> Software Installation
-   <ul>
-      <li>Required: R, RStudio, LaTex(MikTex), SAS OnDemand (SAS Studio)</li>
-      <li>Optional (if you plan to use for assignments): Anaconda (Python tools), MySQL(community Installation), Tableau Public </li>
-   </ul>
-    
-  <li>Online Platform Registration</li>
-      <ul>
-         <li> Create a GitHub repository for this class</li>
-         <li> Create an RPubs account publish your analysis report through RMarkdown</li>
-     </ul> 
-  <li>Get Started with RMarkdown - Use suggested template to create a RMD document</li>
-      <ul>
-          <li> Suggested RMD Tempate: <a href="w01/w01-RMD-template.txt" target="popup" onclick="window.open('w01/w01-RMD-template.txt','name','width=900,height=500')"><font color = "darkred"> [ TXT ]</font> </a>
-          <a href="w01/RMD-template.docx" target="popup" onclick="window.open('w01/RMD-template.docx','name','width=900,height=500')"><font color = "darkred">[ WORD] </font> </a>
-          <a href="w01/RMD-template.pdf" target="popup" onclick="window.open('w01/RMD-template.pdf','name','width=900,height=500')"><font color = "darkred"> [ PDF] </font> </a>
-          
-          
-          </li>
-          <li> Create a RMD document </li>
-      </ul>
-  <br><b> <font color = "red">No D2L Submission Due</font></b>
-  </ul>
-</left><hr>    
-    
-    
-    
-    
-    
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
-<h3 id="topic02"  class="section">Topic 2: Data Generation Process, Storage and Retrival</h3>
-    <center><font color="red">[Thu, 7/6]</font></center>
-
-<hr>
-    
-<b>TENTATIVE TOPICS</b>
-<ul>
-<li>Data Preparation Process</li>
-   <ul>
-       <li>Iterative process</li>
-       <li><b>Class Note:</b> Data Preparation <a href="w02/w02-DataPreparation.pptx" target="popup" onclick="window.open('w02/w02-DataPreparation.pptx','name','width=900,height=500')"><font color = "darkred"> [PPT]</font></a></li>
-   </ul>
-    
- <li>Data Storage,Retrival, and integration</li>
-   <ul>
-       <li>How data were generated/collected</li>
-       <li>Where data were stored</li>
-       <li>Data retrival and integration </li>
-       <li><b>Class Note:</b> Data Wrangling and Cleaning <a href="w02/w02-Wranglinng.pptx" target="popup" onclick="window.open('w02/w02-Wranglinng.pptx','name','width=900,height=500')"><font color = "darkred"> [PPT]</font></a></li>
-  </ul>
-    
-<li>Basics of Databases</li>
-   <ul>
-      <li>Basics of rational databases and DBMS</li>
-      <li>Query databases: Basics of SQL</li>
-      <li><b>Class Note:</b>Relational Database and SQL Clauses  <a href="w02/Relational-Database-SQL-Clauses.pptx" target="popup" onclick="window.open('w02/Relational-Database-SQL-Clauses.pptx','name','width=900,height=500')"><font color = "darkred">[PPT]</font></a></li>
-   </ul>
-        
-<li> Basic SQL queries - Case Study</li>
-     <ul>
-         <li><b>SQL Using SAS</b>:<a href="w02/w02-SQLCrashCourseUpdated.sas" target="popup" onclick="window.open('w02/w02-SQLCrashCourseUpdated.sas','name','width=900,height=500')"><font color = "darkred"> [SAS]</font></a>,
-             <a href="w02/w02-SQLCrashCourseUpdated.txt" target="popup" onclick="window.open('w02/w02-SQLCrashCourseUpdated.txt','name','width=900,height=500')"><font color = "darkred"> [TXT]</font></a> and
-         <a href="w02/A-Crash-Course-in-SQL.pdf" target="popup"  onclick="window.open('w02/A-Crash-Course-in-SQL.pdf','name','width=900,height=500')">
-             <font color = "darkred">[ PDF] </font></a>
-             
-             <li><b>SQL Using R</b>:<a href="w02/STA511-w02runninSQLinR.html" target="popup" onclick="window.open('w02/STA511-w02runninSQLinR.html','name','width=900,height=500')"> <font color = "darkred">[HTML]</font></a> and
-         <a href="w02/STA511-w02runninSQLinR.Rmd" target="popup"  onclick="window.open('w02/STA511-w02runninSQLinR.Rmd','name','width=900,height=500')">
-             <font color = "darkred"> [RMD]</font> </a> 
-             
-         <li>Data sets used in the SQL Crash Course: <a href="https://pengdsci.github.io/datasets/AnimalSurvey/surveys.csv" target="popup" 
-              onclick="window.open('https://pengdsci.github.io/datasets/AnimalSurvey/surveys.csv','name','width=900,height=500')">
-             <font color = "darkred">[surveys.csv]</font>  </a> <a href="https://pengdsci.github.io/datasets/AnimalSurvey/species.csv" target="popup" 
-                          onclick="window.open('https://pengdsci.github.io/datasets/AnimalSurvey/species.csv','name','width=900,height=500')">
-             <font color = "darkred">[pecies.csv]</font>  </a> <a href="https://pengdsci.github.io/datasets/AnimalSurvey/plots.csv" target="popup" onclick="window.open('https://pengdsci.github.io/datasets/AnimalSurvey/plots.csv','name','width=900,height=500')">
-             <font color = "darkred">[lots.csv ]</font> </a></li>
-         <li>SQL topics</li>
-           <ul>
-              <li> Basic SQL clauses
-              <li> Create and drop tables
-              <li> SQL Joins
-              <li> Sub-queries
-            </ul>
-        </ul>     
-    </ul>
-    
-<b>ASSIGNMENT #1:</b> Using SQL to create an analytical data by merging the four relational data tables related to pet care data. The data sets are avaiable at
-       <a href="https://pengdsci.github.io/datasets/#pet-care"><font color = "darkred">https://pengdsci.github.io/datasets/#pet-care</font></a>.
-   <ul>
-       <li><b>General Requirement</b>: create a single data set that contains the information of pets and their corresponding owners, procedure history and procedure detail. You can use either PROC SQL in SAS or R to run SQL clauses.</li>
-       <li><b>Specific requirements</b>: </li>
-          <ul>
-             <li>Writing a program header file to summary the coding tasks</li>
-             <li>Using relevant SQL clauses to merge different data sets with appropriate keys.</li>
-             <li>Defining a composite key in procedure history and procedure detail and then merge them with other tables</li>
-             <li>Justifying whether the final combined data set is contains the information in all individual data tables</li>
-          </ul>    
-       <li><b>Coding Conventions and Formatting</b>:</li>
-          <ul>
-            <li>Program header with detailed informaton about author, date, major tasks, etc</li>  
-            <li>Code must be well commented.</li>
-            <li>Code must follow the best practices and conventions</li>
-           </ul>
-       <li><b>Submission Requirements</b>:</li>       
-           <ul>
-             <li>The submitted code should be error-free (tip: run the entire code before submitting it to the D2L drop box).</li>  
-           </ul>  
-       <br><b> <font color = "blue">Due: Monday, 7/10</font> </b>
-       
-       <br><b> <a href="w02/Assignment01SuggestedKey.txt" target="popup" onclick="window.open('w02/Assignment01SuggestedKey.txt','name','width=900,height=500')"><font color = "darkred"> Suggested Answer [SAS PROC SQL]</font> </a></b>
-       
-       
-       
-    </ul>   
-
-    
-<hr>   
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
-<h3 id="topic03"  class="section">Topic 3: Exploratory Data Analysis and Feature Engineering </h3>
-    
-<center><font color="red">[Mon, 7/10]</font></center>
-    
-<hr><left>
-     
-    <b>TENTATIVE TOPICS</b>
-    
-    <ul>
-      <li> Exploratory Data Analysis </li>
-        <ul>
-         <li> Data types and EDA types</li>
-         <li> The objective of EDA</li>
-         <li> Descriptive statistics</li>
-         <li> Distributional graphics</li>
-            <li><b>Class Note</b>: 
-                <a href="w03/w03-EDA.html" target="popup" onclick="window.open('w03/w03-EDA.html','name','width=900,height=500')"><font color = "darkred"> [HTML]</font></a>
-               <a href="w03/w03-EDA.pdf" target="popup" onclick="window.open('w03/w03-EDA.pdf','name','width=900,height=500')"><font color = "darkred"> [PDF]</font></a>
-               <a href="w03/w03-EDA.Rmd" target="popup" onclick="window.open('w03/w03-EDA.Rmd','name','width=900,height=500')"><font color = "darkred"> [RMD]</font></a> </li>
-         <li> Old Version Class Note
-                <a href="w03/w03-EDA-EVA.pdf" target="popup" onclick="window.open('w03/w03-EDA-EVA.pdfl','name','width=900,height=500')"><font color = "darkred"> [PDF]</font></a></li>  
-        </ul>
-    
-      <li> Visual Representation <a href="w03/w03-VisualizationBrief.pdf" target="popup" onclick="window.open('w03/w03-VisualizationBrief.pdf','name','width=900,height=500')"><font color = "darkred"> [PDF Note]</font></a></li>
-        <ul>
-          <li> Exploration data visualization</li>
-          <li> Process visualization </li>
-          <li><b>A Brief Note</b>: <a href="w03/w03-VisualizationOverview.pptx" target="popup" onclick="window.open('w03/w03-VisualizationOverview.pptx','name','width=900,height=500')"><font color = "darkred"> [PPT]</font></a></li>
-        </ul>
-        
-      <li>  Visual Analytics</li>
-        <ul>
-          <li> Model/algorithm based visualization</li>
-          <li> Interactive visualizations</li>
-        </ul> 
-        
-    <li>Overview of Feature Engineering <a href="w03/w03-FeatureEngineeringOverview.pptx" target="popup" onclick="window.open('w03/w03-FeatureEngineeringOverview.pptx','name','width=900,height=500')"><font color = "darkred"> [PPT]</font></a></li>
-      <ul>
-         <li>Feature assembling</li>
-         <li>Feature reduction</li>
-         <li>Feature extension - primarily through EDA</li>
-         <li><b>Class Note</b>: EDA for Feature Engineering <a href="w03/w03-EDAforFeatureEngineering.html" target="popup" onclick="window.open('w03/w03-EDAforFeatureEngineering.html','name','width=900,height=500')"><font color = "darkred"> [HTML]</font></a>
-             <a href="w03/w03-EDAforFeatureEngineering.pdf" target="popup" onclick="window.open('w03/w03-EDAforFeatureEngineering.pdf','name','width=900,height=500')"><font color = "darkred"> [PDF]</font></a>
-          <a href="w03/w03-EDAforFeatureEngineering.Rmd" target="popup" onclick="window.open('w03/w03-EDAforFeatureEngineering.Rmd','name','width=900,height=500')"><font color = "darkred"> [RMD]</font></a></li>
-    </ul>
-        
-    </ul>
-    
-  <b> ASSIGNMENT #2</b> 
-    
-       Choose a data set the meets all requirements specified in the <a href="w01/w01-project-guidelines.pdf" target="popup" 
-          onclick="window.open('w01/w01-project-guidelines.pdf','name','width=900,height=500')">
-        <font color = "darkred">Project Guideline</font></a>. This data set will be used for the term project focusing on predictive modeling. All subsequent assignments will be the bulding-blocks of the final report of the term project. <br>
-    
-       This assignment focuses on EDA. The written report should include a meaningful title, an introduction section dewscribing the data set, a section of analysis (EDA) and actions taken based on the EDA. To be more specific, you report should have<br>
-        <ul>
-            <li> A meaningful title of the analysis </li>
-            <li> Introduction</li>
-               <ul>
-                 <li> What will be the question you try to address using this data set?</li>
-                 <li> Description of the data source.</li>
-                 <li> Sample size and number of feature variables and their types.</li>
-                 <li> Information of missing values (the nature, percentage of records with missing values) </li>
-                 <li> Methods for handling missing values and justifications.</li>
-               </ul>
-            <li> Exploratory Data Analysis (could open several subsections to orgnize your analysis)</li>
-              <ul>
-                 <li> General objectives of EDA</li>
-                 <li> EDA for numeric variables and patterns observed</li>
-                 <li> EDA for categorical variables and patterns observed</li>
-                 <li> Correlations between numerical variables</li>
-                 <li> Potential of dependency between categorical variables</li>
-                 <li> Treatments of variables based on EDA results (need justifications)</li>
-                 <li> <font color = "blue">Feature engineering using the above EDA results</font>. <font color = "darkred">Please keep in mind that your engineered data set should have the variables to be used for the subsequent modeling. See the class under the title of <em> EDA for Feature Engineering</em>.</font></li>
-              </ul>        
+                         <li class="navitem active"><center><b>Monday</b> <br> <font size=2 color="purple">3:00PM-5:00PM</font></center></li>
             
-               <br> <b><font color = "blue">Due: Thursday, 7/13</font></b>
-    </ul>
-    
-     
-    
- <hr>   
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
-<h3 id="topic04"  class="section">Topic 4: Statistical Methods for Data Science</h3>
-<center><font color="red">[Thu, 7/13]</font></center>
-    
-<hr><left>
- 
-    <b>TENTATIVE TOPICS</b>
-    
-<ul>
-    <li>Mathematical and Statistical Foundations of Data Science</li>
-      <ul>
-           <li>Calculus and matrix algebra: vectorization and optimization</li>
-           <li>Statistical models and algorithms</li>
-           <li>Methods of estimation: Frequentist and Bayesian approaches</li>
-           <li>Model/algorithm assumptions</li>
-      </ul>
-    <li>Traditional Regression Models for Prediction</li>
-       <ul>
-          <li>Linear regression models: <a href="w04/w04-MLR-LOGIT.html" target="popup" onclick="window.open('w04/w04-MLR-LOGIT.html','name','width=900,height=500')"> <font color = "darkred">[HTML]</font></a> 
-         <a href="w04/w04-MLR-LOGIT.Rmd" target="popup"  onclick="window.open('w04/w04-MLR-LOGIT.Rmd','name','width=900,height=500')">
-             <font color = "darkred"> [RMD]</font></a> 
-         <a href="w04/w04-MLR-LOGIT.pdf" target="popup"  onclick="window.open('w04/w04-MLR-LOGIT.pdf','name','width=900,height=500')">
-             <font color = "darkred"> [PDF]</font></a></li>
-           
-       <li>Logistic regression models:<a href="w04/w04-LogisticRegressionNew.html" target="popup" onclick="window.open('w04/w04-LogisticRegressionNew.html','name','width=900,height=500')"> <font color = "darkred">[HTML]</font></a> 
-         <a href="w04/w04-LogisticRegressionNew.Rmd" target="popup"  onclick="window.open('w04/w04-LogisticRegressionNew.Rmd','name','width=900,height=500')">
-             <font color = "darkred"> [RMD]</font></a> 
-         <a href="w04/w04-LogisticRegressionNew.pdf" target="popup"  onclick="window.open('w04/w04-LogisticRegressionNew.pdf','name','width=900,height=500')">
-             <font color = "darkred"> [PDF]</font></a></li>
-        </ul>
-    
-     <li>Re-sampling Algorithms: <a href="w05/w05-551BootstrapAlgorithm.html" target="popup" onclick="window.open('w05/w05-551BootstrapAlgorithm.html','name','width=900,height=500')"> <font color = "darkred">[HTML]</font></a>
-    <a href="w05/w05-551BootstrapAlgorithm.pdf" target="popup" onclick="window.open('w05/w05-551BootstrapAlgorithm.pdf','name','width=900,height=500')"> <font color = "darkred">[PDF]</font></a>
-    <a href="w05/w05-551BootstrapAlgorithm.Rmd" target="popup" onclick="window.open('w05/w05-551BootstrapAlgorithm.Rmd','name','width=900,height=500')"> <font color = "darkred">[RMD]</font></a></li>
-       <ul>
-           <li>Overview of re-sampling algorithms</li>
-           <li>Bootstrapping methods</li>
-           <li>Extensions of Bootstrapping algorithms</li>
-       </ul>
-</ul>
-    
-<b>ASSIGNMENT #3:</b> Continuation of the previous assignment. In this assignment focuses on predictive modeling using logistic regression. You are expected to append the following analysis to the previous report.
-    
-    <ul>
-        <li>Practical Quetion(s) and Methodology</li>
-          <ul>
-             <li> Formulate the questions clearly</li>
-             <li> Describe the response variable </li>
-             <li> Models/algorithms to be used to address the questions</li>
-          </ul>
-        <li>Logistics Predictive Modeling (open subsections if needed to organize your analysis and reporting)</li>
-         <ul>
-             <li> Model Building</li>
-                <ul>
-                   <li> Build several models and use then using variable selection to find the best model.</li>
-                   <li> Report performance measures of the predictive power</li>
-                </ul>
+                         <li class="navitem active"><center><b>Tuesday</b> <br><font size=2 color="purple"> 11:00AM-12:00PM</font></center></li>
+                
+                         <li class="navitem active"><center><b>Thursday</b> <br><font size=2 color="purple">2:00PM-5:00PM</font></center></li>
+                      </ul>
+                 </li>              
+                  
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://d2l.wcupa.edu/d2l/login" target="popup" 
+                       onclick="window.open('https://d2l.wcupa.edu/d2l/login','name','width=900,height=500')"><font color = "purple"><b>D2L</b></font></a>
+                </li>
+                  
+                <li class="nav-item active">
+                    <a class="nav-link" href ="mailto: cpeng@wcupa.edu"  target="popup" 
+                       onclick="window.open('mailto: cpeng@wcupa.edu','name','width=900,height=500')"><font color = "purple"><b>Email Me</b></font></a>
+                </li>
+              </ul>
+            </div>
+              
+          </div>
              
-             <li> Calculating Predictive Probabilities</li>
-                  <ul>
-                   <li> Use the final model to calculate predictive probabilities by providing an examples</li>
-                  </ul> 
-         </ul> 
-        <br><b><font color = "blue">Due: Monday, 7/17</font></b>
-        </ul> 
-</left><hr>
+        </nav>
 
 
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
-<h3 id="topic05"  class="section"> Topic 5: Cross Validation and Performance Measures </h3>
-<center><font color="red">[Monday, 7/17]</font></center>
-    
-<hr><left>
 
-<b>TENTATIVE TOPICS</b>
-<ul>  
-  <li>Cross-validation: </li>
-     <ul>
-          <li>The logic of cross-validation</li>
-          <li>The use cases of cross-validation: optimal cut-off probability for classification</li>
-          <li><b>Class Note</b>: <a href="w06/w06-551TrainigValidationTesting.html" target="popup" onclick="window.open('w06/w06-551TrainigValidationTesting.html','name','width=900,height=500')"> <font color = "darkred">[HTML]</font></a> 
-         <a href="w06/w06-551TrainigValidationTesting.Rmd" target="popup" onclick="window.open('w06/w06-551TrainigValidationTesting.Rmd','name','width=900,height=500')"> <font color = "darkred"> [RMD]</font></a> 
-         <a href="w06/w06-551TrainigValidationTesting.pdf" target="popup" onclick="window.open('w06/w06-551TrainigValidationTesting.pdf','name','width=900,height=500')"> <font color = "darkred"> [PDF]</font></a></li>
-     </ul>
-    
-  <li>Performance Measure</li>
-     <ul>
-          <li>Error-based measures: </li>
-          <li>likelihood-base: Deviance </li>
-          <li>Global performance measures: ROC and AUC</li>
-          <li><b>Class Note</b>: <a href="w06/w06-551DS-Performance-Measures.html" target="popup" onclick="window.open('w06/w06-551DS-Performance-Measures.html','name','width=900,height=500')"> <font color = "darkred">[HTML]</font></a> 
-         <a href="w06/w06-551DS-Performance-Measures.Rmd" target="popup" onclick="window.open('w06/w06-551DS-Performance-Measures.Rmd','name','width=900,height=500')"> <font color = "darkred"> [RMD]</font></a> 
-         <a href="w06/w06-551DS-Performance-Measures.pdf" target="popup" onclick="window.open('w06/w06-551DS-Performance-Measures.pdf','name','width=900,height=500')"> <font color = "darkred"> [PDF]</font></a></li>
-     </ul>
-    
-   <li>Other Performance measures and visualizations</li>
-     <ul>
-          <li>Profit curve(if time permits)</li>
-          <li>Lift curves (optional)</li>
-     </ul>
-</ul>
- 
-<b>ASSIGNMENT #4:</b> This assignment focus on data-driven predictive modeling using logistic regression. You cnould open a new section (with several subsections) and append it the previous assignments. Please revise previse previous assignments based on my feed back.
-  <ul>
-    <li> Randomly splitting for Cross-validation </li>
-        <ul>
-          <li> Random splitting: 70% for training (candidate models) and 30% for testing (the final model)</li>  
-          <li>Build at least two candidate model and use cross-validation and a KPI to selection the final model</li>
-          <li>Use cross validation method again on the final model to determine the optimal cut-off probability </li>
-          <li>Report the performance KPI using the hold-up testing data (30%) with optimal cut-off probability </li>
-        </ul>
-     <li> ROC Analysis</li>   
-        <ul> 
-           <li>Split (0, 1) into 20 subintervals and calculate specificity and sensitivity based on each of these cut-offs </li>
-           <li> Plot the ROC curve (1-specificity, sensitivity)</li>
-           <li> Interpret the ROC curve.</li>
-       </ul>  
-        <b><font color = "blue">Due: Thursday, 7/20 </font></b>
-    </ul>
-</left><hr>  
+  <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
+  <!-- MMMMMMMMMMMMMMMMM  Weekly Material (Updated Every Week)  MMMMMMMMMMMMMMM-->
+  <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
+  <!--div class="container sec"-->
+            
+  <center>
+      <font style="font-variant: small-Caps; font-family: Arial, sans-serif; font-size: 18px; font-weight:400; color:darkmagenta; ">1. Platforms and Technical Tools for Data Science</font>       
+            
+            </center>          
+    <br>
+            
+  <table border = "0" class="table table-striped" 
+                      style="max-width: 1100px; margin-left: auto; margin-right: auto; background-color:gray8;">
+  <colgroup>
+     <col span="1" style="width: 50%;">
+     <col span="1" style="width: 6%;">
+     <col span="1" style="width: 44%;">
+   </colgroup>
 
-    
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
-<h3 id="topic06"  class="section"> Topic 6: From Statistics Models to Machine Learning Algorithms </h3>
-<center><font color="red">[Thursday, 7/20]</font></center>
-<hr><left>    
-
-<b>Tentative Topics</b><br>
-    <ul>
-      <li> Review of Cross-validation and ROC analysis </li> 
-      <li> Debugging RMD source and R Code</li>
-      <li> From statistics models to machine learning algorithms</li> 
-         <ul>
-          <li> Description of machine learning</li>
-          <li> Types of machine learning methods</li>
-          <li> Logistic regression is a special neural network model</li>
-         </ul>
-       <li> Building neural network model in R</li>
-         <ul>
-          <li> Architecture of neural networks</li>
-          <li> Simple R libraries for neural network models </li>
-          <li> Building a neural network model by an example: Pima Indian Diabetes Data</li>
-        </ul>
-       <li><b>Class Note:</b><a href="w07/w07-FromStats2MachineLearning.html" target="popup" onclick="window.open('w07/w07-FromStats2MachineLearning.html','name','width=900,height=500')"> <font color = "darkred">[HTML]</font></a> 
-         <a href="w07/w07-FromStats2MachineLearning.Rmd" target="popup" onclick="window.open('w07/w07-FromStats2MachineLearning.Rmd','name','width=900,height=500')"> <font color = "darkred"> [RMD]</font></a> 
-         <a href="w07/w07-FromStats2MachineLearning.pdf" target="popup" onclick="window.open('w07/w07-FromStats2MachineLearning.pdf','name','width=900,height=500')"> <font color = "darkred"> [PDF]</font></a></li>
-    </ul>    
-    
-<BR><BR>
-<b>ASSIGNMENT #5</b>: This analysis should be appended to the report of the previous assignments.
-   <ul>
-    <li>Revision of the previous report</li>
-
-    <li>Neural network method with <b><i>neuralnet</i></b> (open a new section)</li>
-       This is a new model that is independent of the logistic model you built in assignments #3 and #4.
-       <ul>
-       <li> Using the analytic data set obtained in assignment #2</li>
-       <li> Scale all numeric features and then use <b><i>model.matrix</i></b> to define the data matrix for neural work modeling</li>
-       <li> Build a single-layer neural network model using <b><i>neuralnet()</i></b></li>
-       <li> Plot the network model </li>
-       <li> Identify optimal cut-off score for binary decision.</li>
-       <li> Construct the ROC of the model.</li>
-       <li> Open a subsection to compare the predictive performance between the logistic model and the neural network model.</li>
-       </ul>
-   </ul> 
- <b><font color = "blue"><b>Due: Monday, 7/24</b></font></b>   
-    
-    
-
-<hr>
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
-<h3 id="topic07"  class="section"> Topic 7 Survey of Supervised Algorithms </h3>
-<center><font color="red">[Thu, 7/24]</font></center>
-<hr>
-
-<b>TENTATIVE TOPICS</b>
-<ul>
-    <li>Overview of supervised machine learning algorithms</li>
-      <ul>
-          <li>Logistic regression</li>
-          <li>Artificial neural networks (ANN)</li>
-          <li>Naive Bayes</li>
-          <li>KNN</li>
-          <li>Support vector machines</li>
-      </ul>
-    <li>Decision Tree-based Classification</li>
-      <ul>
-          <li>Decision tree classification</li>
-          <li>Bootstrap Aggregation (BAGGING)</li>
-          <li>Random forests</li>
-      </ul>
-    <li>Case Study: Prediction of diabetes with decision trees</li>
-    
-    <li><b> Lecture Notes:</b>
-                     |<a href="w07/w07-ML-Alg-Overview.html" target="popup" 
-                          onclick="window.open('w07/w07-ML-Alg-Overview.html','name','width=900,height=500')">
-                         HTML</a>
-                     |<a href="w07/w07-ML-Alg-Overview.pdf" target="popup" 
-                          onclick="window.open('w07/w07-ML-Alg-Overview.pdf','name','width=900,height=500')">
-                         PDF</a>
-                     |<a href="w07/w07-ML-Alg-Overview.Rmd" target="popup" 
-                          onclick="window.open('w07/w07-ML-Alg-Overview.Rmd','name','width=900,height=500')"> RMD</a>|</li>
-        </ul>
-    
-<b>ASSIGNMENT #6</b>: Use the same data set you used in the previous assignments to build decision tree algorithms to address the same practical question(s).
-
-<ul>
-<li> Revise your previous report (clean up the report and make sure the reported results are organized and consistent).
-<li> Open a new section on decision tree algorithms (give a meaningful section header)
-    <ul>
-	<li> briefly describe the tree algorithms: what is the algorithm, why it is appropriate for your project, what is your plan to do the analysis
-	<li> Open subsection to build a few decision trees and purposes
-	<li> ROC analysis
-    <li> cut-off determination</li>
-	<li> discussion and conclusion
-	</ul>
-</ul>
-   <b><font color = "blue">Due: Thursday, 7/27 </font></b>
-    
-
-<hr>  
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
-<h3 id="topic08"  class="section"> Topic 8: Survey Unsupervised learning algorithm </h3>
-<center><font color="red">[Wed, 7/26]</font></center>
-<hr>
-    
-<b>TENTATIVE TOPICS</b>
-    
-<ul>
-    <li>Unsupervised learning algorithms</li>
-     <ul>
-         <li>Clustering</li>
-         <li>K-means</li>
-     </ul>
-    <li>Dimensional Reduction</li>
-      <ul>
-          <li>Principle component analysis</li>
-          <li>Regularization approaches</li>
-      </ul>
-           
-    <li> <b>Lecture Note: </b> 
-                     |<a href="w08/w08-ML-Alg-Overview-Unsupervised.html" target="popup" 
-                          onclick="window.open('w08/w08-ML-Alg-Overview-Unsupervised.html','name','width=900,height=500')">
-                         HTML</a>
-                     |<a href="w08/w08-ML-Alg-Overview-Unsupervised.Rmd" target="popup" 
-                          onclick="window.open('w08/w08-ML-Alg-Overview-Unsupervised.Rmd','name','width=900,height=500')">
-                         RMD</a>|
-   </ul> 
-    <b>ASSIGNMENT #6 (Optional)</b>: Although this assignment is optional, I still encourage you to consider these two unsupervised 
-       methods in your analysis <i>if they are appropriate to your project</i>.
-       <ul>
-       <li> Clustering analysis</li>
-           <ul>
-              <li> If your data size is large, clustering algorithms may have potential computational issues. I don't encourage you to do clustering.   </li>
-              <li> If your data size is relatively small, you can all <b>numerical feature variables</b> to see whether the clustering methods can find obvious clusters in the data and add the cluster ID to the data and include it in your original data to improve the performance of your modeling.</li>
-           </ul>
-       <li>Principal component analysis</li>
-           <ul>
-              <li> If your data set has several correlated <b>numerical</b> feature variables, you may want to use PCA to see whether you can find fewer components to include in modeling and reduce the total number of feature variables. </li>
-              <li> PCA is a dimension reduction method, but this does not mean that PCA will always reduce the number of feature variables in the model.</li>
-           </ul>
-       </ul>
-   <font color = "red">The final clean version of the project report due: </font><font color = "blue"><b> Friday, 8/4/2023.</b></font>    
-       
-<hr>
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM-->
-<h3 id="topic09"  class="section"> Topic 09: Bootstrap Algorithms and Anomaly Detection </h3>
-<hr> 
-       
-<b>TOPICS:</b> The following topics will be covered this week.<br>
-<ul>
-
- <li> Bootstrap Methods with Applications
-     <ul>
-        <li> The Bootstrap algorithm</li>
-        <li> Boostrap confidence intervals</li>
-        <li> Bootstrap decision trees - ensemble algorithms</li>
-     </ul>
-     
-  <li>Algorithms for Anomaly Detection  </li>   
-     <ul>
-       <li> Introduction: Anomaly detection use case - fraud detection
-       <li> Types of anomaly detection   
-	   <li> Learning styles in anomaly detection 		
-        <li> distance-based outlier detection algorithms 
-	    <li>  Local outlier factor scoring methods 
-      </ul> 
-   <li> Novelty Detection (if time permits) 
-      <ul>
-          <li>  Descrition of kernel function 
-	      <li>  Concepts of support vector machine data description (SVDD)
-          <li>  One-class SVM and case study
-       </ul>
-    
- <li> Lecture Note
-     <ul>
-        <li> Bootstrap methods with applications  
-                     |<a href="w09/w09-BootstrapLogisticRegression.html" target="popup" 
-                          onclick="window.open('w09/w09-BootstrapLogisticRegression.html','name','width=900,height=500')">
-                         HTML</a>
-                     |<a href="w09/w09-BootstrapLogisticRegression.Rmd" target="popup" 
-                          onclick="window.open('w09/w09-BootstrapLogisticRegression.Rmd','name','width=900,height=500')">
-                         RMD</a>
-                     |<a href="w09/w09-BootstrapLogisticRegression.pdf" target="popup" 
-                          onclick="window.open('w09/w09-BootstrapLogisticRegression.pdf','name','width=900,height=500')">
-                         PDF</a>|  
-            </li>
-         <li>Anomaly detection methods
-                     |<a href="w09/w09-Anormaly-detection-fraud-detection.html" target="popup" 
-                          onclick="window.open('w09/w09-Anormaly-detection-fraud-detection.html','name','width=900,height=500')">
-                         HTML</a>
-                     |<a href="w09/w09-Anormaly-detection-fraud-detection.Rmd" target="popup" 
-                          onclick="window.open('w09/w09-Anormaly-detection-fraud-detection.Rmd','name','width=900,height=500')">
-                         RMD</a>
-                     |<a href="w09/w09-Anormaly-detection-fraud-detection.pdf" target="popup" 
-                          onclick="window.open('w09/w09-Anormaly-detection-fraud-detection.pdf','name','width=900,height=500')">
-                         PDF</a>| </li>
-           </ul>
-    </ul> 
-	
-<b>ASSIGNMENT:</b> No new class assignment. Revise and polish the project report.  
- <br>
- <br>
-   <b><font color = "blue">Project Report Due: Friday, 8/4</font> <font color = "red">(no extension!) </font></b><br>
-    <b><font color = "blue">Submission Requirements: </font></b> <font color = "navy"> 
-    <ul>
-      <li> Checking Page Limits</li>
-       <ul>
-          <li>If you can successfully knit into PDF, the number of pages should be between 15 and 25. </li>  
-           <li> If knit the RMD source to the WORD format, the page limits should be between 18 and 28. </li>
-           <li> These limits apply only to the HTML with NO code version. There will be NO page limits for the HTML with code. </li>
-        </ul>
-        
-     <li> You are expected to submit three versions of your report: HTML with code, HTML   without code, and the RMD source.</li>
-         <ul>
-            <li> Both HTML versions MUST be published on RPubs. The corresponding URLs should be provided in the D2L dropbox.</li>  
-            <li> The RMD source MUST be uploaded to the D2L dropbox. You are encouraged to terminate your current RStudio session and then re-open the RMD source and knit it. Make sure there will be no errors.</li>
-         </ul>  
-      <li>Report Organization</li>
-          <ul>
-              <li>Your report must have an <i>Introduction</i> section to open the report and a <i>Discussion and Conclusion</i> to conclude the report. Some discissions on how to implement the model should be addressed in the <i>Discussion and Conclusion</i> section.</li>
-              <li>A <i>Table of Contents</i> must be included in your report.</li>
-              <li>Sections and (all levels of) subsections must be numbered. Section and subsection headers must be descriptive.</li>
-              <li>Figures and Tables must be captioned.</li>
-              <li>Appendices (if any) should be placed after the Discussion and Conclusion section</li>
-              <li>If articles, papers, and other cited information, provide a list references between the section Discussion and Conclusion and the section of Appendices.</li>
-              <li>Since several different models were used in your analysis, you must tell stories about results obtained from different models in a consistent manner. Comparative stories are all always welcome.</li>
-              <li> Finally, keep in mind that the report is for clients who don't have formal training in data science and statistics.</li>
-          </ul>
-    </ul></font>
-<br>
-    <hr>
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-<h3 id="topic10"  class="section"> Topic 10: Data Science Consulting Practicum: HR Analytics </h3>
-<hr>
-<br>
-
-<b>TOPICS:</b> HR analytics: Data Science Consulting Projects <br><br>
-    HR analytics is a data-driven approach to managing human resources that involves gathering and analyzing data related to employees 
-       to derive insights and make informed decisions.   
-    <br><br>
-    Two project teams will be formed and each team will address three practical questions listed below. 
-<ul>
-    <li> Practical Questions for Team #1 <font color = "blue">(Dragonetti, Echefu, Heneghan, Kuo)</font></li>
-   <ul>
-       <li> Identify departments with high employee turnover and the potential factors. </li>
-       <li> Identified key factors affecting job satisfaction.   </li>
-	   <li> Provide recommendations to improve employee attrition and job satisfaction.		 </li>
-    </ul> 
-     
-    <li> Practical Questions for Team #2 <font color = "blue">(Lama, Moffitt, Reaves, Taylor, Tomko)</font></li>
-    <ul>
-       <li>  Identified key predictors of employees' performance and the potential factors. </li> 
-	   <li>  Identify departments with low engagement levels and the key drivers.  </li>
-       <li>  Provide recommendations to improve employee performance and engagement. </li>	
-    </ul>
+  <tr>
+       <th bgcolor="#FFB2B2"><font color = "#004466">  Topics, Class Notes and Codes</font></th>
+       <th bgcolor="#FFB2B2">  </th>
+       <th bgcolor="#FFB2B2"><font color = "#004466">  Assignments ans Assessments </font></th>
+  </tr>
   
-    <li> The data set contains information from the	<i>Human Resource Information System</i> (employee demographic information, employment history, and compensation details), <i>Performance Management System</i> (employee performance ratings, goals, and achievements), <i>Employee Surveys</i> (feedback on job satisfaction, work-life balance, and engagement), and <i>Exit Interviews</i> (reasons for employee departures and feedback on their experiences). The combined clean data set in csv format is available at 
-    |<a href="https://pengdsci.github.io/STA551/w10/HR-EmployeeAttritionData.csv" target="popup" 
-                          onclick="window.open('https://pengdsci.github.io/STA551/w10/HR-EmployeeAttritionData.csv','name','width=900,height=500')">
-                         HR Analytic Data Set</a>|
-       </ul>
-<br>      
-         
-<b>ASSIGNMENT:</b> This informal presentation of the consulting project will be assessed and graded on a 10-point scale. Here are a few specifics:
-<ul>
-  <li>The team consulting projects will be conducted in a simulated workplace environment.  Please bring your laptop to class since you will conduct some exploratory data analysis and use the results to support your analysis plan and proposal. </li>
-  <li> Each team will have two 4'x8' size white boards to record your team's plan of formulation of analytic questions, data preparation, feature engineering, modeling (including those you learned in other classes), the goodness of your methodologies, limitations and improvements, some thoughts of implementation, and recommendations to your HR clients.</li> 
-  <li> Each team member must present at least a sub-task of the team project.</li>
-  <li> All members are expected to actively participate in the question and answer session (last hour of the session).</li> 
- </ul>
+  <!-- Week 01 -->
+  <tr>
 
-    
+    <td> <ul>
+          <li> Navigating SAS Environment </li>
+          <li> Storing and Accessing SAS Data Files </li>
+          <li> Coding Conventions and File/Folder Structure </li>
+          <li> Guidelines for Formatting and Commenting </li>
+          <li> Galnce of Data Input Styles: Column and List Inputs </li>
+         <li> Notes and code </li>
+         <ul>
+            <li> <a href="W02_SASCodingRulesConventions.pdf" target="popup" 
+                onclick="window.open('W02_SASCodingRulesConventions.pdf','name','width=900,height=500')"> 
+                Lecture Note: SAS libraries and coding rules, conventions and best coding practices </a></li> 
+             <li> <font color = "red"><b> SAS Example Code: </b></font>
+                   <a href="w02-ColumnInput.sas" target="popup" 
+                   onclick="window.open('w02-ColumnInput.sas','name','width=900,height=500')"> 
+                   [SAS] </a> 
+                   <a href="w02-ColumnInput.txt" target="popup" 
+                   onclick="window.open('w02-ColumnInput.txt','name','width=900,height=500')"> 
+                   [Text]</a> 
+                   <a href="w02-ColumnInput.pdf" target="popup" 
+                   onclick="window.open('w02-ColumnInput.pdf','name','width=900,height=500')"> 
+                   [PDF]</a> 
+                    
+                   <a href="w02-HowtoDefineanSASPermanentLibrary.pdf" target="popup" 
+                   onclick="window.open('w02-HowtoDefineanSASPermanentLibrary.pdf','name','width=900,height=500')"> 
+                   [How to Define SAS Permenent Library, PDF]</a>  
+                     </li> 
+         </ul>
+        </ul>
+    </td><td></td>
 
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM >
-<h3 id="topic10"  class="section"> Topic 10: Feature Engineering in Data Science </h3>
-
-</left><hr>  
-<b>TOPICS:</b> The following topics will be covered this week.<br>
-<ul>
- <li> Lecture Note: <font color = "red"><b>[11/04/2021] </b></font>
-                     |<a href="w10-Feature-Extraction-for-Seq-data.html" target="popup" 
-                          onclick="window.open('w10-Feature-Extraction-for-Seq-data.html','name','width=900,height=500')">
-                         HTML</a>
-                     |<a href="w10-Feature-Extraction-for-Seq-data.Rmd" target="popup" 
-                          onclick="window.open('w10-Feature-Extraction-for-Seq-data.Rmd','name','width=900,height=500')">
-                         RMD</a>|
- <li> Feature Selection
-  <ul>
-       <li> Descriptive approaches - filtering methods
-       <li> Statistical variable selection - wrapper methods  
-	    <li> Regularized -  	embedded methods	
-    </ul> 
- <li> Feature Extraction  
-    <ul>
-       <li>  Clustering method 
-	    <li>  Principal component analysis 
-       <li>  Linear discriminant analysis
-    </ul> 
-  <li> Feature Extraction with Serial Data
-    <ul>
-       <li>  Feature extraction with time series 
-	    <li>  Feature extraction with panel data 
-    </ul>
- </ul>
-
-<b>ASSIGNMENT:</b> No writen assignment to submit this week. 
-<ul>
- <li> Please use this week to complete / revise your past assignments.
-</ul>
-
-
-</left><hr>  
-
-
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM >
-<h3 id="week11"  class="section"> Week 11: Project Guidelines and Case-study: Part I </h3>
-
-</left><hr>  
-<b>TOPICS:</b> Term project guideline.<br>
-<ul>
- <li> Project guideline document: <font color = "red"><b>[11/08/2021] </b></font>
-                     |<a href="w11-project-guidelines.pdf" target="popup" 
-                          onclick="window.open('w11-project-guidelines.pdf','name','width=900,height=500')">
-                         PDF</a> |
-	 <ul>
-     <li> General requirements on data set 
-	  <li> Project stages and timelines
-	  <li> Specifics of project proposal, report, and presentation	  
-    </ul>						 
-						 
- <li> Case-study: building a ML algorithm and logistic regression on the same data set.
-  <ul>
-       <li> Proposal and analysis plan
-       <li> Data analysis  
-	    <li> Project Report	
-  </ul>
-
- <li> A New Resaerch Paper: <a href="w11-PredictingType2DiabetesUsingLogisticRegressionandMLapproaches.pdf">
-  Predicting Type 2 Diabetes Using Logistic Regression and ML Approaches</a>
-</ul>
-
-
- 
-<b>ASSIGNMENT:</b> Assignment to submit this week. 
-<ul>
- <li> Select a data set.
- <li> Formulate your research question(s).
- <li> One page description of the data set and the practical questions you will address.
-</ul>
-
-
-</left><hr>  
-
-
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM >
-<h3 id="week12"  class="section"> Week 12: Project Guidelines and Case-study: Part II </h3>
-
-</left><hr>  
-<b>TOPICS:</b> Term project guideline.<br>
-<ul>
- <li> Project guideline document: <font color = "red"><b>[11/08/2021] </b></font>
-                     |<a href="w11-project-guidelines.pdf" target="popup" 
-                          onclick="window.open('w11-project-guidelines.pdf','name','width=900,height=500')">
-                         PDF</a> |					 
-						 
- <li> Case-study part II: Decision tree models. |<a href="w12-PimaDiabetesStudy-withCode.html" target="popup" 
-          onclick="window.open('w12-PimaDiabetesStudy-withCode.html','name','width=900,height=500')"> 
-        Sample Analysis Report[With Code]</a> |<a href="w12-PimaDiabetesStudy-noCode.html" target="popup" 
-          onclick="window.open('w12-PimaDiabetesStudy-noCode.html','name','width=900,height=500')"> 
-        Sample Analysis Report[Without Code]</a> 
-		|<a href="w11-PimaDiabetesStudy.Rmd" target="popup" 
-          onclick="window.open('w11-PimaDiabetesStudy.Rmd','name','width=900,height=500')"> 
-        Sample Analysis Report[RMarkdown]</a> 
-    <ul>
-       <li> Candidate decision models use pruity measures: Gini index and entropy
-       <li> Penalized decision tree models: penalizing false positives and false negatives. 
-	    <li> Cross validation for model selection
-		<li> Global performance of models from different families.
-    </ul>
-     
-  <li>  An example of bootstrap logistic regression | |<a href="w12-BootstrapLogisticRegression-Example.html" target="popup" 
-          onclick="window.open('w12-BootstrapLogisticRegression-Example.html','name','width=900,height=500')"> HTML </a> |
-		  <a href="w12-BootstrapLogisticRegression-Example.Rmd" target="popup" 
-          onclick="window.open('w12-BootstrapLogisticRegression-Example.Rmd','name','width=900,height=500')"> RMD</a> | 
-		  <font color = "red"><b>(Posted on 11/18/2021)</b></font>
-      
- <li> A New Resaerch Paper: <a href="w11-PredictingType2DiabetesUsingLogisticRegressionandMLapproaches.pdf">
-  Predicting Type 2 Diabetes Using Logistic Regression and ML Approaches</a>
- </ul>
- 
- 
- 
-<b>ASSIGNMENT:</b> Assignment to submit this week. 
-<ul>
- <li> Project proposal (see the requirements from the <a href="w11-project-guidelines.pdf" target="popup" 
-                          onclick="window.open('w11-project-guidelines.pdf','name','width=900,height=500')">
-                        project guidelines [link]</a>).
- <li> <font color = "red"><b>Due:</b></font> <font color = "blue">Sunday, 11/21/2021</font>.
-</ul>
-
-                               
- <!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM >
-<h3 id="week14"  class="section"> Week 14: Ethics of Data Science and Analytics </h3>                              
-                               
-</left><hr>  
-<b>TOPICS:</b> Topics for this week.<br>
-<ul>
- <li> Project guideline document: <font color = "red"><b>[11/08/2021] </b></font>
-                     |<a href="w11-project-guidelines.pdf" target="popup" 
-                          onclick="window.open('w11-project-guidelines.pdf','name','width=900,height=500')">
-                         PDF</a> |					 
-						 
- <li> Overview of Data Science and Analytics
-         |<a href="w15-Ethics.pdf" target="popup" 
-          onclick="window.open('w15-Ethics.pdf','name','width=900,height=500')"> 
-          PDF Slides</a>         
-        |<a href="w15-Ethics.Rmd" target="popup" 
-          onclick="window.open('w15-Ethics.Rmd','name','width=900,height=500')"> 
-        RMarkdown Document</a> | <br>     
-
- <li> <a href="https://www.amstat.org/asa/files/pdfs/EthicalGuidelines.pdf" target="popup" onclick="window.open('https://www.amstat.org/asa/files/pdfs/EthicalGuidelines.pdf','name','width=900,height=500')"> 
-          ASA: Ethical Guidelines for Statistical Practice </a>
-  </ul>    
-      
-
-
-
-</font--!>
-
-<!--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM>
+     <td><ul>
+         <li>Reading Assignments </li>
+          <ul>
+         <li> Read relevant sections of 
+            <a href="https://ebookcentral.proquest.com/lib/wcupa/detail.action?docID=5847433" target="popup" onclick="window.open('https://ebookcentral.proquest.com/lib/wcupa/detail.action?docID=5847433','name','width=900,height=500')"><b> Ajay Ohri's Book</b> [link]</a></li>
+        <li> Chapter 1 and first 2 sections of chapter 2 of
+            <a href="SAS-Base-Programming-Certification-Study-Guide.pdf" target="popup" 
+             onclick="window.open('SAS-Base-Programming-Certification-Study-Guide.pdf','name','width=900,height=500')"><b>Dinsmore's Note</b> [link]</a></li>
+          </ul>       
+        <BR>      
+        <li> Written Assignment <!--a href="https://d2l.wcupa.edu/d2l/login" target="popup" 
+                   onclick="window.open('https://d2l.wcupa.edu/d2l/login','name','width=900,height=500')">
+                    <b>D2L (login)</b></a></li>
+               <font color="darkblue"><b>Available on Thursday</b>: 12:00 PM </font><BR>
+               <font color="red"><b>Due on Sunday</b>: 11:30 PM </font-->
+     </ul>
+    </td>
+  </tr>
+</table>
+<!--Please register an account with <a href="https://www.sas.com/en_us/software/on-demand-for-academics/references/getting-started-with-sas-ondemand-for-academics-studio.html" target="popup" 
+onclick="window.open('https://www.sas.com/en_us/software/on-demand-for-academics/references/getting-started-with-sas-ondemand-for-academics-studio.html','name','width=900,height=500')">
+                   [SAS OnDemand]</a> then use the <b> <font color="red">free and web-based</font> SAS Studio</b> to practice the SAS code and complete the assignment without using RamCloud SAS. Watch this <a href="https://www.youtube.com/watch?v=tmL8fdOd-pI" target="popup" 
+                   onclick="window.open('https://www.youtube.com/watch?v=tmL8fdOd-pI','name','width=900,height=500')">
+                   [short video]</a> to get started with SAS Studio. <font color = "blue"><b>The link to SAS OnDemand login page is also placed on the top navigation panel.</b></font-->
 </div>
-<!--XXXXXXXXXXXXXXXXXXXXXXXXXXX  FOOTER  XXXXXXXXXXXXXXXXXXXXXXX-->
-<left>
-<footer class="col-md-12">
-<hr>
-    <p class="text-center">Copyright &copy; 
-        <script>
-            var CurrentYear = new Date().getFullYear()
-            document.write(CurrentYear)
-        </script>
-       C. Peng. Last updated: 
-         <script> 
-            document.write(new Date().toLocaleDateString()); 
-         </script>
+ </div>
+</div>
 
- <a href='http://www.freevisitorcounters.com'>.</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=bdd86ca03bf3709e4523bf44ac939417956604f4'></script>
-<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/832947/t/5"></script>   </p>
-</body>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+      
+ </TD></TR>
+ </TBODY></TABLE>
+  <br><br><br>
+</center> 
+       
+      
+      
+  </body>
 </html>
