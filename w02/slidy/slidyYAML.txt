@@ -1,3 +1,5 @@
+copy the following code (including the triple hyphens --- ) and paste it to your RMD. please pay attention to the indention in the YAML.
+
 ---
 title: '<center>Slidy Presentation</center>'
 author: "Cheng Peng"
