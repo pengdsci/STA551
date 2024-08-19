@@ -1,0 +1,486 @@
+---
+title: "Strategies and Tools for Effective Technical Communications"
+date: "Cheng Peng"
+output:
+  html_document: 
+    toc: yes
+    toc_float: yes
+    number_sections: yes
+    toc_collapsed: yes
+    code_folding: hide
+    code_download: yes
+    smooth_scroll: yes
+    theme: lumen
+    fig_caption: yes
+  pdf_document: 
+    toc: yes
+    number_sections: yes
+    fig_width: 4
+    fig_height: 3
+editor_options:
+  chunk_output_type: inline
+  pdf_document:
+    toc: yes
+    number_sections: yes
+---
+
+
+
+<style type="text/css">
+
+/* Table of content - navigation */
+div#TOC li {
+    list-style:none;
+    background-color:lightgray;
+    background-image:none;
+    background-repeat:none;
+    background-position:0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #780c0c;
+}
+
+
+/* Title fonts */
+h1.title {
+  font-size: 24px;
+  color: darkblue;
+  text-align: center;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-variant-caps: normal;
+}
+h4.author { 
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: navy;
+  text-align: center;
+}
+h4.date { 
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: darkblue;
+  text-align: center;
+}
+
+/* Section headers */
+h1 {
+    font-size: 22px;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    color: darkred;
+    text-align: left;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    color: navy;
+    text-align: left;
+}
+
+h3 { 
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    color: navy;
+    text-align: left;
+}
+
+h4 {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    color: darkred;
+    text-align: left;
+}
+
+/* Decoration of hyperlinks  */
+
+/* unvisited link */
+a:link {
+  color: green;
+}
+
+/* visited link */
+a:visited {
+  color: purple;
+}
+
+/* mouse over link */
+a:hover {
+  color: red;
+}
+
+/* selected link */
+a:active {
+  color: yellow;
+}
+</style>
+
+
+```{r setup, include=FALSE}
+options(repos = list(CRAN="http://cran.rstudio.com/"))
+# code chunk specifies whether the R code, warnings, and output 
+# will be included in the output files.
+if (!require("knitr")) {
+   install.packages("knitr")
+   library(knitr)
+}
+
+knitr::opts_chunk$set(echo = TRUE,       
+                      warning = FALSE,   
+                      result = TRUE,   
+                      message = FALSE,
+                      comment = NA)
+```
+
+\
+
+
+# Introduction
+
+
+Technical communication is the delivery of technical information to readers (or listeners or viewers) in a manner that is adapted to their needs, level of understanding, and background. It includes any forms of communication such as written reports and oral presentations that
+
+* are about technical or specialized topics such as statistical modeling and machine learning algorithms for extracting hidden information from the complex data integrated from multiple data sources, 
+
+* use technology, particularly interactive technologies, such as web presentations in both written and oral presentations or help files, 
+
+* provide instruction about how to do something such as implementing/deploying a data science project, maintaining and updating a post-deployed data science project, business simulation, etc. 
+
+
+In data science and statistics, technical communication involves the delivery of clear, consistent, and factual information extracted from complex data through analytics for efficient use and effective comprehension by users. It is a user-centered approach to providing the right information, in the right way, at the right time. 
+
+
+Effective technical communication makes information more usable and accessible to technical/non-technical users who need that information and helps advance the goals of the organizations that employ them.
+
+
+This note aims to introduce the basic conventions of technical communication, including learning how
+to take an audience-centered approach to your communications, how to assess your rhetorical
+situation (purpose, audience, context), and how to use the tools and methods of technical communicators to
+deliver information to your target audience and achieve your desired results.
+
+
+\
+
+# Effective Technical Writing
+
+In this course, statistical and data science project proposals and reports, project implementation and deployment menus, protocols of study designs and data collection, presentation slides drafting, etc. are typical technical writings.
+
+
+## Basic Conventions and Characteristics of Technical Writing
+
+Technical writing has distinct features that make technical communication effective. These features include but are not limited to
+
+* the use of headings to organize information into coherent sections, 
+
+* the use of lists to present information concisely, 
+
+* the use of figures and tables to present data and information visually, and 
+
+* the use of visual design (white space, bullet points, etc.) to enhance readability. 
+
+
+To be more specific, effective technical writing must meet the following standards:
+
+**Honesty**: Technical writing must be honest. The trustworthiness in communication reflects not only on you personally but also on your organization, company, or discipline.
+
+**Clarity**: Technical writing has to be clear so that readers can get from it the information you intended.
+Strive to make sure that you have expressed exactly what you mean, and have not left room for
+incorrect interpretations.
+
+**Accuracy**: Next, good writing is accurate. Do your homework and make sure you have your facts right. There
+is no excuse for presenting incorrect information.
+
+**Factuality**: Also make sure you have all the facts, as your writing must also be complete. Have you included
+everything that your reader needs?
+
+**Brevity**: Be sure to be concise. Your audience has neither time nor patience for excessive verbiage, so
+simplify and cut any clutter. Good writing is always concise writing.
+
+**Aesthetics and Accessibility**:  The document should be visually attractive and easy to navigate. Readers are less likely to be
+moved by a document that is not carefully designed and professional.
+
+**Coherence**:  Effective technical writing must be logically and stylistically consistent and emphasize the relationships among the elements of a document to strengthen its impact. Coherent technical writing is especially valued in science and technology because of the inherent complexity of the subjects.
+
+As conventions, one should consider all of the following elements in any technical writing.
+
+| Convention |   Comments |
+|:-----------:|:-----------|
+| Purpose    | To communicate technical and specialized information in a clear, accessible, and usable manner to people who need to use it to make decisions, perform processes, or serve goals. |
+| Audience   | Varied, but can include people such as colleagues, managers, and executives, as well as clients and other stakeholders, the general public, etc.|
+| Writing Style   | Concise, clear, plain, and direct language; may include specialized terminology; typically uses short sentences and paragraphs; uses active voice; makes purpose immediately clear. The tone should be professional, varying between formal and informal; typically objective and neutral; ideas are evidence- and data-driven. |
+| Evidence  | Ideas are evidence-driven and claims are well-supported using reasoning, quoted facts and analytical results, examples, explanations and background information (where needed), visual evidence, and specific information. |
+| Structure  | Clearly structured with the reader in mind: use short sentences and paragraphs and provide clear transitions and structural cues (headings and sub-headings) to help the reader move through the document. The order of information should be logical; introductions and conclusions should be reader-centered.|
+| Format/Formatting | Can be in electronic, visual, or printed formats; often uses style guides to describe required formatting features; uses headings, lists, figures, and tables.|
+
+\
+
+## Fundamentals of Slide Design 
+
+Through the use of different elements, including visuals, colors, typography, style, layout, and transitions, slide design provides a visual representation of the important points of the presentation. 
+
+## Strategies of Effective Slide Design
+
+Some techniques and tools can be utilized to strengthen the design of slides in order to enhance the quality of your presentation. The following is a list of a few strategies we may want to consider when designing slides. 
+
+* Begin each slide (except for the title slide) with a strong headline (no more than two lines!).
+
+* Incorporate strong visual evidence, such as photographs, drawings, graphs, films, or words and equations arranged visually to support your headlines/points - picture superiority effect. 
+
+* Include clear captions/labels/symbols to make the slides easier to follow.
+
+* Minimize the use of bullet points.
+
+* Minimize the amount of text on slides (using more keywords and phrases instead of complete sentences), 
+
+* Keep animations, special effects, and sounds to a minimum.
+
+* Use an appropriate number of slides for the length of the presentation (e.g. typically around one slide per minute).
+
+* Use slides that have a consistent look and feel.
+
+* Create slides that are readable from a distance.
+
+* Include images and language that are inclusive and accessible to the audience.
+
+
+
+\
+
+## Effective Poster Designs
+
+The whole idea of using posters is to entice audiences to (1) **read** about their work, and (2) **understand** and **remember** the information presented.
+
+A good poster attracts audiences with a **clear and uncluttered** design that has information presented in a logical order such that audiences can navigate through the material easily. In addition, a good poster **should not be overloaded with text and visuals**. It contains only the most important text and graphics needed to tell the story. At its core, a poster is made up of four key features: a title, graphic(s), text, and white space. *Layout, flow, and color affect the order and style of these four key features*.
+
+**Title**
+
+The title is a descriptive indicator of the contents of the poster, and it should not exceed two lines of text. One recommendation is to 48-point (or larger) bold lettering.
+
+**Text**
+
+Posters typically employ around 800 words (and no more than 1000 words) of text. The text MUST be organized into sections and labeled with appropriate section headings so that readers can easily navigate the contents of the poster. The text should clearly describe the objective of the study, the procedures used, the results obtained, and any conclusions based on the results presented.
+
+**Graphics**
+
+Graphics must appear in context with the main text. When choosing graphics, always choose high-resolution images (300 dpi or higher), and make sure that these images are large enough such that a person standing 5 feet away can see them. Avoid pulling low-resolution images from the web, always use captions for figures/tables, and always credit sources where appropriate.
+
+**White space**
+
+White space exists as a key feature because it is necessary for defining the borders of the presentation. It helps viewers avoid feeling overwhelmed by the information being presented. *Roughly speaking*, 30% of the poster should consist of white space, 40% should consist of your title and text, and 30% should consist of graphic images.
+
+
+In addition to the key components in poster designs, we also need to take the following elements into serious consideration.
+
+**Layout**
+
+There are many design options for the layout of a poster. Some popular options include vertical columns, contrasting fields, and graphic-centered designs. Ultimately, the right layout for the poster should best illustrate the purpose of the report.
+
+**Flow**
+
+*Flow* coordinates with how your readers’ eyes move around the different sections of the poster. In the best poster designs, the flow is logical and readers are never confused about how to find information on the poster or how to connect between different sections.  
+
+
+**Color**
+
+Adding color to a presentation is an excellent way to draw a reader’s gaze and define the different sections of the poster. But color should always be used sparingly and with considerable thought. Random changes in font and color only distract from the message. The best practice is to use no more than three colors and two font types for your text. One simple way of incorporating color into your poster is to use a different color for your headings and subheadings.
+
+
+
+**Some Recommendations for Creating Posters**
+
+* Use no more than two typefaces.
+
+* Use sans serif fonts like Arial, Calibri, or Helvetica. These fonts work better for posters and presentations, while serif fonts are typically reserved for papers.
+
+* Write the authors’ names, collaborators’ names, and subheadings using a 48-point font or larger.
+
+* Use 30 to 36-point font for the narrative text.
+
+* Keep the margins of the poster and the space between columns at a minimum of 2.5 inches.
+
+* **Avoid** mixing low-contrast colors (for example, yellow text against a white background), because it often makes text and images hard to see.
+
+
+\
+
+
+# Creating Visual Representations
+
+Numerous studies have shown that pictures and images are more likely to be remembered than words. This phenomenon is referred to as **picture superiority effect**. It is based on the notion that **human memory is extremely sensitive to the symbolic modality of presentation of event information**. This explains why visual representation becomes increasingly important nowadays as advances in technology. 
+
+Visuals are immensely important in technical documentation. They can help a writer in many ways. Depending on their type, visuals can aid in clarifying instructions, providing supporting material alongside the text, attracting and keeping the reader’s attention, etc.
+
+## Elements of Visual Representations
+
+Visual representation simplifies complex ideas and data and makes them easy to understand. The building blocks in the design of data visualization are marks and channels.
+
+**Marks** are the basic geometries, or graphical elements, in a plot that depict our data items or their linkages. Marks indicate “where” something is and include points (0D), lines (2D), areas (2D), and volumes (3D).
+
+**Channels** are the attributes that control how the marks appear. Channels are used to encode (or indicate) the values or meaning of our data. 
+
+The following is a demonstration of how to encode channels
+
+```{r fig.align='center',  out.width="80%", out.height="80%", fig.cap="Marks and channels in data visualization"}
+include_graphics("img/MarksChannels.png")
+```
+
+
+To create an effective visual representation, we should follow the following conventions/principles.
+
+**Size** – Larger elements tend to capture users' attention readily.
+
+**Color** – Users are typically drawn to bright colors over muted shades.
+
+**Contrast** – Colors with stark contrasts catch the eye more effectively.
+
+**Alignment** – Unaligned elements are more noticeable than those aligned ones.
+
+**Repetition** – Similar styles repeated imply a relationship in content.
+
+**Proximity** – Elements placed near each other appear to be connected.
+
+**Whitespace** – Elements surrounded by ample space attract the eye.
+
+**Texture and Style** – Users often notice richer textures before flat designs.
+
+```{r fig.align='center', out.width="50%", out.height="60%", fig.cap="Demonstration of channels in visualization"}
+include_graphics("img/ChannelDemonstration.png")
+```
+
+## Color Encoding
+
+Color is pre-attentively observed,  this characteristic makes it particularly effective in conveying qualitative and quantitative information in images, maps, graphics illustrations, and diagrams. People respond to color in different ways because humans attach different subjective meanings to various colors. 
+
+```{r fig.align='center',  out.width="70%", out.height="100%", fig.cap="Color grid demonetrates color meanings"}
+include_graphics("img/ColorMeaningGrid.png")
+```
+
+
+Depending on context, color can convey meaning often more effectively than words. The colors used in technical visual design should match users' perceptions, and technical needs, not just personal preferences. Using color effectively in data visualization can significantly enhance the clarity and impact of the data. The following is a list of some of the principles to consider in the design of visual content.
+
+**Avoid Overuse of Color**: Using too many colors can overwhelm the viewer. Stick to a limited palette to keep the visualization clean and focused.
+
+**Stick to a Theme**: Consistency is key. Use a consistent color theme, ideally aligned with your brand colors, to create a cohesive look.
+
+**Use Color to Highlight Key Data**: Reserve bright or contrasting colors for the most important data points to draw attention to them.
+
+**Be Mindful of Color Interactions**: Some colors can clash or blend together, making it hard to distinguish between data points. Choose colors that work well together.
+
+**Respect Color Conventions**: Use colors that have conventional meanings (e.g., red for negative, green for positive) to make your visualizations intuitive.
+
+**Ensure Accessibility**: Make sure your color choices are accessible to people with color vision deficiencies. Tools like color blindness simulators can help you test your designs. In general, avoid using **red-green**, 
+
+**Use Color Harmoniously**: Apply principles of color harmony to create visually pleasing and effective visualizations.
+Test in Black and White: Ensure your visualizations are still understandable in grayscale. This can help you check if your use of color is truly adding value. 
+
+\
+
+## Color-blind Friendly Colors
+
+About 8% of men and 0.5% of women are colorblind, so making chart color-blind safe is a reasonable thing to do. Most of the issues for colorblind people come from the prevalence of red-and-green combinations as a pair of opposites in design. The first rule of making a palette for the colorblind – **avoid combining red and green**. So if **you’re aiming to create a colorblind-friendly palette try to use only two basic hues: blue and red (orange and yellow will also fit)**
+
+```{r fig.align='center',  out.width="70%", out.height="70%", fig.cap="Color blind friendly color combinations"}
+include_graphics("img/colorBlindView.png")
+```
+
+
+\
+
+## Interactive Contents
+
+Interactive data visualization refers to the use of modern data analysis software that enables users to directly manipulate and explore graphical representations of data. Interactive data visualization software programs incorporate interaction tools that facilitate the modification of the parameters of data visualization, enabling the user to see more detail, create new insights, generate compelling questions, and capture the full value of the data.
+
+Some major benefits of interactive data visualizations include:
+
+**Identity Trends Faster** - The majority of human communication is visual as the human brain processes graphics magnitudes faster than it does text. Direct manipulation of analyzed data via familiar metaphors and digestible imagery makes it easy to understand and act on valuable information. 
+
+**Identify Relationships More Effectively** - The ability to narrowly focus on specific metrics enables users to identify otherwise overlooked cause-and-effect relationships throughout definable timeframes. This is especially useful in identifying how daily operations affect an organization’s goals.
+
+**Useful Data Storytelling** - Humans best understand a data story when its development over time is presented in a clear, linear fashion. A visual data story in which users can zoom in and out, highlight relevant information, filter, and change the parameters promotes a better understanding of the data by presenting multiple viewpoints of the data.
+
+**Simplify Complex Data** - A large data set with a complex data story may present itself visually as a chaotic, intertwined hairball. Incorporating filtering and zooming controls can help untangle and make these messes of data more manageable, and can help users glean better insights.
+
+
+```{r echo=FALSE, fig.align ="center",  out.width = '100%'}
+if (knitr:::is_latex_output()) {
+  knitr::asis_output('\\url{https://chpeng.shinyapps.io/LSE-Reg/}')
+}
+```
+
+
+<a href="https://chpeng.shinyapps.io/LSE-Reg/" target="popup" onclick="window.open('https://chpeng.shinyapps.io/LSE-Reg/','name','width=900,height=500')"><img src="img/RegShiny.png"></a>
+<center>An example of interactive visualization.</center>
+
+\
+
+## Every Visual Must Be Interpreted
+
+Every visual requires either written or oral interpretation. While images can convey a lot of information quickly, the viewer’s understanding is influenced by their background, experiences, and context. Here are a few key points to consider when interpreting visuals:
+
+
+**Subjectivity**: Different viewers may interpret the same visual in various ways based on their personal experiences, knowledge, and biases.
+
+
+**Contextual Understanding**: The meaning of a visual can change depending on the context in which it is presented. Without proper context, viewers might misinterpret the information.
+
+
+**Complexity of Information**: Visuals often condense complex information into a simpler form. Interpretation is needed to unpack and fully understand the nuances and details.
+
+
+**Purpose and Intent**: The creator of the visual has a specific purpose and message they want to convey. Interpretation helps the viewer understand this intent and the underlying message.
+
+
+<font color = "blue" size = "4">**\color{blue}As a convention, all visuals in any written reports in this course must be accompanied by an accurate and concise interpretation.**</font>.
+
+
+
+# Software Programs and Platforms
+
+For data scientists and statisticians, several key languages and platforms are essential for different aspects of their work for efficiently processing, analyzing, and communicating their findings. 
+
+
+## Open-source Platforms
+
+Several excellent open-source data science platforms provide robust tools for data analysis, machine learning, and visualization. For statistical data scientists, RStudio and Anaconda are commonly used in academia. Some cloud-based platforms can also be used for storage and collaboration.
+
+**Anaconda** is a distribution of Python and R programming languages for scientific computing, which provides an easy-to-use package manager called **conda**. The distribution includes data-science packages suitable for different operating systems. **Jupyter Notebook** is an open-source web application that allows to create and share documents containing live code, equations, visualizations, and narrative text. It’s widely used in data science for its interactive capabilities.
+
+**RStudio**: RStudio is an integrated development environment (IDE) for R, a computer language for statistical computing and graphics. It provides tools for data analysis, visualization, and reporting. The R notebook and its library RMarkdown
+
+**GitHub**: GitHub is a collaborative and sharing platform for data professionals.
+
+**AWS (Amazon Web Services)**: AWS a comprehensive, evolving cloud computing platform provided by Amazon.
+
+**Azure (Microsoft)**: Microsoft Azure is Microsoft's public cloud computing platform. It provides a broad range of cloud services, including computing, analytics, storage, and networking.
+
+
+
+## Computer Languages 
+
+There are many computer languages used in data science and statistics fields for various purposes. There are also different ways to classify these languages into different categories. In this note, we list three types of languages from their functioning perspective.
+
+### Computational Languages
+
+**Python**: Widely used for data manipulation, analysis, and machine learning. It has a rich ecosystem of libraries like NumPy, pandas, and scikit-learn.
+
+**R**: Excellent for statistical analysis and data visualization. It has powerful packages like ggplot2 and dplyr.
+
+**SQL**: Crucial for querying and managing databases. It’s essential for handling structured data.
+
+
+### Presentational Languages
+
+**Markdown**: Commonly used in Jupyter Notebook, R Notebook/RMarkdown, and GitHub for documentation and creating readable reports. It’s lightweight and easy to use.
+
+**HTML**: Useful for creating web-based dashboards and visualizations.
+
+**CSS (Cascading Style Sheet)**: Cascading Style Sheets (CSS) is a stylesheet language used to describe the presentation of a document written in HTML or XML. It describes how elements should be rendered on screen, on paper, in speech, or on other media.
+
+**LaTex** LaTeX is a software system for typesetting documents. LaTeX markup describes the content and layout of the document, as opposed to the formatted text found in the what-you-see-is-what-you-get type of word processors like Microsoft Word and Apple Pages. Both  Jupyter Notebook and RMarkdown run LaTex in the background when generating PDF documents.
+
+
