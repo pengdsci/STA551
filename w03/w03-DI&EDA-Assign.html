@@ -1,0 +1,262 @@
+ <html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Course website for MAT 121">
+  <meta name="author" content="Cheng Peng">
+  <title>STA551</title>
+
+  <!-- bootstrap  -->
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"-->
+</head>
+
+<style>
+      body {
+        background-image: url('images/wcubackground');
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        line-height: 3;
+        <!--padding:10px 15px 15px 30px; -->
+      }
+</style>
+<body>
+
+<div id="header">
+<BR><BR><BR>
+<!-- outer table -->
+<table align = center style="width:75%" border="1"  bordercolor=purple>
+<tr>
+
+<td>
+<BR>
+<center><h2><font color = purple><b>Project #1: Data Integration and EDA</b></font></h2> </center>
+
+
+<!-- level one table -->
+  <div class="container sec">
+ <table align = center style="width:85%" border = "0" class="table table-striped">
+ <!-- NNNNNNNNNNN Update Date  NNNNNNNNNNNN-->  
+  <tr>
+ <td>
+  <center><!--font size = 5 color = "navy"><b> Summer 2024 Final Project </b></font><br-->
+      <font size = 3 color = "darkred"><b>Due: Wednesday, 9/25/2024</b></font>
+     </center>
+ <tr><td> 
+<!--    NNNNNNNNN    Message Starts    NNNNNNNNNNN-->
+
+<BR>
+<h3>1. Objectives</h3>
+    
+The objective of this project is to put together some of the topics we learned this semester to work on real-world problems. 
+ 
+    <b>The data management part</b> aims to create an analytic data set that has enough information for the <b>exploratory data analysis (EDA)</b> to be discussed next week.  The specific information and variables to be integrated into the final data set will be detailed in the subsequent sections.
+<br><br><br>    
+<b><font color = "darkred", size = 4>Part I: Data Integration - Using Either R or SAS</font></b>      
+    
+    
+<h3>2. Data Sources </h3>
+The involved data sets can be found in the following.
+    <ul>
+        <li> Presidential Election Data <a href="https://pengdsci.github.io/datasets/countypresidential_election_2000-2020.csv" target="popup"         onclick="window.open('https://pengdsci.github.io/datasets/countypresidential_election_2000-2020.csv','name','width=900,height=500')">
+        [countypresidential_election_2000-2020.csv] </a> </li>
+        
+        <li> Unemployment Data <a href="https://pengdsci.github.io/datasets/Unemployment.csv" target="popup"  onclick="window.open('https://pengdsci.github.io/datasets/Unemployment.csv','name','width=900,height=500')">[Unemployment.csv]</a> </li>
+
+        <li> Poverty Data <a href="https://pengdsci.github.io/datasets/PovertyEstimates.csv" target="popup" 
+        onclick="https://pengdsci.github.io/datasets/PovertyEstimates.csv','name','width=900,height=500')">
+        [PovertyEstimates.csv]</a> </li>
+        
+        <li> Education Data <a href="https://pengdsci.github.io/datasets/Education.csv" target="popup"         onclick="window.open('https://pengdsci.github.io/datasets/Education.csv','name','width=900,height=500')">
+        [Education.csv] </a> </li>  
+     </ul>
+ 
+<h3>3. Specific Requirements of Data Preparation</h3>
+ The information to be included in the analytic data set is outlined in the following. 
+ <ul>    
+     <li> <b>Presidential Election Data</b>: The following information should be kept in the final data set</li>
+       <br>
+       <ul>
+           <li> only use the 2020 election data</li>
+           <li> only keep the data for the two major parties: Democrats and Republicans</li>
+           <li> aggregate the <b>total</b> votes and <b>keep the winning party</b> in the data</li>
+           <li> county FIPS code, State name, county name, total votes received in the winning party, and the name of the party </li>
+       </ul>
+   <br>    
+   <li><b>Unemployment Data</b>: The following information should be kept in the data </li>
+    <br> <ul>
+       <li>Only keep the unemployment date in the year 2000 or the most recent year in which the unemployment rate is available</li>
+       <li>County FIPS code</li>
+       <li>Unemployment rate</li>
+     </ul>
+     <br>
+     <li><b>Poverty Data</b>: The following information should be kept in the data</li>
+     <br><ul>
+       <li>Keep only 2019 poverty rate [the variable name in the data set: PCTPOVALL_2019]</li>
+       <li>County FIPS code</li>
+     </ul>
+     <br>
+     <li><b>Education Data</b>: The following information should be kept in the data</li>
+     <br><ul>
+       <li>only keep the percentage of education levels between 2015 and 2019.</li>
+       <li>Education levels</li>
+         <ul>
+         <li> less than a high school diploma</li>
+         <li> high school diploma</li>
+         <li> completed some college (1-3 years)</li>
+         <li> completed four years of college</li>
+         </ul>
+        <li>County FIPS code </li>
+     </ul>
+    </ul>   
+
+    After finishing managing the above <i>relational </i>data sets, combine them to create a single data set in which each county has only one record.
+ 
+        
+ <h3>4. Some Suggestions on Coding Conventions</h3>
+ 
+ The following are some suggestions on best practices in coding projects with multiple tasks. 
+  <ul>
+    <li><b>Formatting</b>: A good programmer should write code in ways that make review as easy to read as possible. Good formatting of the code is essential.</li>
+      <br>
+    <ul>
+      <li>Putting multiple statements on one line hurts readability</li>
+      <li>Putting each variable on its own line when having multiple variables </li>
+      <li>Indentation. When using SAS, all the statements in each DATA step or PROC step should be indented except for the first and last one</li>
+      </ul>
+      <br>
+    <li><b>Commenting</b>: Commenting makes the code more readable and understandable. It should be used in your code appropriately. The following are a few occasions a comment should be used. </li>
+      <br>
+      <ul>
+          <li> A <i>program header</i> containing a list of information about the program </li>
+          <li> When making a change to the code, commenting should be made appropriately</li>
+          <li> When a code line or code block involves your smart idea that is not obvious to others, you need a comment on it. </li>
+      </ul>
+      <br>
+     <li><b>Naming Conventions</b>: Using the naming conventions in your code.</li> 
+      <br>
+      <ul>
+      <li>Dataset names should describe what is in the dataset (i.e., the name should be descriptive).</li>
+      <li>The key to choosing variable names is clarity. </li>
+      </ul>
+  </ul>
+    
+    
+ <br><br><br> 
+ <b><font color = "darkred", size = 4>Part II: EDA and Visualization - Using R Only</font></b>   
+    
+    
+ <h3>5. EDA and Statistical Graphics</h3>   
+
+  As an integral part of exploratory data analysis, statistical graphics make it easier to identify patterns, trends, outliers, etc. from a data set. The primary goal of EDA is to detect (hidden) patterns in the data. I will not ask you to perform specific EDA. However, I would like to see the three basic techniques in your analysis report.
+    
+  <ul>
+  <li> Distributional information of single variable and relevant visual representation</li>
+  
+  <li> Describe the relationship between two variables</li>
+   
+  <li> Pairwise comparisons</li>
+  </ul> 
+
+    
+  Please keep in mind that the characterization of categorical and continuous variables uses different approaches. When assessing the relationship between two variables, you must consider whether they are continuous, categorical, or a mixture of both.  
+ 
+  <h3>5. Comments on Visual Representation</h3>   
+  
+  First of all, visual representation includes both tables and graphics. Please follow the best practice of visual representation to include the required components of tables and figures that are listed below.
+    
+  <br><br>
+  <b>Table Representation</b>
+  <ul>
+  <li> Table caption</li>
+  <li> Table header</li>
+  </ul>
+    
+  <b>Figure Representation</b>
+  <ul>
+  <li> Title</li>
+  <li> Labels of both axes</li>
+  <li> Figure captions</li>
+  <li> Legends</li>
+  <li> Annotations if needed</li>
+  </ul>
+    
+  In addition, each table and figure must be interpreted briefly based on the observed patterns.
+    
+    
+   <h3>6. Project Reporting - Using RMarkdown</h3>  
+    
+  Your project report is the formal description of your project. The format should be similar to statistical journal articles. The report should be about 10 pages in length (excluding code) and contain the following components.
+  <br><br>
+    
+  <b>Problem Statement and Background </b>
+   <br><br>
+   
+   Give a clear and complete statement of the problem(s) you plan to address. Where does the data come from, and what are its characteristics?
+    <br>
+    <ul>
+    <li> Include background material as appropriate: who cares about problems and what impacts the questions have</li>
+    <li> Objectives of data integration </li>
+    <li> Software programs to be used in the projects and the reason you use it</li>
+   </ul> 
+    
+   <b>Data Integration</b>
+   <br>
+    <ul>
+     <li>Write narrative paragraphs to describe the process of data integration (refer to the specified steps) </li>
+     <li>Use sections and subsections with descriptive headings to organize your work</li>
+     <li>Describe the final aggregated data set: size, variable lists, variable types</li>
+     <li>Describe the steps of data inspection for anomalies</li>
+    </ul>
+    
+    <b>Exploratory Data Analysis</b>
+    <br>
+     You may perform various analyses, but only report practically meaningful results
+    <ul>
+      <li> Each subsection focuses on one analysis with visual representations whenever relevant </li>
+      <li> Each analysis should be accompanied by narrative paragraphs to describe the patterns <b>you observed from the visual representations</b>.</li>
+      <li> </li>
+    </ul>
+    
+   <b>Results and Discussions</b>
+    <br>
+    Give a detailed summary of the results of your work. Here is also where you make some inferential statements based on your statistical knowledge and formulate new research questions or update/modify your initial questions based on the uncovered new patterns. 
+   <ul>
+    <li> Include only important outputs (figures and tables) that support your arguments in the report. Please do not simply copy or screenshot visuals from any output and paste them into the report. The table and figures should be directly generated from the software program you used in the EDA. </li>
+       
+    <li> Interpret each of the tables and figures that you included in the report. </li>
+       
+    <li> Please use visualizations whenever possible. You are particularly encouraged to use interactive graphics in your report.</li>
+       
+   </ul> 
+    
+    
+   <h3>7. RMarkdown Template</h3> 
+   <br>
+    
+   <a href="w03-Project-RMD-Template.Rmd" target="popup"  onclick="window.open('w03-Project-RMD-Template.Rmd','name','width=900,height=500')">[RMD]</a> 
+    <a href="w03-Project-RMD-Template.html" target="popup"  onclick="window.open('w03-Project-RMD-Template.html','name','width=900,height=500')">[HTML]</a> 
+    <br>
+    
+   <h3>8. Appendix</h3> 
+    
+    Your SAS code should be placed in the appendix
+    
+    
+    <br><br>
+    
+<!-- NNNNNNNNNNNNNNNNNNNNNNNN    End of Message   NNNNNNNNNNNNNNNNNNNNN-->  
+</td>
+</tr>
+</table>
+</div>
+
+<!-- outer table -->
+</td> </tr> </table>
+<BR><BR><BR>
+</body>
+</html>
+
+
