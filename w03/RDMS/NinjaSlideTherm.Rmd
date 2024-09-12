@@ -74,6 +74,7 @@ class:inverse4, top
 
 </td><tr>
 </table>
+
 ---
 
 
@@ -138,7 +139,7 @@ name: DataAbstraction
 
 
 <h2 align = "center" style = "font-variant: small-caps;">Data Abstraction</h2>
-<br>
+<hr>
 
 * **Physical level**: Describe how the data are actually stored (words or bytes)
 
@@ -152,7 +153,7 @@ name: DataAbstraction
 name:dataModels
 
 <h2 align = "center" style = "font-variant: small-caps;">Data Models </h2>
-<br>
+<hr>
 
 Different data models define different databases. The common data models are
 
@@ -173,7 +174,7 @@ We will only focus on **relational database** defined based on relational data m
 name: relationalDatabase
 
 <h2 align = "center" style = "font-variant: small-caps;">Reasons to use  Relational Model </h2>
-<br>
+<hr>
 
 
 * **Independence of the physical data storage and logical database structure**. Results users do not need to understand the underlying physical layout of the data to access data from a logical structure, such as a table
@@ -191,7 +192,7 @@ name: relationalDatabase
 name: RDBMS1
 
 <h2 align = "center" style = "font-variant: small-caps;">Relational Database Management System (RDBMS) </h2>
-<br>
+ <hr>
 
 * **Aspects of an RDBMS**
 
@@ -212,7 +213,7 @@ name: RDBMS1
 name: RDBMS2
 
 <h2 align = "center" style = "font-variant: small-caps;">Relational Database Management System (RDBMS) </h2>
-
+<hr>
 
 * **Relational Database Rules**
   + Each column in a table **must be unique**
@@ -239,6 +240,7 @@ name: RDBMS2
 class: Key-example
 
 <h2 align = "center" style = "font-variant: small-caps;">Primary and Foreign Key: Example</h2>
+<hr>
 
 ```{r echo = FALSE, fig.align='center', out.width="80%", fig.cap="Illustration of primary and foreign keys by example"}
 include_graphics("img/1to1.png")
@@ -261,6 +263,7 @@ class: inverse1 center middle
 class: 1TO1-Example
 
 <h2 align = "center" style = "font-variant: small-caps;">1-1 Relationship Between Tables: Example</h2>
+<hr>
 
 ```{r echo = FALSE, fig.align='center', out.width="60%", fig.cap="One-to-one relationship between two tables: Example"}
 include_graphics("img/1to1-example.png")
@@ -272,6 +275,7 @@ include_graphics("img/1to1-example.png")
 class: 1TOM-Example
 
 <h2 align = "center" style = "font-variant: small-caps;">1-M Relationship Between Tables: Example</h2>
+<hr>
 
 ```{r echo = FALSE, fig.align='center', out.width="60%", fig.cap="One-to-many relationship between two tables: Example"}
 include_graphics("img/1toM-example.png")
@@ -283,6 +287,7 @@ include_graphics("img/1toM-example.png")
 class: MTO1-Example
 
 <h2 align = "center" style = "font-variant: small-caps;">M-1 Relationship Between Tables: Example</h2>
+<hr>
 
 ```{r echo = FALSE, fig.align='center', out.width="80%", fig.cap="Many-to-one relationship between two tables: Example"}
 include_graphics("img/Mto1-example.png")
@@ -303,7 +308,7 @@ class: inverse1 center middle
 class: MTO1-Example
 
 <h2 align = "center" style = "font-variant: small-caps;">Query Language</h2>
-
+<hr>
 
 **Query Language**
 
@@ -330,7 +335,7 @@ SQL has gained wide acceptance in commercial products
 name: SQLDataTypes
 
 <h2 align = "center" style = "font-variant: small-caps;">Field Types</h2>
-
+<hr>
 
 * **INTEGERS** e.g. number of population, age
 
@@ -353,7 +358,7 @@ name: SQLDataTypes
 name: SQLStructure
 
 <h2 align = "center" style = "font-variant: small-caps;">Query Syntax</h2>
-
+<hr>
 
 **A typical SQL query has the form**		
 
@@ -442,6 +447,13 @@ name: fullJoin
   knitr::include_graphics("img/fullOuter_1.gif")
 ```
 ---
+
+
+
+name: ThankyouPage 
+class: inverse2 center middle 
+
+<h2 align = "center" style = "font-variant: small-caps;"><b>Thank You</b> </h2>
 
 
 
