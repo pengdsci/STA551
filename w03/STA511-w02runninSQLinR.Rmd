@@ -1,8 +1,20 @@
 ---
-title: "Running SQL Query in R"
+title: "Running SQL in R"
 author: "Cheng Peng"
 date: ""
 output:
+  pdf_document: 
+    toc: yes
+    toc_depth: 4
+    fig_caption: yes
+    number_sections: yes
+    fig_width: 3
+    fig_height: 3
+  word_document: 
+    toc: yes
+    toc_depth: 4
+    fig_caption: yes
+    keep_md: yes
   html_document: 
     toc: yes
     toc_depth: 4
@@ -13,18 +25,6 @@ output:
     code_download: yes
     smooth_scroll: yes
     theme: lumen
-  word_document: 
-    toc: yes
-    toc_depth: 4
-    fig_caption: yes
-    keep_md: yes
-  pdf_document: 
-    toc: yes
-    toc_depth: 4
-    fig_caption: yes
-    number_sections: yes
-    fig_width: 3
-    fig_height: 3
 editor_options: 
   chunk_output_type: inline
 ---
@@ -37,44 +37,51 @@ editor_options:
 
 h1.title {  /* Title - font specifications of the report title */
   font-size: 24px;
+  font-weight: bold;
   color: DarkRed;
   text-align: center;
   font-family: "Gill Sans", sans-serif;
 }
 h4.author { /* Header 4 - font specifications for authors  */
   font-size: 20px;
+  font-weight: bold;
   font-family: system-ui;
   color: DarkRed;
   text-align: center;
 }
 h4.date { /* Header 4 - font specifications for the date  */
   font-size: 18px;
+  font-weight: bold;
   font-family: system-ui;
   color: DarkBlue;
   text-align: center;
 }
 h1 { /* Header 1 - font specifications for level 1 section title  */
-    font-size: 22px;
+    font-size: 20px;
+    font-weight: bold;
     font-family: "Times New Roman", Times, serif;
     color: navy;
     text-align: center;
 }
 h2 { /* Header 2 - font specifications for level 2 section title */
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: bold;
     font-family: "Times New Roman", Times, serif;
     color: navy;
     text-align: left;
 }
 
 h3 { /* Header 3 - font specifications of level 3 section title  */
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: bold;
     font-family: "Times New Roman", Times, serif;
     color: navy;
     text-align: left;
 }
 
 h4 { /* Header 4 - font specifications of level 4 section title  */
-    font-size: 18px;
+    font-size: 14px;
+    font-weight: bold;
     font-family: "Times New Roman", Times, serif;
     color: darkred;
     text-align: left;
@@ -133,7 +140,7 @@ knitr::opts_chunk$set(echo = TRUE,      # include code chunk in the output file
 # Introducion
 
 
-To run SQL clauses in R, we need to use several R libraries (installed and loaded in the above R setup code chunk). There are different ways to run SQL query in R. We only introduce one methods that is close to the authentic SQL code that can be run a DBMS. 
+To run SQL clauses in R, we need to use several R libraries (installed and loaded in the above R setup code chunk). There are different ways to run SQL queries in R. We only introduce one of them that runs the basic SQL code.  
 
 ## Connect R to Existing Database
 
@@ -155,9 +162,9 @@ This short note shows the three basic steps to run SQL in R using R Markdown sta
 
 1. Load relational data tables as usual to R.
 
-2. Create a SQLite (relational) database that contain these relational table.
+2. Create a SQLite (relational) database that contains these relational tables.
 
-3. Create R code chunk and connect to the created database using Chunk options.
+3. Create an R code chunk and connect to the created database using Chunk options.
 
 
 
@@ -174,15 +181,31 @@ species <- read.csv("https://pengdsci.github.io/datasets/AnimalSurvey/species.cs
 surveys <- read.csv("https://pengdsci.github.io/datasets/AnimalSurvey/surveys.csv")
 ```
 
+We next explore the relationship between the tables.
 
-Next, we create a SQLit database using several R libraries.
+```{r}
+summary(plots)
+summary(species)
+summary(surveys)
+```
+
+The relational table `surveys` has attributes **species_id** and **plot_id** that connect relational tables `plots` and `species`. The primary and foreign keys are depicted in the following figure.
+
+```{r fig.align='center', out.width="99%", fig.cap="The primary and foreign keys of the three relational tables."}
+include_graphics("img/RelationshipBetweenTables.png")
+```
+
+\
+
+
+Next, we create a SQLit database using R libraries and then remove the data frames from the working directory.
 
 ```{r}
 #Create database
 con <- dbConnect(drv = SQLite(),
                  dbname = ":memory:")
 
-#store sample data in database
+#store sample data in the database
 dbWriteTable(conn = con, 
              name = "plots",
              value = plots)
@@ -199,14 +222,16 @@ dbWriteTable(conn = con,
 rm(plots, species, surveys)
 ```
 
-We can use table view function `tbl()` to explore the information of relational data tables in the database. Note that, we 
+We can use the table view function `tbl()` to view the relational data tables in the database.  
 
 ```{r}
-tbl(src = con, #the source if the database connection profile
-    c("surveys")) #the name of the table to preview
+tbl(src = con,         #  the source if the database connection profile
+    c("surveys"))      #  the name of the table to preview
+tbl(src = con, "species")
+tbl(src = con, "plots")
 ```
 
-# Running SQL Queries in R Code chunks
+# Running SQL Queries in R 
 
 To use SQL in RMarkdown, we need the following chunk options:
 
@@ -216,32 +241,163 @@ To use SQL in RMarkdown, we need the following chunk options:
 
 If we create a data view only, we simply ignore option `output.var = `
 
-Following are few examples of SQL queries based on the animal survey data tales in the database.
+Following are few examples of SQL queries based on the animal survey data tables in the database.
+
+## Basic SQL Operators
+
+While working with databases, we use SQL queries to manipulate the data and retrieve the desired result. This manipulation of data is achieved through various **SQL operators**. An operator is a keyword in SQL that helps us access the data and returns the result based on the operator’s functionality. SQL provides us with many such operators to ease the process of data manipulation. In this subsection, we will look at three major types of operators in SQL.
+
+**Arithmetic Operators**
+
+Arithmetic operators are used to perform arithmetic operations such as addition, subtraction, division, and multiplication. These operators usually accept numeric operands. 
+
+
+| Operator  | Operation | Description |
+|:----------|:----------|:------------|
+| + | Addition | Adds operands on either side of the operator |
+| - | Subtraction | Subtracts the right-hand operand from the left-hand operand|
+| * |Multiplication | Multiplies the values on each side|
+| / |Division | Divides left-hand operand by right-hand operand |
+| % | Modulus |Divides left-hand operand by right-hand operand and returns the remainder|
+
+\
+
+**Comparison Operators**
+
+Comparison operators in SQL are used to check the equality of two expressions. It checks whether one expression is identical to another. Comparison operators are generally used in the **WHERE clause** of a SQL query. The result of a comparison operation may be TRUE, FALSE, or UNKNOWN. When one or both the expression is NULL, then the operator returns UNKNOWN. 
+
+
+
+| Operator  | Operation | Description |
+|:----------|:----------|:------------|
+| = |Equal to |Checks if both operands have equal value, if yes, then returns TRUE|
+| > |Greater than |Checks if the value of the left-hand operand is greater than the right-hand operand or not|
+| < |Less than |Returns TRUE if the value of the left-hand operand is less than the value of the right-hand operand|
+|>= |Greater than or equal to | It checks if the value of the left-hand operand is greater than or equal to the value of the right-hand operand, if yes, then returns TRUE |
+|<= |Less than or equal to |Examines if the value of the left-hand operator is less than or equal to the right-hand operand |
+|<> or != |Not equal to |Checks if values on either side of the operator are equal or not. Returns TRUE if values are not equal|
+
+\
+
+**Logical Operators**
+
+Logical operators are those operators that take two expressions as operands and return TRUE or False as output. 
+
+
+| Operator  | Description |
+|:----------|:------------|
+|ALL|Compares a value to all other values in a set|
+|AND |Returns the records if all the conditions separated by AND are TRUE |
+|ANY |Compares a specific value to any other values in a set |
+| SOME |Compares a value to each value in a set. It is similar to ANY operator |
+|LIKE | It returns the rows for which the operand matches a specific pattern |
+|IN |Used to compare a value to a specified value in a list |
+|BETWEEN | Returns the rows for which the value lies between the mentioned range|
+|NOT | Used to reverse the output of any logical operator |
+|EXISTS |Used to search a row in a specified table in the database |
+| OR | Returns the records for which any of the conditions separated by OR is true |
+|NULL | Returns the rows where the operand is NULL |
+
+
+The logical and comparison operators are usually used with conditional queries in which we can specify a conditional expression in a **SELECT statement WHERE clause** which specifies that only those rows for which the conditional expression is true are to be retrieved. The syntax for the **SELECT statement** containing the **WHERE clause** is as follows.
+
+```
+select_statement:
+		SELECT … FROM table_name
+ 			WHERE conditional_expression
+```
+
+The following is a simple example. We want to create a subset such that `species_id` equals "DM" and `weight > 0`.
+
+```{sql, connection = "con", output.var = "ConditionalQuery"} 
+SELECT *
+FROM surveys 
+WHERE species_id LIKE "DM" AND weight > 0;
+```
+
+
 
 
 ## Subsetting and Duplicating Data 
 
-1. Extract year, month and day from `survey` table
+1. Extract year, month, and day from `surveys` table
 
 ```{sql, connection = "con", output.var="YMD"}
 SELECT 
   surveys.year, surveys.month, surveys.Day
 FROM 
- surveys /* pointer is not needed since it is in the database */
+ surveys   -- pointer is not needed since it is in the database 
+WHERE
+  surveys.species_id IN ('NL', 'DM') AND
+  surveys.sex = 'M'
+```
+
+The code chunk defined the output of the query as an R data frame (*Caution: not a relational table stored in the SQLite database*) with the name **YMD**. We check the first few records from the data frame
+
+```{r}
+head(YMD)
+```
+If we simply create a data view without saving it as an R data frame, we simply ignore the option `output.var="YMD"` in the **SQL code chunk**.
+
+
+```{sql, connection = "con"}
+SELECT 
+  surveys.year, surveys.month, surveys.Day
+FROM 
+ surveys  -- pointer is not needed since it is in the database 
 WHERE
   surveys.species_id IN ('NL', 'DM') AND
   surveys.sex = 'M'
 ```
 
 
-2. Duplicate a data and rename it
+2. Duplicate data and rename it
 
-```{sql, connection = "con", output.var="survey.copy"}
+```{sql, connection = "con", output.var="SurveyCopy"}
 SELECT 
   surveys.*
 FROM 
  surveys
 ```
+
+Note that **surveys** is a relation data table in the SQLite database and duplicated data is not in the SQLite database but an R data frame in the working directory.
+
+**Caution**: in the SQL code chunk, query statements only work with SQL database. They don't work for R data frames in the working directory. The following code doesn't work because the data set `SurveyCopy` is not in the SQLite database. 
+
+
+```{ output.var="survey.copy"}
+SELECT 
+  SurveyCopy.*
+FROM 
+ SurveyCopy
+```
+
+In other words, if we want to query the data table (data frame) `SurveyCopy`, we need to add it to the database `con` defined earlier.
+
+```{r}
+# Store sample data in the database
+dbWriteTable(conn = con, 
+             name = "SurveyCopy",
+             value = SurveyCopy)
+## Remove SurveyCopy in the working directory
+rm(SurveyCopy)
+```
+
+We can use `tbl()` to view the newly added table in the SQLite database `con`.
+
+```{r}
+tbl(src = con, c("SurveyCopy"))
+```
+
+In R, we can use `dbListTables()` to view relational tables in the database.
+
+```{r}
+dbListTables(con)
+```
+
+
+We now can query the relational table `SurveyCopy` in the database `con` using SQL clause as usual.
+
 
 3. Create a table view (i.e., no data set will be created and saved)
 
@@ -256,6 +412,7 @@ WHERE
 ```
 
 
+
 ## Define A New Variable 
 
 1. Define a new variable with simple arithmetic operations
@@ -267,7 +424,8 @@ SELECT
     surveys.species_id, 
     surveys.sex, 
     surveys.weight, 
-    surveys.weight/100 AS wt_kilo  /*should not the pointer in front of the name of the new variable*/ 
+    surveys.weight/100 AS wt_kilo  -- should not the pointer in front of 
+                                   -- the name of the new variable 
 FROM 
    surveys
 ```
@@ -321,22 +479,36 @@ ORDER BY subtotal;
 ```
 
 
-## Join Tables
+# SQL Joins
 
-This section introduce commonly used join operation to merge tables using the common key(s).
+SQL JOIN clause is used to query and access data from multiple tables by establishing logical relationships between them. It can access data from multiple tables simultaneously using common key values shared across different tables. This section briefly introduces commonly used join operations to merge tables using the common key(s). In each of the major `join` operations, we use a visual illustration followed by an example.
+
 
 1. Inner Join
 
+Inner joins combine records from two tables whenever there are matching values in a field common to both tables.
+
+
+```{r fig.align='center', out.width = "45%", fig.cap="Illustration of inner join."}
+include_graphics("img/inner-join.png")
+```
 
 ```{sql, connection = "con", output.var = "innerJoin"} 
 SELECT *
 FROM surveys AS A
-JOIN species AS B
+INNER JOIN species AS B   -- by default, JOIN means INNER JOIN
 ON A.species_id = B.species_id;
 ```
 
 
 2. Left Join
+
+Left Join or Left Outer Join in SQL combines two or more tables, where the first table is returned wholly; but, only the matching record(s) are retrieved from the consequent tables. If zero (0) records are matched in the consequent tables, the join will still return a row in the result, but with NULL in each column from the right table.
+
+
+```{r fig.align='center', out.width = "60%", fig.cap="Illustration of left join."}
+include_graphics("img/left-join.png")
+```
 
 ```{sql, connection = "con", output.var = "leftJoin"} 
 SELECT *
@@ -348,6 +520,14 @@ ON A.species_id = B.species_id;
 
 3. Right Join
 
+The Right Join query in SQL returns all rows from the right table, even if there are no matches in the left table. In short, a right join returns all the values from the right table, plus matched values from the left table or NULL in case of no matching join predicate.
+
+
+```{r fig.align='center', out.width = "60%", fig.cap="Illustration of right join."}
+include_graphics("img/right-join.png")
+```
+
+
 ```{sql, connection = "con", output.var = "rightJoin"} 
 SELECT *
 FROM surveys AS A
@@ -358,6 +538,15 @@ ON A.species_id = B.species_id;
 
 4. Full Join
 
+SQL Full Join creates a new table by joining two tables as a whole. The joined table contains all records from both tables and fills NULL values for missing matches on either side. In short, full join is a type of outer join that combines the resulting sets of both left and right joins.
+
+
+```{r fig.align='center', out.width = "60%", fig.cap="Illustration of full join."}
+include_graphics("img/full-join.png")
+```
+
+
+
 ```{sql, connection = "con", output.var = "fullJoin"} 
 SELECT *
 FROM surveys AS A
@@ -366,7 +555,15 @@ ON A.species_id = B.species_id;
 ```
 
 
-5. Join sub-tables
+
+
+# SQL Aggregation Functions
+
+SQL is a good starting point for high-level data analysis. Many data analysis packages and languages have their own interface to read data from different SQL-based database systems. In fact, any real-life data analysis starts from an RDBMS, and the basic analysis and report generation is done on the SQL platform of that RDBMS itself. A good preview of data within the RDBMS platform itself helps analysts to get a fast high-level analysis in a different platform. The most commonly used aggregation functions include **MAX(), MIN(), AVG(),SUM()** and **COUNT()**. The following are basic examples that involve some of these aggregation functions. 
+
+
+1. Average
+
 
 ```{sql, connection = "con", output.var = "JoinSubtable"} 
 SELECT A.species_id, 
@@ -374,16 +571,13 @@ SELECT A.species_id,
        AVG(A.weight) as mean_wgt  
 FROM surveys AS A
 JOIN species AS B
-ON A.species_id=B.species_id 
+ON A.species_id = B.species_id 
 WHERE taxa = 'Rodent' AND A.sex IS NOT NULL 
-GROUP BY A.species_id, A.sex;   /* sorted by two variables */
+GROUP BY A.species_id, A.sex;   -- sorted by two variables 
 ```
 
 
-
-## Subqueries
-
-1. Sample size
+2. Sample size
 
 ```{sql, connection = "con", output.var = "smpleSize"} 
 SELECT COUNT(*) 
@@ -391,9 +585,42 @@ FROM surveys
 ```
 
 
-2. Relative Frequency with sub-query
+# Subqueries
 
-```{sql, connection = "con", output.var = "subQuery"} 
+Subqueries (also known as inner queries or nested queries) are a tool for performing operations in multiple steps. For example, if you wanted to take the sums of several columns, and then average all of those values, you'd need to do each aggregation in a distinct step. Subqueries can be used in several places within a query. 
+
+
+## Subquery in SELECT Clause
+
+In the following example, we want to define a new attribute, the relative percentage of taxonomic groups in the data set in the relational table `surveys`. The feature `taxa` is not in the `surveys` table. We need to join tables `surveys` and `species` to obtain the distribution of `taxa` in the `surveys` table. To this end, we need to know the frequency of each taxonomic group and the size of the relational table `surveys`.
+
+We could use the following queries to find the sample size and the sizes of each taxon group.
+
+1. **Total Sample Size**
+
+```{sql, connection = "con", output.var = "SampleSize"} 
+SELECT COUNT(*) FROM surveys
+```
+
+2. **Calculating Taxon Group Frequencies**
+
+The group totals are calculated in the following code.
+
+```{sql, connection = "con", output.var = "subTotal"} 
+SELECT B.taxa, 
+       COUNT(*)
+FROM surveys AS A  -- A is an alias of `surveys` table
+INNER JOIN species AS B -- inner join
+ON A.species_id = B.species_id 
+-- this finds the group frequencies
+GROUP BY taxa; 
+```
+
+
+This is not efficient. We can use the following nested query to efficiently find the relative frequency table.
+
+
+```{sql, connection = "con", output.var = "subSQLinSELECT"} 
 SELECT B.taxa, 
        100.0*COUNT(*)/(SELECT COUNT(*) FROM surveys)  AS Percentage
 FROM surveys AS A
@@ -401,6 +628,100 @@ JOIN species AS B
 ON A.species_id = B.species_id 
 GROUP BY taxa;
 ```
+
+The above query produces the following relative frequency table.
+
+```{r}
+kable(subSQLinSELECT)
+```
+
+## Subquery in FROM Clause
+
+As an example, we create a subset with features `record_id, year, plot_id, species_id, sex, hindfoot_length, weight` with the condition that `species_id = "DM"` and `sex = "M"`. The following query that contains a sub-query can do the trick.
+
+
+```{sql, connection = "con", output.var = "subSQLinFROM"} 
+SELECT sub_survey.record_id,
+       sub_survey.year,
+       sub_survey.plot_id,
+       sub_survey.species_id,
+       sub_survey.sex,
+       sub_survey.hindfoot_length,
+       sub_survey.weight
+  FROM (
+        SELECT *
+         FROM surveys
+         WHERE species_id = 'DM'
+       ) sub_survey  -- the name of a relational table defined by the subquery
+ WHERE sub_survey.sex = 'M'
+```
+
+The above subset can also be generated using the following simple query.
+
+```{sql, connection = "con", output.var = "subSQLinFROM_new"} 
+SELECT record_id,
+       year,
+       plot_id,
+       species_id,
+       sex,
+       hindfoot_length,
+       weight
+  FROM surveys
+ WHERE species_id = 'DM' AND sex = 'M';
+```
+
+
+## Subquery in WHERE Clause
+
+
+This example shows the way to create a subset of surveys `record_id, plot_id, species_id, year, sex, hindfoot_length, weight` for the earliest year.
+
+
+```{sql, connection = "con", output.var = "subSQLinWHERE"} 
+SELECT record_id,
+       plot_id,
+       species_id,
+       year,
+       sex,
+       hindfoot_length,
+       weight
+  FROM surveys
+ WHERE year = (SELECT MIN(year)
+                 FROM surveys
+              )
+```
+
+
+## Subquery in JOIN Clause
+
+In the following example, we use the subquery to find the frequency count in each species group from the `surveys` table and add the frequency to the `species` table. 
+
+```{sql, connection = "con", output.var = "subSQLinJOIN"} 
+SELECT *
+  FROM species
+  JOIN ( SELECT COUNT(species_id) AS speciesfreq,
+                species_id
+           FROM surveys
+           GROUP BY species_id
+       ) subq
+    ON species.species_id = subq.species_id
+ ORDER BY subq.species_id DESC 
+```
+
+The resulting table is shown in the following.
+
+```{r}
+kable(subSQLinJOIN)
+```
+
+
+# Concluding Remarks
+
+We have introduced the basic SQL clauses, the basic join operations, and the sub-queries in this note. But it is by no means considered a complete tutorial for SQL programming. This note intends to help you get started with the basic SQL coding outside a DBMS and expand your technical Vocabulary so you can talk confidently with data professionals in the future.
+
+Since we don't have DBMS to practice SQL, some of the advanced SQL tasks such as control flow, user-defined SQL functions, etc. can not be performed using PROC SQL in SAS and R libraries. You can learn these advanced techniques quickly once you are comfortable with the basic concepts covered in this note.
+
+
 
 
 
