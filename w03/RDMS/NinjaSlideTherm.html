@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Concepts of Relational Database</title>
+    <meta charset="utf-8" />
+    <meta name="author" content=" Cheng Peng " />
+    <script src="NinjaSlideTherm_files/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer01.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# <font size = 7 color = "white">Concepts of Relational Database</font>
+]
+.subtitle[
+## <img src="img/RDMS-icon.png" width=260 height=180>
+]
+.author[
+### <font size = 5 color = "white"> Cheng Peng </font>
+]
+.institute[
+### <font size = 4 color = "white">West Chester University of Pennsylvania</font><br>
+]
+.date[
+### <font color = "white" size =4> <br> </font> <br> <font color = "gold" size = 6> STA551: Foundations of Data Science </font>
+]
+
+---
+
+
+
+
+
+
+
+
+class:inverse4, top
+
+&lt;h1 align="center"&gt; Outlines&lt;/h1&gt;
+&lt;BR&gt;
+
+&lt;table&gt;
+&lt;tr&gt;&lt;td style = "font-size: 26px"&gt;
+
+&lt;li&gt; Why we need database&lt;/li&gt;&lt;br&gt;
+&lt;li&gt; Database Concept&lt;/li&gt;&lt;br&gt;
+&lt;li&gt; Types of database models&lt;/li&gt;&lt;br&gt;
+&lt;li&gt; Relational database&lt;/li&gt;
+
+
+&lt;/td&gt;&lt;tr&gt;
+&lt;/table&gt;
+---
+
+
+
+name: whyDB 
+class: inverse1 center middle 
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Why Do We Need Databases? &lt;/h2&gt;
+
+---
+
+
+
+
+name: DBMS
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Database Management System&lt;/h2&gt;
+&lt;hr&gt;
+&lt;BR&gt;
+
+* **Database Management System (DBMS)**: A collection of data (database) and programs to access that data. 
+
+
+
+* **The goal of DBMS**: TO store, retrieve, and display information. 
+
+
+
+* **Key characteristics of DBMS**:
+
+  + performance, 
+  + store large volume of database, 
+  + share data (access), 
+  + provide security (authorization), 
+  + remove redundancy (normalization), and 
+  + provide concurrent access (different users at the same time). 
+---
+
+
+name: why-database
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Why we need database?&lt;/h2&gt;
+&lt;hr&gt;
+&lt;br&gt;
+
+Without databases, there will be no 
+
+* **Google Maps and GPS**: These services depend on vast amounts of geographical data stored in databases to provide accurate directions and location information.
+
+* **Social Media Platforms**: Sites like Facebook, Twitter, and Instagram use databases to store user profiles, posts, and interactions.
+
+* **E-commerce Websites**: Online stores like Amazon use databases to manage product inventories, customer orders, and transaction histories.
+
+* **Banking Systems**: Databases are essential for tracking account balances, transactions, and financial records.
+
+* **Healthcare Systems**: Patient records, treatment histories, and medical research data are all stored in databases.
+
+---
+
+
+name: DataAbstraction
+
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Data Abstraction&lt;/h2&gt;
+&lt;br&gt;
+
+* **Physical level**: Describe how the data are actually stored (words or bytes)
+
+* **Conceptual level**: Describe what data are actually stored in the database (Structure). It gives a Schematic representation of phenomena 
+
+* **View level**: Describe only a part of the entire database. Many users of the database may be concerned with a subset of information. The system may provide many views for the same database
+
+---
+
+
+name:dataModels
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Data Models &lt;/h2&gt;
+&lt;br&gt;
+
+Different data models define different databases. The common data models are
+
+* **Object oriented model**
+
+* **Hierarchical model**
+
+* **Network model**
+
+* **Relational model**
+
+We will only focus on **relational database** defined based on relational data model.
+
+---
+
+
+
+name: relationalDatabase
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Reasons to use  Relational Model &lt;/h2&gt;
+&lt;br&gt;
+
+
+* **Independence of the physical data storage and logical database structure**. Results users do not need to understand the underlying physical layout of the data to access data from a logical structure, such as a table
+
+* **Variable and easy access to all data**. Results in access to data are not predefined as in hierarchical databases in which users must understand and navigate through the hierarchy to retrieve data
+
+* **Flexible in database design**. i.e complex objects are expressed as simple tables and relationships
+
+* *Applying relational design methods reduces data redundancy (Normalization) and storage requirements*
+
+---
+
+
+
+name: RDBMS1
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Relational Database Management System (RDBMS) &lt;/h2&gt;
+&lt;br&gt;
+
+* **Aspects of an RDBMS**
+
+  + **Structures**: Well defined objects
+  + **Operations**: Clearly defined actions
+  + **Integrity Rules**: Rules that control which operations are allowed on the data and structures of the database
+
+
+* **Components of a Relational Database**
+
+  + **Table**: collection of rows all containing the same columns
+  + **Row**: Horizontal components of a table. Consists of values for each column. Each row is equivalent to a record
+  + **Column**: Vertical component of a table. Each column in the record is often referred to as a field
+
+---
+
+
+name: RDBMS2
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Relational Database Management System (RDBMS) &lt;/h2&gt;
+
+
+* **Relational Database Rules**
+  + Each column in a table **must be unique**
+  + The order of the rows in a table **is not meaningful**
+  + The order of the columns in a table **is not meaningful**
+  + All data in a column **must be the same type**
+  + Every table has a **primary key**, each column in the primary key **must have a value**. 
+
+
+* **Primary Key and Foreign Key**
+
+  + Relational database use **primary keys** and **foreign keys** to allow mapping of information from one table to another 
+  
+  + A **foreign key** is a column or group of columns in a table whose value matches those of the **primary key** of another table
+  
+  + Values in the **primary key** column must be unique e.g. social security number (SSN) 
+
+  + **Referential Integrity** refers to the integrity of the reference from the primary key in one table to a foreign key in another table.
+
+---
+
+
+
+class: Key-example
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Primary and Foreign Key: Example&lt;/h2&gt;
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/1to1.png" alt="Illustration of primary and foreign keys by example" width="80%" /&gt;
+&lt;p class="caption"&gt;Illustration of primary and foreign keys by example&lt;/p&gt;
+&lt;/div&gt;
+
+---
+
+
+
+name: RelBetweenTables 
+class: inverse1 center middle 
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Relationships between Tables &lt;/h2&gt;
+
+---
+
+
+
+
+class: 1TO1-Example
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;1-1 Relationship Between Tables: Example&lt;/h2&gt;
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/1to1-example.png" alt="One-to-one relationship between two tables: Example" width="60%" /&gt;
+&lt;p class="caption"&gt;One-to-one relationship between two tables: Example&lt;/p&gt;
+&lt;/div&gt;
+
+
+
+---
+class: 1TOM-Example
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;1-M Relationship Between Tables: Example&lt;/h2&gt;
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/1toM-example.png" alt="One-to-many relationship between two tables: Example" width="60%" /&gt;
+&lt;p class="caption"&gt;One-to-many relationship between two tables: Example&lt;/p&gt;
+&lt;/div&gt;
+
+
+
+---
+class: MTO1-Example
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;M-1 Relationship Between Tables: Example&lt;/h2&gt;
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/Mto1-example.png" alt="Many-to-one relationship between two tables: Example" width="80%" /&gt;
+&lt;p class="caption"&gt;Many-to-one relationship between two tables: Example&lt;/p&gt;
+&lt;/div&gt;
+
+
+---
+class: inverse1 center middle 
+
+
+
+## Query Language
+
+
+
+
+---
+class: MTO1-Example
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Query Language&lt;/h2&gt;
+
+
+**Query Language**
+
+* **QL** is the language in which a user requests information from the database. Examples of QL are relational algebra (procedural) and tuple relational calculus (non-procedural)
+
+* The most common query languages are **Structured Query Language (SQL)**, Query By Example (QBE), and Quel
+SQL has gained wide acceptance in commercial products
+
+
+
+**Structured Query Language (SQL)**
+
+
+* **SQL** is the standard relational database language
+
+* **SQL** includes commands not only restricted to query but to other functions such as defining relations, deleting relations, creating indices, and modifying relation scheme, access right, integrity, and transaction control
+
+* The basic structure of an SQL expression consists of three clauses: **SELECT**, **FROM**, and **WHERE**
+
+---
+
+
+
+name: SQLDataTypes
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Field Types&lt;/h2&gt;
+
+
+* **INTEGERS** e.g. number of population, age
+
+* **REAL (DECIMAL)** e.g. income, salary
+
+* **CHARACTER**  e.g. names, description 
+
+* **DATES**    e.g. date of flood
+
+* **IMAGES (Multimedia)** e.g. image of the flood (.tif) 
+
+* **SOUND** e.g. Sound of thunder (.wav)
+
+* **MOVIE** e.g. recording film (.avi, .mov) 
+---
+
+
+
+
+name: SQLStructure
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Query Syntax&lt;/h2&gt;
+
+
+**A typical SQL query has the form**		
+
+```
+    SELECT A1, A2, ..., An				
+    FROM r1, r2, ..., rm			  	
+    WHERE P						
+```    
+    
+* Each `\(A_i\)` represents an attribute and each ri a relation. 
+* P is a predicate (selection). The list of attributes 
+* `\(A_1, \cdots, A_n\)` can be replaced by (*) to select all attributes
+
+The result of an SQL query is a relation (table)
+
+
+**Keyword “DISTINCT”**
+
+Used after `SELECT` to force the elimination of duplicates. For example, find all customer names having a balance equal to $6000	
+
+```
+	SELECT DISTINCT customer-name			   
+	FROM AccCust				  
+	WHERE balance = 6000
+```		       
+
+SQL supports union, intersect, and minus 
+
+---
+
+
+name: BasicJoins 
+class: inverse1 center middle 
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Basic SQL Joins &lt;/h2&gt;
+
+---
+
+
+
+name: innerJoin
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Inner Join&lt;/h2&gt;
+&lt;hr&gt;
+
+
+&lt;img src="img/innerJoin_3.gif" width="80%" style="display: block; margin: auto;" /&gt;
+---
+
+
+name: leftJoin
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Left Join&lt;/h2&gt;
+&lt;hr&gt;
+
+
+&lt;img src="img/leftJoin_1.gif" width="80%" style="display: block; margin: auto;" /&gt;
+---
+
+
+name: rightJoin
+
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Right Join&lt;/h2&gt;
+&lt;hr&gt;
+
+
+&lt;img src="img/rightJoin_3.gif" width="80%" style="display: block; margin: auto;" /&gt;
+---
+
+
+name: fullJoin
+
+&lt;h2 align = "center" style = "font-variant: small-caps;"&gt;Full/Outer Join&lt;/h2&gt;
+&lt;hr&gt;
+
+
+
+&lt;img src="img/fullOuter_1.gif" width="80%" style="display: block; margin: auto;" /&gt;
+---
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
