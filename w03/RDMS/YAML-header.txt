@@ -1,0 +1,19 @@
+Copy the following YAML header to you RMD source code (starting from row 1)
+
+
+---
+title: '<font size = 7 color = "white">Concepts of Relational Database</font>'
+subtitle: '<img src="img/RDMS-icon.png" width=260 height=180> '
+author: '<font size = 5 color = "white"> Cheng Peng </font>'
+institute: '<font size = 4 color = "white">West Chester University of Pennsylvania</font><br> '
+date: ' <font color = "white" size =4> <br> </font> <br> <font color = "gold" size = 6> STA551: Foundations of Data Science </font>'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer01.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
