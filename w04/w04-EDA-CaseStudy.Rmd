@@ -108,6 +108,10 @@ if (!require("GGally")) {
    install.packages("GGally")
 library(GGally)
 }
+if (!require("ggridges")) {
+   install.packages("ggridges")
+   library(ggridges)
+}
 knitr::opts_chunk$set(echo = TRUE,       # include code chunk in the output file
                       warnings = FALSE,  # sometimes, you code may produce warning messages,
                                          # you can choose to include the warning messages in
@@ -268,6 +272,8 @@ Note that in R, records with missing components will be automatically deleted in
 impute.lm = lm(triceps[-580] ~ mass[-580], data = PimaDiabetes)
 summary(impute.lm)
 ```
+
+
 ```{r fig.align='center', fig.width=7, fig.height=7}
 par(mfrow = c(2,2))
 plot(impute.lm)
@@ -315,7 +321,7 @@ Since the missing values in `triceps` were appropriately imputed, we next add th
 To close this imputation section, we reorganized the data set by dropping the original variables and keeping the imputed variables. At the same time, we also delete all records with missing components.
 
 ```{r}
-PimaDiabetes = na.omit(PimaDiabetes[, c("pregnant", "glucose", "pressure", "mass" , "pedigree" , "age" ,"impute.log.insulin", "impute.triceps", "diabetes")])
+PimaDiabetes = na.omit(PimaDiabetes[, c("pregnant", "glucose", "pressure", "mass", "pedigree", "age" ,"impute.triceps", "diabetes")])
 ```
 
 \
@@ -380,7 +386,7 @@ PimaDiabetes$grp.pregnant <- ifelse(PimaDiabetes$pregnant == 0, '0',
 As the last step, we only keep those variables to be used in the subsequent modeling.
 
 ```{r}
-var.names = c("mass", "pedigree", "impute.log.insulin", "impute.triceps", "grp.glucose", "grp.diastolic", "grp.age", "grp.pregnant", "diabetes") 
+var.names = c("mass", "pedigree", "impute.triceps", "grp.glucose", "grp.diastolic", "grp.age", "grp.pregnant", "diabetes") 
 PimaDiabetes = PimaDiabetes[, var.names]
 ```
 
@@ -401,13 +407,13 @@ The above csv file is also uploaded to the GitHub data repository at <https://pe
 Depending on the types of variables, there are three different combinations of two variables: two numeric variables, two categorical variables, one numeric variable, and one categorical variable. We will assess the association between two variables graphically based on the above three scenarios.
 
 
-## Two Numeric Variables
+## Two or More Numeric Variables
 
 The best visual tool for assessing pairwise linear association between two numeric variables is a pair-wise scatter plot. The pair-wise scatter plot and its variants are available in several different R packages.
 
 ```{r fig.align='center', fig.width=8, fig.height=8}
-ggpairs(PimaDiabetes,                  # Data frame
-        columns = 1:4,         # Columns
+ggpairs(PimaDiabetes,          # Data frame
+        columns = 1:3,         # Columns
         aes(color = diabetes,  # Color by group (cat. variable)
             alpha = 0.5))      # Transparency
 ```
@@ -441,26 +447,57 @@ The top two mosaic plots demonstrate the positive association between `glucose` 
 
 \
 
-# Concluding Remarks
+## One Categorical and One Numerical Variable
 
-```{r echo = FALSE, fig.align='center', out.width="40%"}
-include_graphics("img/BeginWithEndInMind.png")
-```
+A box-plot is a type of visual shorthand for measures of position (percentiles) that describe a distribution. It is also useful for identifying potential outliers. When assessing the relationship between a numerical and a categorical variable, we look at the distribution of the numerical variable in each category. If the distributions across the categories are identical, the numerical and the categorical variables are not associated. 
 
-\
+For ease of illustration, we only use dianetes status and glucose level in the Pima Indian diabetes data set.
 
-We **begin** with records that may have missing values and **end** up with an engineered record to be fed into models and algorithms! 
-
-```{r echo = FALSE, fig.align='center', out.width="95%"}
-include_graphics("img/productionRecord.png")
-```
-
-However, if the incoming record has a missing value in mass, the resulting engineered record cannot be fed to the candidate models and algorithms since it has a missing value (most programs will automatically delete this record), hence, there will be no predicted value for the response!
-
-```{r echo = FALSE, fig.align='center', out.width="95%"}
-include_graphics("img/PreMeanReplaceRecord.png")
+```{r}
+GlucoseDiabetes = na.omit(PimaDiabetes[, c(1,8)])
 ```
 
 
-Therefore, we need a replacement imputation before any model-based imputation. This is practically important since it will prevent the potential failure of the dynamic prediction system!
+
+```{r fig.align='center', fig.width= 6, fig.height=4, fig.cap="Group box-plots of diabetes status vs glucose"}
+ggplot(GlucoseDiabetes) +
+  aes(x = mass, y = diabetes, color = diabetes) +
+  geom_boxplot() + 
+  ggtitle("PimaIndian Diebetes:  diabetes status vs glucose") + 
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position="top") +
+  xlab("diabetes status") + 
+  ylab("glucose level") 
+```
+
+The above group box-plot shows that the distributions of glucose levels of diabetes and diabetes-free sets are different: means and variances are all different. In addition, the subset of `neg` (subset of diabetes-free subjects) as a few outliers.
+
+The next `ridge` density plot also shows the difference of the two density curves.
+
+
+```{r fig.align='center', fig.width= 6, fig.height=4, fig.cap="Ridge plots of diabetes status vs glucose"}
+ggplot(GlucoseDiabetes, aes(x = mass, y = diabetes, fill = diabetes)) +
+  geom_density_ridges() +
+   ggtitle("Diabetes status vs glucose level") + 
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position="top") +
+  xlab("Diabetes Status") + 
+  ylab("Glucose Level") 
+```
+
+
+The ridge plot is a 2D plot but has 3D effect. It is aesthetically pleasant, but could also introduces visual bias in terms of center of the distributions. We next sketch overlaid density curves with the same horizontal axis. 
+
+
+
+```{r fig.align='center', fig.width= 6, fig.height=4,fig.cap="Overlaid density curves of glucose level diabetes levels"}
+ggplot(data = GlucoseDiabetes, aes(x = mass, fill = diabetes)) +
+  geom_density(alpha = 0.3) +
+  ggtitle("Diabetes Status vs Glucose Level") + 
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position="top") +
+  xlab("Diabetes Status") + 
+  ylab("Glucose Level") 
+```
+
 
