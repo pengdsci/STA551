@@ -1,20 +1,8 @@
 ---
-title: 'A Case Study in EDA and Feature Engineering'
+title: 'Exploratory Data Analysis - Case Study'
 author: "Cheng Peng"
 date: " STA 511 - Foudations of Data Science"
 output:
-  pdf_document: 
-    toc: yes
-    toc_depth: 4
-    fig_caption: yes
-    number_sections: yes
-    fig_width: 3
-    fig_height: 3
-  word_document: 
-    toc: yes
-    toc_depth: 4
-    fig_caption: yes
-    keep_md: yes
   html_document: 
     toc: yes
     toc_depth: 4
@@ -25,6 +13,18 @@ output:
     code_download: yes
     smooth_scroll: yes
     theme: lumen
+  word_document: 
+    toc: yes
+    toc_depth: 4
+    fig_caption: yes
+    keep_md: yes
+  pdf_document: 
+    toc: yes
+    toc_depth: 4
+    fig_caption: yes
+    number_sections: yes
+    fig_width: 3
+    fig_height: 3
 editor_options: 
   chunk_output_type: inline
 ---
@@ -54,7 +54,6 @@ h4.date { /* Header 4 - font specifications for the date  */
   font-family: system-ui;
   color: DarkBlue;
   text-align: center;
-  font-weight: bold;
 }
 h1 { /* Header 1 - font specifications for level 1 section title  */
     font-size: 22px;
@@ -109,6 +108,10 @@ if (!require("GGally")) {
    install.packages("GGally")
 library(GGally)
 }
+if (!require("ggridges")) {
+   install.packages("ggridges")
+   library(ggridges)
+}
 knitr::opts_chunk$set(echo = TRUE,       # include code chunk in the output file
                       warnings = FALSE,  # sometimes, you code may produce warning messages,
                                          # you can choose to include the warning messages in
@@ -126,13 +129,24 @@ knitr::opts_chunk$set(echo = TRUE,       # include code chunk in the output file
 
 # Introduction
 
+Exploratory Data Analysis (EDA) is a critical process in data science that involves summarizing the main characteristics of a data set, often with visual methods. The primary purposes of EDA are
 
-We have introduced the techniques and tools for exploratory data analysis and some commonly used methods for feature engineering. This note provides an example to show how to use these methods to extract powerful features and improve subsequent modeling.
+**Understanding Data Structure**: EDA helps you understand the underlying structure of the data, including its distribution, patterns, and anomalies.
 
-# Description of Data
+**Identifying Relationships**: It allows you to identify relationships between variables, which can inform feature selection and engineering.
+
+**Detecting Outliers**: EDA helps in detecting outliers or unusual observations that might affect the performance of your models.
+
+**Checking Assumptions**: It is used to check the assumptions required for statistical tests and models.
+
+With the identified patterns through EDA, we can select appropriate techniques to extract more hidden information to improve the performance of the subsequent modeling and related analysis.
+
+In this case study, we use a publicly avaiable data set as an example to perform exploratory data analysis and detect patterns of the data
+
+
+# Description of the Data 
 
 A population of women who were at least 21 years old, of Pima Indian heritage, and living near Phoenix, Arizona, was tested for diabetes according to World Health Organization criteria. The data were collected by the US National Institute of Diabetes and Digestive and Kidney. The objective of the data set is to diagnostically predict whether or not a patient has diabetes, based on certain diagnostic measurements included in the data set. Several constraints were placed on the selection of these instances from a larger database. 
-
 
 There are two versions of the data available in the public domain. This case study uses the version that contains the missing values. The total number of records in this data set is 768. The data set consists of 9 variables including the response variable with the name `diabetes`. Predictor variables include the number of pregnancies the patient has had, their BMI, insulin level, age, and so on. A detailed description of the variables is given below
 
@@ -158,16 +172,12 @@ A copy of this publicly available data is stored at <https://pengdsci.github.io/
 
 ```{r}
 PimaDiabetes = read.csv("https://pengdsci.github.io/datasets/PimaDiabetes/PimaIndiansDiabetes2.csv")[, -1]
-```
-
-
-We have introduced several techniques and methods in an earlier note. We will primarily focus on using some EDA techniques and methods as needed for this data and subsequent modeling.  We first scan the entire data set and determine the EDA tools to use for feature engineering.
-
-```{r}
 summary(PimaDiabetes)
 ```
 
-# Missing Values - Imputation
+
+
+## Handling Missing Value
 
 The above summary table indicates that feature variables `glucose`, `pressure`, `triceps`, `insulin`, and `mass` have missing values. `insulin` has nearly 50% missing values. `triceps` has 227 missing values. The other three variables have a very low percentage of missing values. 
 
@@ -182,7 +192,7 @@ Replacing the missing values with proxy values (imputation) or deleting them fro
 
 \
 
-## `glucose` vs `insulin`
+## Glucose Tolerance (`glucose`) vs 2-Hour Serum Insulin (`insulin`)
 
 Both `fasting insulin test` and `glucose tolerance test` are used in diabetes diagnosis, therefore, variables `glucose` and `insulin` are correlated. Since nearly 50% of patients did not do the insulin test. Therefore, we can use `glucose` to impute the missing values in `insulin`. We first look at the correlation between the two variables based on the complete data.
 
@@ -240,7 +250,7 @@ PimaDiabetes$impute.log.insulin = impute.log.insulin
 
 \
 
-## `triceps` vs `mass`
+## Triceps Skinfold Thickness (`triceps`) vs Body Mass Index (`mass`)
 
 Clinical variables `triceps` (triceps skin-fold thickness, see the following figure to see how it is measured) and `mass` (body mass index) are clinically correlated. 
 
@@ -262,6 +272,8 @@ Note that in R, records with missing components will be automatically deleted in
 impute.lm = lm(triceps[-580] ~ mass[-580], data = PimaDiabetes)
 summary(impute.lm)
 ```
+
+
 ```{r fig.align='center', fig.width=7, fig.height=7}
 par(mfrow = c(2,2))
 plot(impute.lm)
@@ -309,7 +321,7 @@ Since the missing values in `triceps` were appropriately imputed, we next add th
 To close this imputation section, we reorganized the data set by dropping the original variables and keeping the imputed variables. At the same time, we also delete all records with missing components.
 
 ```{r}
-PimaDiabetes = na.omit(PimaDiabetes[, c("pregnant", "glucose", "pressure", "mass" , "pedigree" , "age" ,"impute.log.insulin", "impute.triceps", "diabetes")])
+PimaDiabetes = na.omit(PimaDiabetes[, c("pregnant", "glucose", "pressure", "mass", "pedigree", "age" ,"impute.triceps", "diabetes")])
 ```
 
 \
@@ -374,7 +386,7 @@ PimaDiabetes$grp.pregnant <- ifelse(PimaDiabetes$pregnant == 0, '0',
 As the last step, we only keep those variables to be used in the subsequent modeling.
 
 ```{r}
-var.names = c("mass", "pedigree", "impute.log.insulin", "impute.triceps", "grp.glucose", "grp.diastolic", "grp.age", "grp.pregnant", "diabetes") 
+var.names = c("mass", "pedigree", "impute.triceps", "grp.glucose", "grp.diastolic", "grp.age", "grp.pregnant", "diabetes") 
 PimaDiabetes = PimaDiabetes[, var.names]
 ```
 
@@ -395,13 +407,13 @@ The above csv file is also uploaded to the GitHub data repository at <https://pe
 Depending on the types of variables, there are three different combinations of two variables: two numeric variables, two categorical variables, one numeric variable, and one categorical variable. We will assess the association between two variables graphically based on the above three scenarios.
 
 
-## Two Numeric Variables
+## Two or More Numeric Variables
 
 The best visual tool for assessing pairwise linear association between two numeric variables is a pair-wise scatter plot. The pair-wise scatter plot and its variants are available in several different R packages.
 
 ```{r fig.align='center', fig.width=8, fig.height=8}
-ggpairs(PimaDiabetes,                  # Data frame
-        columns = 1:4,         # Columns
+ggpairs(PimaDiabetes,          # Data frame
+        columns = 1:3,         # Columns
         aes(color = diabetes,  # Color by group (cat. variable)
             alpha = 0.5))      # Transparency
 ```
@@ -435,26 +447,57 @@ The top two mosaic plots demonstrate the positive association between `glucose` 
 
 \
 
-# Concluding Remarks
+## One Categorical and One Numerical Variable
 
-In data science projects, many problems are related to prediction. Unlike the classical statistical inference problems which require strict (distributional) assumptions and model interpretability, predictive modeling problems focus on the predictive performance but not interpretability. Transformations such as scaling, standardization, and other transformations that improve performance are routine procedures. Model-based feature extraction methods are also used if they improve the model performance. These feature engineering methods will be discussed in detail in the subsequent notes.
+A box-plot is a type of visual shorthand for measures of position (percentiles) that describe a distribution. It is also useful for identifying potential outliers. When assessing the relationship between a numerical and a categorical variable, we look at the distribution of the numerical variable in each category. If the distributions across the categories are identical, the numerical and the categorical variables are not associated. 
 
+For ease of illustration, we only use dianetes status and glucose level in the Pima Indian diabetes data set.
 
-
-
-
-
-
-
+```{r}
+GlucoseDiabetes = na.omit(PimaDiabetes[, c(1,8)])
+```
 
 
 
+```{r fig.align='center', fig.width= 6, fig.height=4, fig.cap="Group box-plots of diabetes status vs glucose"}
+ggplot(GlucoseDiabetes) +
+  aes(x = mass, y = diabetes, color = diabetes) +
+  geom_boxplot() + 
+  ggtitle("PimaIndian Diebetes:  diabetes status vs glucose") + 
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position="top") +
+  xlab("diabetes status") + 
+  ylab("glucose level") 
+```
+
+The above group box-plot shows that the distributions of glucose levels of diabetes and diabetes-free sets are different: means and variances are all different. In addition, the subset of `neg` (subset of diabetes-free subjects) as a few outliers.
+
+The next `ridge` density plot also shows the difference of the two density curves.
+
+
+```{r fig.align='center', fig.width= 6, fig.height=4, fig.cap="Ridge plots of diabetes status vs glucose"}
+ggplot(GlucoseDiabetes, aes(x = mass, y = diabetes, fill = diabetes)) +
+  geom_density_ridges() +
+   ggtitle("Diabetes status vs glucose level") + 
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position="top") +
+  xlab("Diabetes Status") + 
+  ylab("Glucose Level") 
+```
+
+
+The ridge plot is a 2D plot but has 3D effect. It is aesthetically pleasant, but could also introduces visual bias in terms of center of the distributions. We next sketch overlaid density curves with the same horizontal axis. 
 
 
 
-
-
-
-
+```{r fig.align='center', fig.width= 6, fig.height=4,fig.cap="Overlaid density curves of glucose level diabetes levels"}
+ggplot(data = GlucoseDiabetes, aes(x = mass, fill = diabetes)) +
+  geom_density(alpha = 0.3) +
+  ggtitle("Diabetes Status vs Glucose Level") + 
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position="top") +
+  xlab("Diabetes Status") + 
+  ylab("Glucose Level") 
+```
 
 
