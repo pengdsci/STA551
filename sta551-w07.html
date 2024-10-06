@@ -284,31 +284,34 @@
   <tr>
 
     <td> <ul>
-          <li> Navigating SAS Environment </li>
-          <li> Storing and Accessing SAS Data Files </li>
-          <li> Coding Conventions and File/Folder Structure </li>
-          <li> Guidelines for Formatting and Commenting </li>
-          <li> Galnce of Data Input Styles: Column and List Inputs </li>
+          <li> Review of linear and logistic regression</li>
+          <li> Data splitting methods </li>
+            <ul>
+             <li>Two-way random splitting</li>
+             <li>Three-way random splitting</li>
+            </ul>
+          <li> Methods of cross-validation</li>
+            <ul>
+             <li>Cross-validation</li>
+             <li>K-fold cross-validation</li>
+             <li>Other cross-validation</li>
+            </ul>
+          <li> ROC analysis</li>
+            <ul>
+            <li> ROC curve and AUC</li>
+            <li> Optimal point and cut-off probability</li>
+            </ul>
+          
          <li> Notes and code </li>
-         <ul>
-            <li> <a href="W02_SASCodingRulesConventions.pdf" target="popup" 
-                onclick="window.open('W02_SASCodingRulesConventions.pdf','name','width=900,height=500')"> 
-                Lecture Note: SAS libraries and coding rules, conventions and best coding practices </a></li> 
-             <li> <font color = "red"><b> SAS Example Code: </b></font>
-                   <a href="w02-ColumnInput.sas" target="popup" 
-                   onclick="window.open('w02-ColumnInput.sas','name','width=900,height=500')"> 
-                   [SAS] </a> 
-                   <a href="w02-ColumnInput.txt" target="popup" 
-                   onclick="window.open('w02-ColumnInput.txt','name','width=900,height=500')"> 
-                   [Text]</a> 
-                   <a href="w02-ColumnInput.pdf" target="popup" 
-                   onclick="window.open('w02-ColumnInput.pdf','name','width=900,height=500')"> 
-                   [PDF]</a> 
-                    
-                   <a href="w02-HowtoDefineanSASPermanentLibrary.pdf" target="popup" 
-                   onclick="window.open('w02-HowtoDefineanSASPermanentLibrary.pdf','name','width=900,height=500')"> 
-                   [How to Define SAS Permenent Library, PDF]</a>  
-                     </li> 
+         <ul> 
+             <li> <font color = "red"><b> Cross-validation Methods: </b></font>
+                   <a href="w07/w07-CrossValidation.html" target="popup" 
+                   onclick="window.open('w07/w07-CrossValidation.html','name','width=900,height=500')"> 
+                   [HTML] </a> 
+                   <a href="w07/w07-CrossValidation.pdf" target="popup" 
+                   onclick="window.open('w07/w07-CrossValidation.pdf','name','width=900,height=500')"> 
+                   [PDF]</a>  
+                 </li> 
          </ul>
         </ul>
     </td><td></td>
@@ -316,18 +319,32 @@
      <td><ul>
          <li>Reading Assignments </li>
           <ul>
-         <li> Read relevant sections of 
-            <a href="https://ebookcentral.proquest.com/lib/wcupa/detail.action?docID=5847433" target="popup" onclick="window.open('https://ebookcentral.proquest.com/lib/wcupa/detail.action?docID=5847433','name','width=900,height=500')"><b> Ajay Ohri's Book</b> [link]</a></li>
-        <li> Chapter 1 and first 2 sections of chapter 2 of
-            <a href="SAS-Base-Programming-Certification-Study-Guide.pdf" target="popup" 
-             onclick="window.open('SAS-Base-Programming-Certification-Study-Guide.pdf','name','width=900,height=500')"><b>Dinsmore's Note</b> [link]</a></li>
-          </ul>       
-        <BR>      
-        <li> Written Assignment <!--a href="https://d2l.wcupa.edu/d2l/login" target="popup" 
+         <li> [Article] Cross-validation for model selection 
+            <a href="w07/CrossValidationModelSelection-AReview.pdf" target="popup" onclick="window.open('w07/CrossValidationModelSelection-AReview.pdf','name','width=900,height=500')"><b> [PDF]</b></a></li>
+         <li> [Article] An introduction to ROC analysis 
+            <a href="w07/InreoROC-paper.pdf" target="popup" 
+             onclick="window.open('w07/InreoROC-paper.pdf','name','width=900,height=500')"><b> [PDF]</b></a></li>
+        <li> [Article] Types of Optimal Point on An ROC Curve (R library help document)
+            <a href="w07/ROC-OptimalCutpoints.pdf" target="popup" 
+             onclick="window.open('w07/ROC-OptimalCutpoints.pdf','name','width=900,height=500')"><b> [PDF]</b></a></li>
+          </ul>             
+        <li> Written Assignment 
+            <ul>
+            <li> Project guidelines 
+            <a href="w07/InreoROC-paper.pdf" target="popup" 
+             onclick="window.open('w07/InreoROC-paper.pdf','name','width=900,height=500')"><b> [PDF]</b></a></li>
+            <li> Report Template and Suggested Components 
+            <a href="w07/w07-ReportTemplate.html" target="popup" 
+             onclick="window.open('w07/w07-ReportTemplate.html','name','width=900,height=500')"><b> [HTML]</b></a>
+             <a href="w07/w07-ReportTemplate.pdf" target="popup" 
+             onclick="window.open('w07/w07-ReportTemplate.pdf','name','width=900,height=500')"><b> [PDF]</b></a>   
+                </li>    
+            <!--a href="https://d2l.wcupa.edu/d2l/login" target="popup" 
                    onclick="window.open('https://d2l.wcupa.edu/d2l/login','name','width=900,height=500')">
                     <b>D2L (login)</b></a></li>
                <font color="darkblue"><b>Available on Thursday</b>: 12:00 PM </font><BR>
                <font color="red"><b>Due on Sunday</b>: 11:30 PM </font-->
+         </ul>
      </ul>
     </td>
   </tr>
