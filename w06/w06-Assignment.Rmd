@@ -256,14 +256,19 @@ The primary predictive performance metric for linear regression modeling is the 
 
 Other predictive performance metrics that can also be used are $R^2$ or $R^2_{adj}$. 
 
-Likelihood-based metrics such as AIC and SBC can be used if the likelihood functions of all candidate models are at the same scale. These measures are not as intuitive as the MSE since MSE is a '**distance**' in an Euclidean space.
+Likelihood-based metrics such as AIC and SBC can be used if the likelihood functions of all candidate models are at the same scale. These measures are not as intuitive as the MSE since MSE is a squared '**distance**' in the Euclidean space.
+
+<font color = "red">*\color{red}If the response variables in all candidate models are at the same scale, the MSE is expected to be used in the cross-validation for model selection.*</font>
 
 
 ## Logistic Predictive Modeling
 
 The primary tool for assessing the global predictive performance of logistic models is ROC curve analysis (this includes the area under the ROC curve - AUC). ROC curve suggested for this assignment.
 
-Other predictive performance measures that can be considered are **accuracy**, **sensitivity**, and **specificity*.
+Other predictive performance measures that can be considered are **accuracy**, **sensitivity**, and **specificity**.
+
+<font color = "red">*\color{red}Reporting ROC and AUC is required when comparing candidate models.*</font>
+
 
 ## Testing Performance 
 
