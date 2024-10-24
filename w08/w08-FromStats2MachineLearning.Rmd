@@ -3,18 +3,6 @@ title: "From Statistics Models to Machine Learning Algorithms"
 author: "Cheng Peng"
 date: " STA511 Foundations of Data Science"
 output:
-  pdf_document: 
-    toc: yes
-    toc_depth: 4
-    fig_caption: yes
-    number_sections: yes
-    fig_width: 5
-    fig_height: 4
-  word_document: 
-    toc: yes
-    toc_depth: 4
-    fig_caption: yes
-    keep_md: yes
   html_document: 
     toc: yes
     toc_float: yes
@@ -28,6 +16,18 @@ output:
     code_download: yes
     smooth_scroll: yes
     theme: lumen
+  word_document: 
+    toc: yes
+    toc_depth: 4
+    fig_caption: yes
+    keep_md: yes
+  pdf_document: 
+    toc: yes
+    toc_depth: 4
+    fig_caption: yes
+    number_sections: yes
+    fig_width: 5
+    fig_height: 4
 ---
 
 ```{=html}
@@ -632,7 +632,7 @@ The perceptron is a supervised learning binary classification algorithm, origina
 include_graphics("img/w07-PerceptronNetwork.jpg")
 ```
 
-Each input $x_i$ has an associated weight $w_i$ (like regression coefficient). The sum of all weighted inputs, $\sum_{i=1}^n w_ix_i$ , is then passed through a nonlinear activation function $f()$, to transform the pre-activation level of the neuron to output $y_j$. For simplicity, the bias term is set to **b** which is equivalent to the intercept of a regression model.
+Each input $x_i$ has an associated weight $w_i$ (like regression coefficient). The sum of all weighted inputs, $\sum_{i=1}^n w_ix_i$ , is then passed through a nonlinear activation function $f()$, to transform the pre-activation level of the neuron to output $y_j$. For simplicity, the bias term is set to **$w_0$** which is equivalent to the intercept of a regression model.
 
 To summarize, we explicitly list the major components of perceptron in the following.
 
@@ -658,8 +658,8 @@ is used in the perceptron, the single-layer perception with logistic activation 
 
 **Remarks**:
 
-1.  The output of the above perceptron network is binary, i.e., $\hat{Y} = 0$ or $1$ since an implicit decision boundary based on the sign of the value of the transfer function $\sum_{i=1}^m w_ix_i + b$. In the sigmoid perceptron network, this is equivalent to setting the threshold probability to 0.5. To see this, not that, if $\sum_{i=1}^m w_ix_i + b = 0$, then $$
-    P\left[Y=1 \Bigg| \sum_{i=1}^m w_ix_i + b\right]=\frac{1}{1+\exp\left[-(\sum_{i=1}^m w_ix_i + b) \right]} = \frac{1}{1+\exp(0)} = \frac{1}{2}
+1.  The output of the above perceptron network is binary, i.e., $\hat{Y} = 0$ or $1$ since an implicit decision boundary based on the sign of the value of the transfer function $\sum_{i=1}^m w_ix_i + w_0$. In the sigmoid perceptron network, this is equivalent to setting the threshold probability to 0.5. To see this, not that, if $\sum_{i=1}^m w_ix_i + w_0 = 0$, then $$
+    P\left[Y=1 \Bigg| \sum_{i=1}^m w_ix_i + w_0\right]=\frac{1}{1+\exp\left[-(\sum_{i=1}^m w_ix_i + w_0) \right]} = \frac{1}{1+\exp(0)} = \frac{1}{2}
     $$
 
 2.  If the cut-off probability $0.5$ is used in the logistic predictive model, this logistic predictive model is equivalent to the perceptron with sigmoid being the activation function.
@@ -684,7 +684,7 @@ $$
 \text{Error}(w_0, w_1, \cdots, w_k) = \frac{1}{n}\sum_{i=1}^n [\hat{y}_i - (w_0 + w_1x_{1i} + \cdots + w_k x_{ki})]^2
 $$
 
-For the binary classification task, the loss function is defined to be **cross-entropy (cs)** with the following explicit expression
+For the binary classification task, the loss function is defined to be **cross-entropy (ce)** with the following explicit expression
 
 $$
 \text{Error}(w_0, w_1, \cdots, w_k) = -\frac{\sum_{i=1}^N[y_i\log(p_i) + (1-y_i)\log(1-p_i)]}{N}.
