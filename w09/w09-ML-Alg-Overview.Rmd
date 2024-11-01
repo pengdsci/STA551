@@ -219,11 +219,15 @@ In the next subsections, we will provide some of the instance-based and model-ba
  
 Regression is concerned with modeling the relationship between variables that is iteratively refined using a performance measure defined based on errors in the predictions made by the model. Regression methods are a workhorse of statistics and have been the backbone of statistical machine learning. The most popular regression algorithms are:
 
-*	Ordinary Least Squares Regression (OLSR)
-*	Linear Regression
-*	Logistic Regression
-*	Step-wise Regression
-*	LOcally Estimated Scatter-plot Smoothing (LOESS) - a nonparametric regression.
+1.	Ordinary Least Squares Regression (OLSR)
+
+2.	Linear Regression
+
+3.	Logistic Regression
+
+4.	Step-wise Regression
+
+5.	LOcally Estimated Scatter-plot Smoothing (LOESS) - a nonparametric regression.
 
 In this subsection, we will use an example to show one of the robust distribution free single variable regression algorithm - locally weighted scatter-plot smoothing (LOESS) - using a built-in R function (without giving the details of the algorithm). Since it is a single variable regression, the performance of the performance can be easily visualized.
 
@@ -274,7 +278,7 @@ The following **regularized regression** algorithms are recently developed learn
 
 *	**Ridge Regression**
 
-**Ridge regression** does not reduce the number of correlated feature variables. It brings bias to the estimated regression coefficient to reduce the impact of multi-correlated feature variables. In other words, it sacrifices the unbiasedness of the estimated regression to gain the stability of the estimation.
+**Ridge regression** does not reduce the number of correlated feature variables. It brings bias to the estimated regression coefficients to reduce the impact of multi-correlated feature variables. In other words, it sacrifices the unbiasedness of the estimated regression to gain the stability of the estimation.
 
 
 
@@ -772,30 +776,36 @@ Next, we plot the ROC curves and calculate the areas under the ROC curves for In
 
 ```{r fig.align='center', fig.width=6, fig.height=6, fig.cap="Figure 16. Comparison of ROC curves"}
 par(pty="s")      # set up square plot through graphic parameter
-plot(1-giniROC11$senspe.mtx[2,], giniROC11$senspe.mtx[1,], type = "l", 
-     xlim=c(0,1), ylim=c(0,1), 
+colors = c("#008B8B", "#00008B",  "#8B008B",  "#8B0000",  "#8B8B00", "#8B4500")
+plot(1-giniROC11$senspe.mtx[2,], giniROC11$senspe.mtx[1,], 
+     type = "l", 
+     xlim=c(0,1), 
+     ylim=c(0,1), 
      xlab="1 - specificity: FPR", ylab="Sensitivity: TPR", 
-     col = "blue", lwd = 2,
-     main="ROC Curves of Decision Trees", cex.main = 0.9, col.main = "navy")
+     col = colors[1], 
+     lwd = 2,
+     main="ROC Curves of Decision Trees", 
+     cex.main = 0.9, 
+     col.main = "navy")
 abline(0,1, lty = 2, col = "orchid4", lwd = 2)
 lines(1-infoROC11$senspe.mtx[2,], infoROC11$senspe.mtx[1,], 
-      col = "firebrick2", lwd = 2, lty=2)
+      col = colors[2], lwd = 2, lty=2)
 lines(1-giniROC110$senspe.mtx[2,], giniROC110$senspe.mtx[1,],
-      col = "olivedrab", lwd = 2)
+      col = colors[3], lwd = 2)
 lines(1-infoROC110$senspe.mtx[2,], infoROC110$senspe.mtx[1,], 
-      col = "skyblue", lwd = 2)
+      col = colors[4], lwd = 2, lty=2)
 lines(1-giniROC101$senspe.mtx[2,], giniROC101$senspe.mtx[1,], 
-      col = "red", lwd = 2, lty = 4)
+      col = colors[5], lwd = 2, lty = 4)
 lines(1-infoROC101$senspe.mtx[2,], infoROC101$senspe.mtx[1,], 
-      col = "sienna3", lwd = 2)
+      col = colors[6], lwd = 2, lty=2)
 legend("bottomright", c(paste("gini.1.1,  AUC =", giniROC11$AUC), 
-                        paste("info.1.1,   AUC =",infoROC11$AUC), 
+                        paste("info.1.1,  AUC =",infoROC11$AUC), 
                         paste("gini.1.10, AUC =",giniROC110$AUC), 
                         paste("info.1.10, AUC =",infoROC110$AUC),
                         paste("gini.10.1, AUC =",giniROC101$AUC), 
                         paste("info.10.1, AUC =",infoROC101$AUC)),
-                        col=c("blue","firebrick2","olivedrab","skyblue","red","sienna3"), 
-                        lty=rep(1,6), lwd=rep(2,6), cex = 0.8, bty = "n")
+                        col=colors, 
+                        lty=rep(1:2,3), lwd=rep(2,6), cex = 0.8, bty = "n")
 ```
 
 
