@@ -3,6 +3,12 @@ title: "Bootstrap Algorithms and Applicatications in Supervised Algorithms"
 author: "Cheng Peng"
 date: "STA551 Foundation of Data Science "
 output:
+  pdf_document: 
+    toc: yes
+    toc_depth: 4
+    number_sections: yes
+    fig_width: 5
+    fig_height: 4
   html_document: 
     toc: yes
     toc_float: yes
@@ -17,12 +23,6 @@ output:
     smooth_scroll: yes
     theme: lumen
     df_print: kable
-  pdf_document: 
-    toc: yes
-    toc_depth: 4
-    number_sections: yes
-    fig_width: 5
-    fig_height: 4
   word_document: 
     toc: yes
     toc_depth: 4
@@ -561,7 +561,8 @@ Diabetes.bag.train <- bagging(as.factor(diabetes) ~ .,
                                                           ncol = 20, 
                                                           byrow = TRUE),   
                                                           split = "gini"),  
-                              control = rpart.control(minsplit = 10,cp = 0.02))
+                              control = rpart.control(minsplit = 10, 
+                                                      cp = 0.02))
 ### predict() returns either "class" or "prob" in the classification
 ### When specifying type = "class", the default cut-off of 0.5 is used.
 pred = predict(Diabetes.bag.train, train, type = "prob")
@@ -592,23 +593,38 @@ cut.prob = seq(0,1, length = 20)
   tick.label = as.character(round(cut.prob,2))
   ###
   par(mfrow = c(1,2))
-  plot(1-senspe.mtx[2,], senspe.mtx[1,], xlim=c(0,1), ylim = c(0,1),
+  plot(1-senspe.mtx[2,], senspe.mtx[1,], 
+       type="l",
+       lwd = 2,
+       col = "navy",
+       xlim=c(0,1), 
+       ylim = c(0,1),
        xlab = "1 - specificity", 
-       ylab = "Sensitivity", main = "ROC (Taining Data)", type="l",cex.main = 0.8)
-  legend("bottomright",c("fn = 10", "fp = 1", "cp = 0.02", paste("AUC =", AUC)), bty="n", cex = 0.8)       
+       ylab = "Sensitivity", 
+       main = "ROC (Taining Data)", 
+       cex.main = 0.8)
+  # Adding off diagonal line representing random guess
+  segments(0, 0, 1, 1, lty = 2, col = "red", )
+  legend("bottomright",c("fn = 10", "fp = 1", "cp = 0.02", paste("auc =", AUC)), bty="n", cex = 0.8)       
   
-  plot(1:length(cut.prob), senspe.mtx[3,], xlab="cut-off probability",
-       ylab = "accuracy", ylim=c(min(senspe.mtx[3,]),1),
-               axes = FALSE,
-        main="cut-off vs accuracy",
-        cex.main = 0.9,
-        col.main = "navy")
-        axis(1, at=1:20, label = tick.label, las = 2)
-        axis(2)
-        points(idx, senspe.mtx[3,][idx], pch=19, col = "red")
-        segments(idx , min(senspe.mtx[3,]), idx , senspe.mtx[3,][idx ], col = "red")
-       text(idx, senspe.mtx[3,][idx]+0.03, as.character(round(senspe.mtx[3,][idx],4)), col = "red", cex = 0.8)
-  
+  plot(1:length(cut.prob), senspe.mtx[3,], 
+       xlab="cut-off probability",
+       ylab = "accuracy", 
+       ylim=c(min(senspe.mtx[3,]),1),
+       axes = FALSE,
+       main="cut-off vs accuracy",
+       cex.main = 0.9,
+       col.main = "navy")
+       # Adding axes and other graphical components to the plot
+       axis(1, at=1:20, label = tick.label, las = 2)
+       axis(2)
+       points(idx, senspe.mtx[3,][idx], pch=19, col = "red")
+       segments(idx , min(senspe.mtx[3,]), idx , senspe.mtx[3,][idx ], col = "red")
+       #text(idx, senspe.mtx[3,][idx]+0.03, as.character(round(senspe.mtx[3,][idx],4)), 
+       #     col = "red", cex = 0.8)
+       legend("topright", c(paste("optimal cut-off prob = ",round(median(cut.prob[idx]),3), sep=""), 
+                            paste("accuracy = ", round(mean(senspe.mtx[3,][idx ]),3), sep="")),
+                          cex = 0.8, bty = "n", adj = -0)
 ```
 
 Similarly, there are several <font color = "red">**\color{red}hyperparameters**</font> one can **tune** to find the best-bootstrapped decision tree. For those who are interested in exploring more in **tunning hyperparameters**, you can write a wrapper of **bagging()** and pass hyperparameters such as **fp, fn, cp, minisplit** in the list of arguments in **rpart()** to find the best bootstrap decision tree.
