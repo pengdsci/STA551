@@ -3,6 +3,12 @@ title: "An Overview of Commonly Used Unsupervised ML Algorithms"
 author: "Cheng Peng"
 date: "STA 551 Foundations of Data Science "
 output:
+  pdf_document: 
+    toc: yes
+    toc_depth: 4
+    number_sections: yes
+    fig_width: 5
+    fig_height: 4
   html_document: 
     toc: yes
     toc_float: yes
@@ -17,12 +23,6 @@ output:
     smooth_scroll: yes
     theme: lumen
     df_print: kable
-  pdf_document: 
-    toc: yes
-    toc_depth: 4
-    number_sections: yes
-    fig_width: 5
-    fig_height: 4
   word_document: 
     toc: yes
     toc_depth: 4
@@ -209,7 +209,7 @@ include_graphics("img/w08-k-Means.jpg")
 K-means clustering algorithm works in the following three steps. 
 
 
-## Select A Pre-determined Number of Classes
+## Optimal Number of Clusters Determination
 
 Several algorithms can be used to find the optimal number of clusters. Elbow and Silhouette algorithms are commonly used and are implemented in R.
 
@@ -242,12 +242,15 @@ A high average silhouette width indicates good clustering. The average silhouett
 
 Observe the plot and choose the k value that is closer to 1 as the optimal number of clusters.
 
+## Steps for K-mean Algorithm
 
-## Initialize Centroids.
+There different versions of k-mean algorithms. The most commonly used are three: Lloyd, McQueen and Hartigan-Wong. Lloyd algorithms is easy to understand. We will use it to illustrate the step of K-mean clustering. R implemeted all three algorithms in the R function `kmean()`.
+
+### Initialize Centroids.
 
 Initialize centroids by first shuffling the data set and then randomly selecting K data points for the centroids without replacement.
 
-## Update Centroids
+### Update Centroids
 
 Updating centroids is an iterative process:
 
@@ -304,7 +307,7 @@ k2 <- kmeans(x = scaled.data,
              centers = 2, 
              iter.max = 10,
              nstart = 25,
-             algorithm = "Hartigan-Wong",
+             algorithm = "Lloyd", #"Hartigan-Wong",
              trace = FALSE)
 ```
 
@@ -337,7 +340,7 @@ k5 <- kmeans(x = scaled.data,
              centers = 5, 
              iter.max = 10,
              nstart = 25,
-             algorithm = "Hartigan-Wong",
+             algorithm = "Lloyd", # "Hartigan-Wong",
              trace = FALSE)
 scaled.data$group = k5$cluster
 ### Plot the clusters
