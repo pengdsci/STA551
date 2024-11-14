@@ -284,59 +284,52 @@
   <tr>
 
     <td> <ul>
-          <li> Navigating SAS Environment </li>
-          <li> Storing and Accessing SAS Data Files </li>
-          <li> Coding Conventions and File/Folder Structure </li>
-          <li> Guidelines for Formatting and Commenting </li>
-          <li> Galnce of Data Input Styles: Column and List Inputs </li>
-         <li> Notes and code </li>
+          <li> Concepts of unsupervised learning algorithms </li>
+          <li> Clustering  </li>
+            <ul>
+            <li> k-means clustering</li>
+            <li> Hierarchical clustering </li>
+            </ul>
+          <li> Dimension reductions - principle component analysis (PCA)  </li>
+          <li> Overview of anomaly detection algorithms</li>
+            <ul>
+              <li>Types of anomaly detection methods</li>
+              <li>Supervised and unsupervised anomaly detection</li>  
+            </ul>
+          <li> Notes and code </li>
          <ul>
-            <li> <a href="W02_SASCodingRulesConventions.pdf" target="popup" 
-                onclick="window.open('W02_SASCodingRulesConventions.pdf','name','width=900,height=500')"> 
-                Lecture Note: SAS libraries and coding rules, conventions and best coding practices </a></li> 
-             <li> <font color = "red"><b> SAS Example Code: </b></font>
-                   <a href="w02-ColumnInput.sas" target="popup" 
-                   onclick="window.open('w02-ColumnInput.sas','name','width=900,height=500')"> 
-                   [SAS] </a> 
-                   <a href="w02-ColumnInput.txt" target="popup" 
-                   onclick="window.open('w02-ColumnInput.txt','name','width=900,height=500')"> 
-                   [Text]</a> 
-                   <a href="w02-ColumnInput.pdf" target="popup" 
-                   onclick="window.open('w02-ColumnInput.pdf','name','width=900,height=500')"> 
-                   [PDF]</a> 
-                    
-                   <a href="w02-HowtoDefineanSASPermanentLibrary.pdf" target="popup" 
-                   onclick="window.open('w02-HowtoDefineanSASPermanentLibrary.pdf','name','width=900,height=500')"> 
-                   [How to Define SAS Permenent Library, PDF]</a>  
-                     </li> 
+            <li>Lecture Note: <a href="w11/w11-ML-Alg-Overview-Unsupervised.html" target="popup" 
+                onclick="window.open('w11/w11-ML-Alg-Overview-Unsupervised.html','name','width=900,height=500')"> 
+                [HTML] </a>
+                <a href="w11/w11-ML-Alg-Overview-Unsupervised.pdf" target="popup" 
+                onclick="window.open('w11/w11-ML-Alg-Overview-Unsupervised.pdf','name','width=900,height=500')"> 
+                [PDF] </a>
+             </li> 
+             <li> A nice free book chpate: 
+            <a href="https://lgatto.github.io/IntroMachineLearningWithR/unsupervised-learning.html" target="popup" onclick="window.open('https://lgatto.github.io/IntroMachineLearningWithR/unsupervised-learning.html','name','width=900,height=500')"><b>Unsupervised Learning</b> [link]</a></li>
          </ul>
         </ul>
     </td><td></td>
 
      <td><ul>
-         <li>Reading Assignments </li>
+         <li>Optional Reading Assignments </li>
           <ul>
-         <li> Read relevant sections of 
-            <a href="https://ebookcentral.proquest.com/lib/wcupa/detail.action?docID=5847433" target="popup" onclick="window.open('https://ebookcentral.proquest.com/lib/wcupa/detail.action?docID=5847433','name','width=900,height=500')"><b> Ajay Ohri's Book</b> [link]</a></li>
-        <li> Chapter 1 and first 2 sections of chapter 2 of
-            <a href="SAS-Base-Programming-Certification-Study-Guide.pdf" target="popup" 
-             onclick="window.open('SAS-Base-Programming-Certification-Study-Guide.pdf','name','width=900,height=500')"><b>Dinsmore's Note</b> [link]</a></li>
-          </ul>       
-        <BR>      
-        <li> Written Assignment <!--a href="https://d2l.wcupa.edu/d2l/login" target="popup" 
-                   onclick="window.open('https://d2l.wcupa.edu/d2l/login','name','width=900,height=500')">
-                    <b>D2L (login)</b></a></li>
-               <font color="darkblue"><b>Available on Thursday</b>: 12:00 PM </font><BR>
-               <font color="red"><b>Due on Sunday</b>: 11:30 PM </font-->
+        <li> A survey of similarity measures in clustering
+            <a href="w11/Distance_and_Similarity_Measures_Survey.pdf" target="popup" 
+             onclick="window.open('w11/Distance_and_Similarity_Measures_Survey.pdf','name','width=900,height=500')"><b>PDF</b> [link]</a></li>
+          </ul>            
+         <li> <b>Written Assignment</b>:<font  color = "red">Project #4 - Unsupervised Learning Algorithm -<b>Part I</b></font> </li>
+           <ul>
+           <li> Pick a data set with a sample between 500 and 2000.</li>
+           <li> The data set should have at least 6 numerical variables (ideally to have some correlation).</li>
+           <li> Perform some EDA and potential feature engineering as usual.</li>
+           <li> Perform PCA and clustering analysis with this data.</li>
+           </ul>
      </ul>
     </td>
   </tr>
 </table>
-<!--Please register an account with <a href="https://www.sas.com/en_us/software/on-demand-for-academics/references/getting-started-with-sas-ondemand-for-academics-studio.html" target="popup" 
-onclick="window.open('https://www.sas.com/en_us/software/on-demand-for-academics/references/getting-started-with-sas-ondemand-for-academics-studio.html','name','width=900,height=500')">
-                   [SAS OnDemand]</a> then use the <b> <font color="red">free and web-based</font> SAS Studio</b> to practice the SAS code and complete the assignment without using RamCloud SAS. Watch this <a href="https://www.youtube.com/watch?v=tmL8fdOd-pI" target="popup" 
-                   onclick="window.open('https://www.youtube.com/watch?v=tmL8fdOd-pI','name','width=900,height=500')">
-                   [short video]</a> to get started with SAS Studio. <font color = "blue"><b>The link to SAS OnDemand login page is also placed on the top navigation panel.</b></font-->
+
 </div>
  </div>
 </div>
