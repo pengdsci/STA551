@@ -261,7 +261,7 @@
   <!--div class="container sec"-->
             
   <center>
-      <font style="font-variant: small-Caps; font-family: Arial, sans-serif; font-size: 18px; font-weight:400; color:darkmagenta; ">12. Applications of Resampling Methods in Data Science</font>       
+      <font style="font-variant: small-Caps; font-family: Arial, sans-serif; font-size: 18px; font-weight:400; color:darkmagenta; ">12. Algorithms for Anomaly Detection </font>       
             
             </center>          
     <br>
@@ -284,50 +284,58 @@
   <tr>
 
     <td> <ul>
-          <li> Navigating SAS Environment </li>
-          <li> Storing and Accessing SAS Data Files </li>
-          <li> Coding Conventions and File/Folder Structure </li>
-          <li> Guidelines for Formatting and Commenting </li>
-          <li> Galnce of Data Input Styles: Column and List Inputs </li>
+          <li> Anomaly Detection Use Cases </li>
+          <li> Algorithms and Models for Anomaly Detection </li>
+            <ul>
+            <li> Supervised Anomaly Detection</li>
+            <li> Unsupervised Anomaly Detection</li>
+            </ul>
+          <li> Local Outlier Factor (LOF)</li>
+            <ul>
+               <li>Some <i>Distances</i> and Related Terms</li>
+               <li>Steps for Defining LOF Scores</li>
+            </ul>
+          <li> Fraud Dtection with LOF - Case Study </li>
+          <ul>
+            <li>LOF As A Standalone Algorithm: Hyperparameter Tuning and Performance Measures</li>
+            <li>LOF As A Feature Extraction Algorithm</li>
+          </ul>
          <li> Notes and code </li>
          <ul>
-            <li> <a href="W02_SASCodingRulesConventions.pdf" target="popup" 
-                onclick="window.open('W02_SASCodingRulesConventions.pdf','name','width=900,height=500')"> 
-                Lecture Note: SAS libraries and coding rules, conventions and best coding practices </a></li> 
-             <li> <font color = "red"><b> SAS Example Code: </b></font>
-                   <a href="w02-ColumnInput.sas" target="popup" 
-                   onclick="window.open('w02-ColumnInput.sas','name','width=900,height=500')"> 
-                   [SAS] </a> 
-                   <a href="w02-ColumnInput.txt" target="popup" 
-                   onclick="window.open('w02-ColumnInput.txt','name','width=900,height=500')"> 
-                   [Text]</a> 
-                   <a href="w02-ColumnInput.pdf" target="popup" 
-                   onclick="window.open('w02-ColumnInput.pdf','name','width=900,height=500')"> 
-                   [PDF]</a> 
-                    
-                   <a href="w02-HowtoDefineanSASPermanentLibrary.pdf" target="popup" 
-                   onclick="window.open('w02-HowtoDefineanSASPermanentLibrary.pdf','name','width=900,height=500')"> 
-                   [How to Define SAS Permenent Library, PDF]</a>  
+            <li> <a href="w12/w12-Anormaly-detection-fraud-detection.html" target="popup" 
+                onclick="window.open('w12/w12-Anormaly-detection-fraud-detection.html', 'name','width=900,height=500')"> 
+                [HTML] </a>
+             <a href="w12/w12-Anormaly-detection-fraud-detection.pdf" target="popup" 
+                onclick="window.open('w12/w12-Anormaly-detection-fraud-detection.pdf', 'name','width=900,height=500')"> 
+                [HTML] </a>
+             </li> 
+             <li> <font color = "red">Original LOF Paper</font>
+                   <a href="https://pengdsci.github.io/STA551/w12/LOF-originalPaper.pdf" target="popup" 
+                   onclick="window.open('https://pengdsci.github.io/STA551/w12/LOF-originalPaper.pdf','name','width=900,height=500')"> 
+                   [PDF]</a>  
                      </li> 
          </ul>
         </ul>
     </td><td></td>
 
      <td><ul>
-         <li>Reading Assignments </li>
+         <li>Optonal Reading Assignments </li>
           <ul>
-         <li> Read relevant sections of 
-            <a href="https://ebookcentral.proquest.com/lib/wcupa/detail.action?docID=5847433" target="popup" onclick="window.open('https://ebookcentral.proquest.com/lib/wcupa/detail.action?docID=5847433','name','width=900,height=500')"><b> Ajay Ohri's Book</b> [link]</a></li>
-        <li> Chapter 1 and first 2 sections of chapter 2 of
-            <a href="SAS-Base-Programming-Certification-Study-Guide.pdf" target="popup" 
-             onclick="window.open('SAS-Base-Programming-Certification-Study-Guide.pdf','name','width=900,height=500')"><b>Dinsmore's Note</b> [link]</a></li>
+         <li> A Good Survey of Anomaly Detection Algorithms
+            <a href="https://pengdsci.github.io/STA551/w12/Anomaly-Detection-A-Survey.pdf" target="popup" onclick="window.open('https://pengdsci.github.io/STA551/w12/Anomaly-Detection-A-Survey.pdf','name','width=900,height=500')"><b>[PDF]</b></a></li>
+        <li> pROC Help Documentation
+            <a href="https://cran.r-project.org/web/packages/pROC/pROC.pdf" target="popup" 
+             onclick="window.open('https://cran.r-project.org/web/packages/pROC/pROC.pdf', 'name','width=900,height=500')"><b> [PDF]</b></a></li>
+        <li> Additional Fraud Data for Practice
+            <a href="https://github.com/pengdsci/STA551/tree/main/w12/dataset" target="popup" 
+             onclick="window.open('https://github.com/pengdsci/STA551/tree/main/w12/dataset', 'name','width=900,height=500')"><b> [Web Link]</b></a></li>
           </ul>       
-        <BR>      
-        <li> Written Assignment <!--a href="https://d2l.wcupa.edu/d2l/login" target="popup" 
-                   onclick="window.open('https://d2l.wcupa.edu/d2l/login','name','width=900,height=500')">
-                    <b>D2L (login)</b></a></li>
-               <font color="darkblue"><b>Available on Thursday</b>: 12:00 PM </font><BR>
-               <font color="red"><b>Due on Sunday</b>: 11:30 PM </font-->
+             
+        <li> Written Assignment:<font  color = "red">Project #4 - Unsupervised Learning Algorithm -<b>Part II</b></font> </li>
+          <ul>
+           <li>Choose a categorical feature variable and regroup it to make a binary categorical variable such that the small category contains less than 10% of the sample size.</li>
+           <li>Perform a similar analysis as demonstrated in the case study in the lecture note.</li>   
+         </ul>  
      </ul>
     </td>
   </tr>
