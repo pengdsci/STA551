@@ -261,7 +261,7 @@
   <!--div class="container sec"-->
             
   <center>
-      <font style="font-variant: small-Caps; font-family: Arial, sans-serif; font-size: 18px; font-weight:400; color:darkmagenta; ">13. Anomaly Detection and Applications</font>       
+      <font style="font-variant: small-Caps; font-family: Arial, sans-serif; font-size: 18px; font-weight:400; color:darkmagenta; ">13. Model-based Feature Extraction</font>       
             
             </center>          
     <br>
@@ -284,59 +284,57 @@
   <tr>
 
     <td> <ul>
-          <li> Navigating SAS Environment </li>
-          <li> Storing and Accessing SAS Data Files </li>
-          <li> Coding Conventions and File/Folder Structure </li>
-          <li> Guidelines for Formatting and Commenting </li>
-          <li> Galnce of Data Input Styles: Column and List Inputs </li>
+          <li> Feature Selection Methods </li>
+            <ul>
+              <li> Filter Methods </li>
+              <li> Wrapper Methods </li>
+              <li> Embedded Methods </li>
+            </ul>
+          <li> Feature Extract Methods </li>
+            <ul>
+              <li> Clustering Methods </li>
+              <li> PCA Methods </li>
+              <li> Linear Discriminant Analysis (LDA) </li>
+              <li> Other Model-based Methods Such As LOF Scores, etc.</li>
+            </ul>
+          <li> Feature Selection and Extraction for Serial Data </li>
          <li> Notes and code </li>
          <ul>
-            <li> <a href="W02_SASCodingRulesConventions.pdf" target="popup" 
-                onclick="window.open('W02_SASCodingRulesConventions.pdf','name','width=900,height=500')"> 
-                Lecture Note: SAS libraries and coding rules, conventions and best coding practices </a></li> 
-             <li> <font color = "red"><b> SAS Example Code: </b></font>
-                   <a href="w02-ColumnInput.sas" target="popup" 
-                   onclick="window.open('w02-ColumnInput.sas','name','width=900,height=500')"> 
-                   [SAS] </a> 
-                   <a href="w02-ColumnInput.txt" target="popup" 
-                   onclick="window.open('w02-ColumnInput.txt','name','width=900,height=500')"> 
-                   [Text]</a> 
-                   <a href="w02-ColumnInput.pdf" target="popup" 
-                   onclick="window.open('w02-ColumnInput.pdf','name','width=900,height=500')"> 
-                   [PDF]</a> 
-                    
-                   <a href="w02-HowtoDefineanSASPermanentLibrary.pdf" target="popup" 
-                   onclick="window.open('w02-HowtoDefineanSASPermanentLibrary.pdf','name','width=900,height=500')"> 
-                   [How to Define SAS Permenent Library, PDF]</a>  
-                     </li> 
+            <li>Lecture Note: <a href="w13/w10-Feature-Extraction-for-Seq-data.html" target="popup" 
+                onclick="window.open('w13/w10-Feature-Extraction-for-Seq-data.html','name','width=900,height=500')"> [HTML] </a>
+                <a href="w13/w10-Feature-Extraction-for-Seq-data.pdf" target="popup" 
+                onclick="window.open('w13/w10-Feature-Extraction-for-Seq-data.pdf','name','width=900,height=500')"> [PDF] </a>
+             </li> 
+             <li> Various feature selection methods with R 
+            <a href="https://cran.r-project.org/web/packages/familiar/vignettes/feature_selection_precompiled.html" target="popup" onclick="window.open('https://cran.r-project.org/web/packages/familiar/vignettes/feature_selection_precompiled.html','name','width=900,height=500')">[Web link]</a></li>
          </ul>
         </ul>
     </td><td></td>
 
      <td><ul>
-         <li>Reading Assignments </li>
+         <li>Optional Reading Assignments </li>
           <ul>
-         <li> Read relevant sections of 
-            <a href="https://ebookcentral.proquest.com/lib/wcupa/detail.action?docID=5847433" target="popup" onclick="window.open('https://ebookcentral.proquest.com/lib/wcupa/detail.action?docID=5847433','name','width=900,height=500')"><b> Ajay Ohri's Book</b> [link]</a></li>
-        <li> Chapter 1 and first 2 sections of chapter 2 of
-            <a href="SAS-Base-Programming-Certification-Study-Guide.pdf" target="popup" 
-             onclick="window.open('SAS-Base-Programming-Certification-Study-Guide.pdf','name','width=900,height=500')"><b>Dinsmore's Note</b> [link]</a></li>
+         
+        <li> A Review of feature selection methods
+            <a href="https://pengdsci.github.io/STA551/w13/A-Review-of-Feature-Selection-Methods.pdf" target="popup" 
+             onclick="window.open('https://pengdsci.github.io/STA551/w13/A-Review-of-Feature-Selection-Methods.pdf', 'name','width=900,height=500')">[PDF]</a></li>
+        <li> A monograph of feature extraction
+            <a href="https://pengdsci.github.io/STA551/w13/Feature_Extraction_book.pdf" target="popup" 
+             onclick="window.open('https://pengdsci.github.io/STA551/w13/Feature_Extraction_book.pdf', 'name','width=900,height=500')">[PDF eBook]</a></li>    
+        <li> Documentation of R library<b>{FeatureExtraction}</b> 
+            <a href="https://pengdsci.github.io/STA551/w13/FeatureExtraction-RLib.pdf" target="popup" 
+             onclick="window.open('https://pengdsci.github.io/STA551/w13/FeatureExtraction-RLib.pdf', 'name','width=900,height=500')">[PDF]</a></li>  
           </ul>       
-        <BR>      
-        <li> Written Assignment <!--a href="https://d2l.wcupa.edu/d2l/login" target="popup" 
-                   onclick="window.open('https://d2l.wcupa.edu/d2l/login','name','width=900,height=500')">
-                    <b>D2L (login)</b></a></li>
-               <font color="darkblue"><b>Available on Thursday</b>: 12:00 PM </font><BR>
-               <font color="red"><b>Due on Sunday</b>: 11:30 PM </font-->
+         
+            <li> Written Assignment <font color = "red"><b>(This week's assignment is optional!)</b></font></li>
+             <ul>
+            <li>Pick one or more feature extraction (prefer model-based) method(s) to implement and add the results to your project #2: EDA and Feature Engineering.</li>
+             </ul>
      </ul>
     </td>
   </tr>
 </table>
-<!--Please register an account with <a href="https://www.sas.com/en_us/software/on-demand-for-academics/references/getting-started-with-sas-ondemand-for-academics-studio.html" target="popup" 
-onclick="window.open('https://www.sas.com/en_us/software/on-demand-for-academics/references/getting-started-with-sas-ondemand-for-academics-studio.html','name','width=900,height=500')">
-                   [SAS OnDemand]</a> then use the <b> <font color="red">free and web-based</font> SAS Studio</b> to practice the SAS code and complete the assignment without using RamCloud SAS. Watch this <a href="https://www.youtube.com/watch?v=tmL8fdOd-pI" target="popup" 
-                   onclick="window.open('https://www.youtube.com/watch?v=tmL8fdOd-pI','name','width=900,height=500')">
-                   [short video]</a> to get started with SAS Studio. <font color = "blue"><b>The link to SAS OnDemand login page is also placed on the top navigation panel.</b></font-->
+
 </div>
  </div>
 </div>
