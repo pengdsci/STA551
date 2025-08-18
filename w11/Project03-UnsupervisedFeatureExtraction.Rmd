@@ -1,0 +1,147 @@
+---
+title: "Project Three: Feature Extraction with Unsupervised Algorithms"
+author: " "
+date: "STA 551 Foundations of Data Science"
+output:
+  pdf_document: 
+    toc: no
+    toc_depth: 4
+    fig_caption: yes
+    number_sections: no
+    fig_width: 5
+    fig_height: 4
+  word_document: 
+    toc: no
+    toc_depth: 4
+    fig_caption: yes
+    keep_md: yes
+  html_document: 
+    toc: no
+    toc_depth: 4
+    fig_width: 6
+    fig_height: 4
+    fig_caption: yes
+    number_sections: no
+    theme: readable
+---
+
+
+```{css, echo = FALSE}
+div#TOC li {     /* table of content  */
+    list-style:upper-roman;
+    background-image:none;
+    background-repeat:none;
+    background-position:0;
+}
+
+h1.title {
+  font-size: 20px;
+  color: DarkRed;
+  text-align: center;
+}
+h4.author { /* Header 4 - and the author and data headers use this too  */
+    font-size: 18px;
+  font-family: "Times New Roman", Times, serif;
+  color: DarkRed;
+  text-align: center;
+}
+h4.date { /* Header 4 - and the author and data headers use this too  */
+  font-size: 18px;
+  font-family: "Times New Roman", Times, serif;
+  color: DarkBlue;
+  text-align: center;
+}
+h1 { /* Header 3 - and the author and data headers use this too  */
+    font-size: 22px;
+    font-family: "Times New Roman", Times, serif;
+    color: darkred;
+    text-align: center;
+}
+h2 { /* Header 3 - and the author and data headers use this too  */
+    font-size: 18px;
+    font-family: "Times New Roman", Times, serif;
+    color: navy;
+    text-align: left;
+}
+
+h3 { /* Header 3 - and the author and data headers use this too  */
+    font-size: 15px;
+    font-family: "Times New Roman", Times, serif;
+    color: navy;
+    text-align: left;
+}
+
+h4 { /* Header 4 - and the author and data headers use this too  */
+    font-size: 18px;
+    font-family: "Times New Roman", Times, serif;
+    color: darkred;
+    text-align: left;
+}
+
+/* Add dots after numbered headers */
+.header-section-number::after {
+  content: ".";
+}
+```
+
+\
+
+Unsupervised learning algorithms for feature extraction are widely used to automatically discover meaningful patterns, reduce dimensionality, or transform raw data into a more informative representation without relying on labeled data (i.e., the response variable).
+
+The goal of this project is to implement some commonly used, simple unsupervised learning algorithms to extract new features implicitly from the existing feature variables.
+
+To evaluate the benefits of model-based feature extraction, we will incorporate these extracted features into a binary classification model and assess their performance using appropriate metrics.
+
+
+* **Data Set Requirements**: The dataset should include
+  + A few numerical variables that are highly correlated (to perform PCA).
+  + A binary categorical variable (to build a binary classification model, such as logistic regression, perceptron, decision tree, or bagging).
+  
+  
+* **Suggested data sites**: 
+  + My teaching data repository (<https://pengdsci.github.io/datasets/>), 
+  + UCI Machine Learning Repository (<https://archive.ics.uci.edu/>), and 
+  +  Kaggle (<https://www.kaggle.com/datasets?fileType=csv>).
+
+* **Methodology**:
+  + **Regular EDA and Feature Engineering**
+    - Perform exploratory data analysis (EDA) and feature engineering as usual to prepare an analytical dataset.
+  
+  + **Unsupervised ML Algorithms for Feature Extraction**
+    - Principal Component Analysis (PCA)
+    - Clustering
+    - Local Outlier Factor (LOF)
+
+  + **Building Binary Classification Models**
+    - Train models without using features extracted via unsupervised ML.
+    - Train models with regular engineered features.
+    - Compare the two approaches and report the advantages and disadvantages of unsupervised feature extraction.
+  
+* **Report Format**
+  + The report should follow the same structure and components as the previous two projects.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
