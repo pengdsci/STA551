@@ -3,28 +3,16 @@ title: "Open-Source Tools"
 author: "Cheng Peng"
 date: "West Chester University"
 output:
-  pdf_document: default
-  html_notebook: default
-  html_document: default
-editor_options:
-  chunk_output_type: inline
----
-
-```{r eval=FALSE, echo=FALSE}
-* The following is the YAMAL head of this document.
----
-title: "Open-Source Tools"
-author: "Cheng Peng"
-date: "West Chester University"
-output:
-  html_document: default
+  html_document: 
+    code_download: yes
+    theme: lumen
   html_notebook: default
   pdf_document: default
 editor_options:
   chunk_output_type: inline
 ---
-```
 
+```{=html}
 <style type="text/css">
 
 div#TOC li {
@@ -37,30 +25,35 @@ h1.title {
   font-size: 24px;
   color: DarkRed;
   text-align: center;
+  font-face: bold;
 }
 h4.author { /* Header 4 - and the author and data headers use this too  */
     font-size: 18px;
   font-family: "Times New Roman", Times, serif;
   color: DarkRed;
   text-align: center;
+  font-face: bold;
 }
 h4.date { /* Header 4 - and the author and data headers use this too  */
   font-size: 18px;
   font-family: "Times New Roman", Times, serif;
   color: DarkBlue;
   text-align: center;
+  font-face: bold;
 }
-h1 { /* Header 3 - and the author and data headers use this too  */
+h1 { /* Header 1 - and the author and data headers use this too  */
     font-size: 22px;
     font-family: "Times New Roman", Times, serif;
     color: darkred;
     text-align: center;
+    font-face: bold;
 }
-h2 { /* Header 3 - and the author and data headers use this too  */
+h2 { /* Header 2 - and the author and data headers use this too  */
     font-size: 18px;
     font-family: "Times New Roman", Times, serif;
     color: navy;
     text-align: left;
+    font-face: bold;
 }
 
 h3 { /* Header 3 - and the author and data headers use this too  */
@@ -76,6 +69,7 @@ h4 { /* Header 4 - and the author and data headers use this too  */
     font-family: "Times New Roman", Times, serif;
     color: darkred;
     text-align: left;
+    font-face: bold;
 }
 
 /* Tab features */
@@ -95,6 +89,8 @@ nav-pills>li:nth-child(2) {
  }
  */
 </style>
+```
+
 
 ```{r setup, include=FALSE}
 # code chunk specifies whether the R code, warnings, and output 
@@ -124,11 +120,11 @@ if (!require("gapminder")) {
    library(gapminder)
 }
 if (!require("png")) {
-    install.packages("png")             # Install png package
+    install.packages("png")     # Install png package
     library("png")
 }
 if (!require("RCurl")) {
-    install.packages("RCurl")             # Install RCurl package
+    install.packages("RCurl")    # Install RCurl package
     library("RCurl")
 }
 if (!require("colourpicker")) {
