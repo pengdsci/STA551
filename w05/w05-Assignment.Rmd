@@ -1,6 +1,6 @@
 ---
-title: 'Porject One: Part I- EDA and Feature Engineering'
-author: " "
+title: 'Porject One: Regression Algorithms and Cross-validation '
+author: " Part I- EDA and Feature Engineering"
 date: " STA 511 - Foudations of Data Science"
 output:
   pdf_document: 
