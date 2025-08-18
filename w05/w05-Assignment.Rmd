@@ -1,8 +1,20 @@
 ---
-title: 'EDA and Feature Engineering Assignment'
+title: 'Porject One: Part I- EDA and Feature Engineering'
 author: " "
 date: " STA 511 - Foudations of Data Science"
 output:
+  pdf_document: 
+    toc: yes
+    toc_depth: 4
+    fig_caption: yes
+    number_sections: yes
+    fig_width: 3
+    fig_height: 3
+  word_document: 
+    toc: yes
+    toc_depth: 4
+    fig_caption: yes
+    keep_md: yes
   html_document: 
     toc: yes
     toc_depth: 4
@@ -13,85 +25,77 @@ output:
     code_download: yes
     smooth_scroll: yes
     theme: lumen
-  word_document: 
-    toc: yes
-    toc_depth: 4
-    fig_caption: yes
-    keep_md: yes
-  pdf_document: 
-    toc: yes
-    toc_depth: 4
-    fig_caption: yes
-    number_sections: yes
-    fig_width: 3
-    fig_height: 3
 editor_options: 
   chunk_output_type: inline
 ---
 
-```{=html}
+```{css, echo = FALSE}
+div#TOC li {     /* table of content  */
+    list-style:upper-roman;
+    background-image:none;
+    background-repeat:none;
+    background-position:0;
+}
 
-<style type="text/css">
-
-/* Cascading Style Sheets (CSS) is a stylesheet language used to describe the presentation of a document written in HTML or XML. it is a simple mechanism for adding style (e.g., fonts, colors, spacing) to Web documents. */
-
-h1.title {  /* Title - font specifications of the report title */
+h1.title {    /* level 1 header of title  */
   font-size: 24px;
   font-weight: bold;
   color: DarkRed;
   text-align: center;
-  font-family: "Gill Sans", sans-serif;
 }
-h4.author { /* Header 4 - font specifications for authors  */
-  font-size: 20px;
-  font-family: system-ui;
+
+h4.author { /* Header 4 - and the author and data headers use this too  */
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
   color: DarkRed;
   text-align: center;
-  font-weight: bold;
 }
-h4.date { /* Header 4 - font specifications for the date  */
+
+h4.date { /* Header 4 - and the author and data headers use this too  */
   font-size: 18px;
-  font-family: system-ui;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
   color: DarkBlue;
   text-align: center;
-  font-weight: bold;
 }
-h1 { /* Header 1 - font specifications for level 1 section title  */
-    font-size: 22px;
-    font-family: "Times New Roman", Times, serif;
-    color: navy;
-    text-align: center;
-    font-weight: bold;
-}
-h2 { /* Header 2 - font specifications for level 2 section title */
+
+h1 { /* Header 1 - and the author and data headers use this too  */
     font-size: 20px;
-    font-family: "Times New Roman", Times, serif;
-    color: navy;
-    text-align: left;
     font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    color: darkred;
+    text-align: center;
 }
 
-h3 { /* Header 3 - font specifications of level 3 section title  */
+h2 { /* Header 2 - and the author and data headers use this too  */
     font-size: 18px;
+    font-weight: bold;
     font-family: "Times New Roman", Times, serif;
     color: navy;
     text-align: left;
 }
 
-h4 { /* Header 4 - font specifications of level 4 section title  */
-    font-size: 18px;
+h3 { /* Header 3 - and the author and data headers use this too  */
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    color: navy;
+    text-align: left;
+}
+
+h4 { /* Header 4 - and the author and data headers use this too  */
+    font-size: 14px;
+  font-weight: bold;
     font-family: "Times New Roman", Times, serif;
     color: darkred;
     text-align: left;
 }
 
-body { background-color:white; }
-
-.highlightme { background-color:yellow; }
-
-p { background-color:white; }
-
-</style>
+/* Add dots after numbered headers */
+.header-section-number::after {
+  content: ".";
+}
 ```
 
 ```{r setup, include=FALSE}
@@ -129,6 +133,8 @@ knitr::opts_chunk$set(echo = TRUE,       # include code chunk in the output file
 
 Choose a data set that has at least four categorical variables and four numerical variables. The sample size should be at least 200. You can find a data set either from my teaching data repository or other data sources. The data set should be cross-sectional (i.e., each of the data points must be observed/collected/generated at the same time).
 
+The data set must have both continuous and (ideally binary) category variables so you can perform linear and logistic regression modeling.
+
 # Description of Data
 
 The following information of the data should be provided in the report:
@@ -141,25 +147,60 @@ The following information of the data should be provided in the report:
 
 * List the variable names and their description/definitions.
 
-# Exploratory Data Analysis and Feature
 
-Perform the standard EDA such as distribution for categorical and numerical variables respectively, the relationship between two variables (combinations of categorical and numerical variables), and pairwise relationship. Keep in mind that the pairwise scatter plot is only meaning for numerical variables.
+# Problem Statements and Candidate Models
+
+Formulate at least two practical questions based on the continuous and categorical response variables. Please make clear statements of the practical questions and convert them into unambiguous analytic questions so you can identify candidate models with sufficient justification to address the practical questions.
+
+Write model formulas and assumptions of all candidate models explicitly.
+
+
+
+# Exploratory Data Analysis and Feature Engineering
+
+Perform the standard EDA to serve the following major purposes:
+
+* Inspecting data issues such as missing values, mistakenly recorded data values, inconsist data formats, etc. and fix them;
+
+* Identifying new patterns/insights to improve subsequent modeling;
+
+* Checking assumptions of candidate models and perform appropriate feature engineering methods 
+
+To present your EDA in clear logical order, you are encouraged to use subsections to organize your work.
 
 For each EDA and associated representation, you should 
 
-* interpret what you observed and the implication of potential feature engineering
+* open a paragraph with one or few sentence to describe the reasons for the specific EDA before actual analysis;
 
-* perform feature engineering based on EDA by writing an R/Python function.
+* After the analysis, interpret what you observed and the implication of potential feature engineering;
 
-* Write a main function to wrap individual feature engineering functions.
+* Perform feature engineering (if necessary) based on EDA findings, and thoroughly document all steps to ensure reproducibility.
 
-* Test the main function with different patterns in the components and sure it produces the expected result.
 
+# Creating Analytical Data
+
+Create an analytical data set that includes
+
+* all original feature variables if no feature engineering is not needed
+* all feature engineered featured variables and exclude the corresponding orginal variables
+
+All variables will be called directly in subsequent models. Note that all numerical feature variables needs to be standardized for predictive modeling. 
+
+
+# Wrapping Feature Engineering Code
+
+Wrapping feature engineering code into **reusable functions** for predictive modeling. This ensures that the same transformations applied during training can be seamlessly applied to new raw data during inference.
+
+* **Modularity**: Each feature engineering step should be a separate function.
+
+* **Consistency**: Transformations must behave identically on training and new data.
+
+* **Stateful Transformations**: A term refers to storing learned parameters (e.g., imputation values, scalers) during training for reuse on new data. 
 
 
 # Reporting and format
 
-The format of the report should be similar to that of the report of the case study. You can use the report template that is used for the case study.
+Use the suggested reporting template (the RMarkdown Source can be found at <https://pengdsci.github.io/STA551/w01/w01-ReportingRMarkdoenSource.txt>) and the report component at (<https://pengdsci.github.io/STA551/w02/w02-AssignSunmission.html>)
 
 
 
