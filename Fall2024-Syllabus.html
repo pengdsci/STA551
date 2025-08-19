@@ -363,12 +363,18 @@ display: none;
 
 <h1 class="title toc-ignore">STA551-Foundations of Data Science</h1>
 <h4 class="author">Instructor: Cheng Peng</h4>
-<h4 class="date">Fall 2024</h4>
+<h4 class="date">Fall 2025</h4>
 
 </div>
 
 
 <style type="text/css">
+div#TOC li { 
+list-style:upper-roman;
+background-image:none;
+background-repeat:none;
+background-position:0;
+}
 h1.title {
 font-size: 20px;
 color: DarkRed;
@@ -410,6 +416,10 @@ font-family: "Times New Roman", Times, serif;
 color: darkred;
 text-align: left;
 }
+
+.header-section-number::after {
+content: ".";
+}
 </style>
 <div id="contact" class="section level1">
 <h1>Contact</h1>
@@ -429,18 +439,18 @@ text-align: left;
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Monday</td>
-<td align="left">3:00 PM-5:00 PM</td>
+<td align="left">Tuesday</td>
+<td align="left">8:30 AM-9:30 AM</td>
 <td align="left">UNA107</td>
 </tr>
 <tr class="even">
-<td align="left">Tuesday</td>
-<td align="left">11:00 AM - 12:00 PM</td>
-<td align="left">UNA 107</td>
+<td align="left">Wednesday</td>
+<td align="left">1:00 PM - 3:00 PM</td>
+<td align="left">Zoom Only</td>
 </tr>
 <tr class="odd">
 <td align="left">Thursday</td>
-<td align="left">2:00 PM - 5:00 PM</td>
+<td align="left">2:00 PM - 4:00 PM</td>
 <td align="left">UNA107</td>
 </tr>
 <tr class="even">
@@ -465,7 +475,7 @@ text-align: left;
 <tr class="odd">
 <td align="left">Thursday</td>
 <td align="left">5:45 PM - 8:30 PM</td>
-<td align="left">UNA120</td>
+<td align="left">UNA166</td>
 </tr>
 </tbody>
 </table>
@@ -491,7 +501,7 @@ infrastructure and pipelines.</p>
 <div id="course-objectives" class="section level2">
 <h2><strong>Course Objectives</strong></h2>
 <p>Upon successful completion of this course, students will be equipped
-with skills and strategies</p>
+with skills and strategies.</p>
 <ul>
 <li>to understand the basic notion that a data science project is, in
 general, a process that builds a system of multiple models and/or
@@ -499,8 +509,8 @@ algorithms.</li>
 <li>to convert practical problems accurately to data science problems
 and prepare data sets from possibly multiple data sources for
 analytics.</li>
-<li>to understand basic statistical methods and machine algorithms and
-their corresponding scope of applications.</li>
+<li>to understand basic statistical methods and machine learning
+algorithms and their corresponding scope of applications.</li>
 <li>to identify the best solutions to a data science process from
 candidate models and algorithms.</li>
 <li>to effectively present the results and execute the project to
@@ -513,11 +523,11 @@ science practice.</li>
 <h2><strong>Learning Outcomes</strong></h2>
 <p>After finishing this course, students will be able to</p>
 <ul>
-<li>Describe and apply good practices for storing, manipulating,
+<li>Describe and apply good practices for storing, manipulating, and
 summarizing</li>
-<li>perform data visualization and exploratory data analysis.</li>
-<li>Use standard software packages and formal programming languages data
-management and visualization.</li>
+<li>Perform data visualization and exploratory data analysis.</li>
+<li>Use standard software packages and formal programming languages for
+data management and visualization.</li>
 <li>Apply basic techniques from descriptive and inferential statistics
 and machine learning.<br />
 </li>
@@ -526,7 +536,7 @@ and machine learning.<br />
 studies, in order to identify and discuss
 <ul>
 <li>potential ethical issues, and</li>
-<li>the extent to which stated conclusions are warranted given the
+<li>The extent to which stated conclusions are warranted given the
 evidence provided.</li>
 </ul></li>
 <li>Complete a data science project and write a report describing the
@@ -545,7 +555,7 @@ provided.</p></li>
 <ul>
 <li>Programming languages and Software: R, SAS, and Tableau Public</li>
 <li>Platforms: RStudio, SAS Studio (OnDemand), Anaconda, Github</li>
-<li>Typesetting: LaTex and Markdown</li>
+<li>Typesetting: LaTeX and Markdown</li>
 </ul></li>
 <li><p><strong>Coverage:</strong> See the list of tentative
 topics</p></li>
@@ -557,9 +567,12 @@ topics</p></li>
 <h2>Assessment Components</h2>
 <p>The course grade consists of the following components:</p>
 <ul>
-<li>Assignments (50%)</li>
-<li>Class attendance and participation (20%)</li>
-<li>Term project report (30%)</li>
+<li><strong>Weekly assignments</strong> (20%)</li>
+<li><strong>Three formal project reports</strong> (45%)</li>
+<li><strong>Attendance, participation, and meeting deadlines</strong>
+(20%)</li>
+<li><strong>Final project presentation</strong> (HTML slide deck and
+oral presentation) (15%)</li>
 </ul>
 </div>
 <div id="grade-scales" class="section level2">
@@ -661,19 +674,21 @@ be subject to a small penalty deduction.</p>
 <h1>Tentative Topics</h1>
 <ol style="list-style-type: decimal">
 <li><p>Platforms and tools for data science</p></li>
-<li><p>Technologies for communication</p></li>
-<li><p>Data acquisition and integration</p></li>
-<li><p>EDA and data visualization</p></li>
+<li><p>Technologies for communication (Assignment 01: online
+CV)</p></li>
+<li><p>Data acquisition and integration (Assignment 02: SQL)</p></li>
+<li><p>EDA and data visualization (Assignment 03: EDA)</p></li>
 <li><p>Methods for feature engineering</p></li>
 <li><p>Statistical models for data science</p></li>
-<li><p>Cross-validation</p></li>
+<li><p>Cross-validation (Project 01: topics 5-7)</p></li>
 <li><p>From statistics to machine learning</p></li>
-<li><p>Unsupervised algorithms overview</p></li>
-<li><p>Supervised algorithms</p></li>
+<li><p>Supervised algorithms overview</p></li>
+<li><p>Supervised algorithms (Project 02: topics 8-10)</p></li>
 <li><p>Unsupervised algorithms</p></li>
 <li><p>Resampling methods</p></li>
 <li><p>Anomaly detection</p></li>
-<li><p>Data science consulting practicum</p></li>
+<li><p>Data science consulting practicum (Project 03: end of semester
+capctone)</p></li>
 </ol>
 </div>
 <div id="university-policies-and-resources" class="section level1">
@@ -707,10 +722,9 @@ support your success in an informed manner. Accommodations cannot be
 granted retroactively. If you would like to know more about West Chester
 University’s Services for Students with Disabilities (OSSD), please
 visit them at 223 Lawrence Center. The OSSD hours of Operation are
-Monday – Friday, 8:30 a.m. – 4:30 p.m. Their phone number is
-610-436-2564, their fax number is 610-436-2600, their email address is
-<a href="mailto:ossd@wcupa.edu" class="email">ossd@wcupa.edu</a>, and
-their website is at <a href="www.wcupa.edu/ussss/ossd">www.wcupa.edu/ussss/ossd</a>.</p>
+Monday–Friday, 8:30 a.m. – 4:30 p.m. Their phone number is 610-436-2564,
+their fax number is 610-436-2600, their email address is <a href="mailto:ossd@wcupa.edu" class="email">ossd@wcupa.edu</a>, and their
+website is at <a href="www.wcupa.edu/ussss/ossd">www.wcupa.edu/ussss/ossd</a>.</p>
 </div>
 <div id="excused-absences-policy" class="section level2">
 <h2>EXCUSED ABSENCES POLICY</h2>
@@ -721,7 +735,7 @@ the “responsibility for meeting academic requirements rests with the
 student,” that this policy does not excuse students from completing
 required academic work, and that professors can require a “fair
 alternative” to attendance on those days that students must be absent
-from class in order to participate in a University-Sanctioned Event.</p>
+from class in order to participate in a University-sanctioned event.</p>
 </div>
 <div id="reporting-incidents-of-sexual-violence" class="section level2">
 <h2>REPORTING INCIDENTS OF SEXUAL VIOLENCE</h2>
@@ -755,7 +769,7 @@ limited to classism, ableism, heterosexism, sexism, Islamophobia,
 anti-Semitism, and xenophobia, and recognize that these forms of
 oppression are compounded by racism.</p>
 <p>Our core commitment as an institution of higher education shapes our
-expectation for behavior within this learning community, which
+expectations for behavior within this learning community, which
 represents diverse individual beliefs, backgrounds, and experiences.
 Courteous and respectful behavior, interactions, and responses are
 expected from all members of the University. We must work together to
@@ -829,10 +843,7 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
-    
-    
-    
-    
+
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
   (function () {
