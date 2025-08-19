@@ -1,5 +1,5 @@
 ---
-title: 'Regression Analysis'
+title: 'Project One:  Part III - Predictive Modeling and Cross Validaton'
 author: " (You are expected to give a descriptive title)"
 date: " "
 output:
@@ -29,60 +29,72 @@ editor_options:
   chunk_output_type: inline
 ---
 
-```{=html}
+```{css, echo = FALSE}
+div#TOC li {     /* table of content  */
+    list-style:upper-roman;
+    background-image:none;
+    background-repeat:none;
+    background-position:0;
+}
 
-<style type="text/css">
-
-/* Cascading Style Sheets (CSS) is a stylesheet language used to describe the presentation of a document written in HTML or XML. it is a simple mechanism for adding style (e.g., fonts, colors, spacing) to Web documents. */
-
-h1.title {  /* Title - font specifications of the report title */
+h1.title {    /* level 1 header of title  */
   font-size: 24px;
   font-weight: bold;
   color: DarkRed;
   text-align: center;
-  font-family: "Gill Sans", sans-serif;
 }
-h4.author { /* Header 4 - font specifications for authors  */
+
+h4.author { /* Header 4 - and the author and data headers use this too  */
   font-size: 18px;
-  font-family: system-ui;
-  color: red;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+  color: DarkRed;
   text-align: center;
 }
-h4.date { /* Header 4 - font specifications for the date  */
+
+h4.date { /* Header 4 - and the author and data headers use this too  */
   font-size: 18px;
-  font-family: system-ui;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
   color: DarkBlue;
   text-align: center;
-  font-weight: bold;
 }
-h1 { /* Header 1 - font specifications for level 1 section title  */
-    font-size: 22px;
-    font-family: "Times New Roman", Times, serif;
-    color: navy;
-    text-align: center;
-    font-weight: bold;
-}
-h2 { /* Header 2 - font specifications for level 2 section title */
+
+h1 { /* Header 1 - and the author and data headers use this too  */
     font-size: 20px;
-    font-family: "Times New Roman", Times, serif;
-    color: navy;
-    text-align: left;
     font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    color: darkred;
+    text-align: center;
 }
 
-h3 { /* Header 3 - font specifications of level 3 section title  */
+h2 { /* Header 2 - and the author and data headers use this too  */
     font-size: 18px;
+    font-weight: bold;
     font-family: "Times New Roman", Times, serif;
     color: navy;
     text-align: left;
 }
 
-h4 { /* Header 4 - font specifications of level 4 section title  */
-    font-size: 18px;
+h3 { /* Header 3 - and the author and data headers use this too  */
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    color: navy;
+    text-align: left;
+}
+
+h4 { /* Header 4 - and the author and data headers use this too  */
+    font-size: 14px;
+  font-weight: bold;
     font-family: "Times New Roman", Times, serif;
     color: darkred;
     text-align: left;
 }
+
+/* Add dots after numbered headers */
+.header-section-number::after {
+  content: ".";
 
 body { background-color:white; }
 
@@ -90,7 +102,7 @@ body { background-color:white; }
 
 p { background-color:white; }
 
-</style>
+}
 ```
 
 ```{r setup, include=FALSE}
@@ -118,125 +130,16 @@ knitr::opts_chunk$set(echo = TRUE,       # include code chunk in the output file
                       comment = NA
                       )  
 ```
-\
-
-<center><font style="font-size: 22px;
-  font-weight: bold;
-  color: Darkgreen;
-  text-align: center;
-  font-family: sans-serif;"> Part I: EDA and Feature Engineering </font>
-  (for week #5)
-  </center>
 
 \
 
-
-# Data Set
-
-
-Choose a data set that has at least four categorical variables and four numerical variables. The sample size should be at least 200. You can find a data set either from my teaching data repository or other data sources. The data set should be cross-sectional (i.e., each of the data points must be observed/collected/generated at the same time).
-
-# Description of Data
-
-The following information of the data should be provided in the report:
-
-* A brief description of the data source.
-
-* How the data set is generated or collected.
-
-* Number of variables and their type (categorical or numerical) and size of the data set.
-
-* List the variable names and their description/definitions.
-
-# Exploratory Data Analysis and Feature
-
-Perform the standard EDA such as distribution for categorical and numerical variables respectively, the relationship between two variables (combinations of categorical and numerical variables), and pairwise relationship. Keep in mind that the pairwise scatter plot is only meaning for numerical variables.
-
-For each EDA and associated representation, you should 
-
-* interpret what you observed and the implication of potential feature engineering
-
-* perform feature engineering based on EDA by writing an R/Python function.
-
-* Write a main function to wrap individual feature engineering functions.
-
-* Test the main function with different patterns in the components and sure it produces the expected result.
-
+This is part III of project one focusing on the applications of cross-validation methods in predictive modeling.
 
 \
 
-<center><font style="font-size: 22px;
-  font-weight: bold;
-  color: Darkgreen;
-  text-align: center;
-  font-family: sans-serif;"> Part II: Regression Analysis</font>
-  (for week #6)
-  </center>
-
-
 \
 
-# Statistical Regression Modeling
-
-Linear and logistic regression models are the most commonly used models in classical statistics. This part of the assignment uses the traditional statistical approaches to modeling building and implementation.
-
-## Linear Regression Models
-
-Choose a continuous variable as a response to perform a linear regression analysis. Please use several subsections to organize your analysis that contain the following components.
-
-* Statement of the question(s), the purpose of this analysis: association analysis or predictive analysis?
-
-* Justify whether the data set has sufficient information to address the question(s)
-
-* Model building process: initial model, diagnostics, further transformations (in addition to the one in the EDA), key performance metrics of model assessment, and final model selection (based on appropriate performance metrics). You are expected to
-  + create a model that contains a few practically important variables
-  + create a model that includes additional variables that potentially influence the response
-  + use certain variable selection methods to identify the optimal model (i.e., the final model)
-  
-* Interpretation of regression coefficients. If you transformed your response variable, you need to do some algebra to convert the transformed response variable back to the original scale before you interpret the regression coefficient.
-
-* Summary/discussion/recommendation
-
-You could open a subsection for each bullet point. 
-
-
-## Logistic Regression Analysis
-
-Choose a binary variable as a response to perform a logistic regression analysis. If your data set does not have a binary categorical variable that can be used for the logistic regression model, you can dichotomize a continuous response **in a meaningful way** and then build a logistic regression model with the dichotomized variable.
-
-
-Please use several subsections to organize your analysis that contain the following components.
-
-* Statement of the question(s), the purpose of this analysis: association analysis or predictive analysis?
-
-* Justify whether the data set has sufficient information to address the question(s)
-
-* Model building process: initial model, diagnostics, transformation and scaling (in addition to the one in the EDA), key performance metrics of model assessment, and final model selection (based on certain performance metrics). For practice, you are expected to
-  + create a model that contains a few practically important variables
-  + create a model that includes additional variables that potentially influence the response
-  + use certain variable selection methods to identify the optimal model (i.e., the final model)
-  
-* The interpretation of the final model: interpret the regression coefficient and applications of the model.
-
-* Summary/discussion/recommendation
-
-
-You could open a subsection for each bullet point. 
-
-
-\
-
-<center><font style="font-size: 22px;
-  font-weight: bold;
-  color: Darkgreen;
-  text-align: center;
-  font-family: sans-serif;"> Part III: Report Revision- Including Cross Validation</font>
-  (for week #7)
-  </center>
-
-\
-
-# Predictive Modeling 
+# Cross-validation for Predictive Modeling 
 
 The idea is to use **data-driven approaches** to data splitting and then apply cross-validation methods to select the final model from a pool of candidate models based on **predictive performance metric** such as **MSE** for linear regression models and **accuracy**, **sensitivity**, or **specificity** for logistic regression models.
 
@@ -250,7 +153,7 @@ The idea is to use **data-driven approaches** to data splitting and then apply c
 
 \
 
-## Prediction Linear Regression
+# Prediction Linear Regression
 
 The primary predictive performance metric for linear regression modeling is the mean square error <font color = "red"> (the average squared error between predicted and the observed values of the response variable <b>in its original scale)</b></font>. 
 
@@ -261,16 +164,13 @@ Likelihood-based metrics such as AIC and SBC can be used if the likelihood funct
 <font color = "red">*\color{red}If the response variables in all candidate models are at the same scale, the MSE is expected to be used in the cross-validation for model selection.*</font>
 
 
-## Logistic Predictive Modeling
+# Logistic Predictive Modeling
 
 The primary tool for assessing the global predictive performance of logistic models is ROC curve analysis (this includes the area under the ROC curve - AUC). ROC curve suggested for this assignment.
 
 Other predictive performance measures that can be considered are **accuracy**, **sensitivity**, and **specificity**.
 
 <font color = "red">*\color{red}Reporting ROC and AUC is required when comparing candidate models.*</font>
-
-
-## Testing Performance 
 
 After the final model is identified, you need to use the 25% testing data set to report the **actual** performance of the corresponding models. The performance measure is similar the actual performance when the model is implemented new real data. 
 
