@@ -1,9 +1,9 @@
 ---
-title: '<font size = 7 color = "white">Concepts of Relational Database</font>'
-subtitle: '<img src="img/RDMS-icon.png" width=260 height=180> '
-author: '<font size = 5 color = "white"> Cheng Peng </font>'
-institute: '<font size = 4 color = "white">West Chester University of Pennsylvania</font><br> '
-date: ' <font color = "white" size =4> <br> </font> <br> <font color = "gold" size = 6> STA551: Foundations of Data Science </font>'
+title: '<font size = 7 color = "white">Concepts of Relational Database</font> '
+subtitle: '<font color = "gold" size = 6> STA551: Foundations of Data Science </font>'
+author: '<img src="img/RDMS-icon.png" width=260 height=180> '
+institute: '<font size = 6 color = "white"> Cheng Peng </font>'
+date: '<font size = 5 color = "white">West Chester University of Pennsylvania</font>'
 output:
   xaringan::moon_reader:
     css: xaringan-themer01.css
@@ -66,16 +66,57 @@ class:inverse4, top
 <table>
 <tr><td style = "font-size: 26px">
 
-<li> Why we need database</li><br>
-<li> Database Concept</li><br>
-<li> Types of database models</li><br>
-<li> Relational database</li>
+<li> Database vs Database Management System</li>
+<li> Why we need database</li>
+<li> A Glance at Database Design</li>
+<li> Relational Database Management Systems</li>
+<li> Relationships between Relational Tables</li>
+<li> Query Language</li>
+<li> Basic SQL Joins</li>
 
 
 </td><tr>
 </table>
 
 ---
+
+
+
+name: DB-DBMS
+class: inverse1 center middle 
+
+<h2 align = "center" style = "font-variant: small-caps;">Database vs Database Management System </h2>
+
+---
+
+name: DB
+
+<h2 align = "center" style = "font-variant: small-caps;">What Is Database?</h2>
+<hr>
+
+A **database** is an organized, persistent, and structured collection of related data, typically stored electronically in a computer system. It is designed to be efficiently accessed, managed, updated, controlled, and retrieved.
+
+```{r echo = FALSE, fig.align='center', out.width= "30%"}
+include_graphics("img/DB.png")
+```
+
+---
+
+name:DB-DBMS
+
+<h2 align = "center" style = "font-variant: small-caps;">Database Management System</h2>
+<hr>
+
+
+The database itself is managed by a software system called a **Database Management System (DBMS)**, which acts as an intermediary between the database, the users, and the application programs.
+
+```{r echo = FALSE, fig.align='center', out.width= "70%"}
+include_graphics("img/DBMS.png")
+```
+
+---
+
+
 
 
 
@@ -88,51 +129,46 @@ class: inverse1 center middle
 
 
 
-
 name: DBMS
 
-<h2 align = "center" style = "font-variant: small-caps;">Database Management System</h2>
-<hr>
-<BR>
-
-* **Database Management System (DBMS)**: A collection of data (database) and programs to access that data. 
-
-
-
-* **The goal of DBMS**: TO store, retrieve, and display information. 
-
-
-
-* **Key characteristics of DBMS**:
-
-  + performance, 
-  + store large volume of database, 
-  + share data (access), 
-  + provide security (authorization), 
-  + remove redundancy (normalization), and 
-  + provide concurrent access (different users at the same time). 
----
-
-
-name: why-database
 
 <h2 align = "center" style = "font-variant: small-caps;">Why we need database?</h2>
 <hr>
-<br>
 
-Without databases, there will be no 
+.pull-left[
 
-* **Google Maps and GPS**: These services depend on vast amounts of geographical data stored in databases to provide accurate directions and location information.
+* **To Manage Large Amounts of Data Efficiently**: Databases are designed to handle massive volumes of data efficiently.
 
-* **Social Media Platforms**: Sites like Facebook, Twitter, and Instagram use databases to store user profiles, posts, and interactions.
+* **To Ensure Data Accuracy and Integrity (ACID)**: Databases enforce rules and constraints (e.g., data types, unique values) to prevent invalid data entry.
 
-* **E-commerce Websites**: Online stores like Amazon use databases to manage product inventories, customer orders, and transaction histories.
+* **To Avoid Data Redundancy and Inconsistency**: A central database stores each piece of data once to eliminates duplicate copies (redundancy).
 
-* **Banking Systems**: Databases are essential for tracking account balances, transactions, and financial records.
+* **To Enable Concurrent Access Safely**: Databases allow multiple users or applications to access and modify data at the same time without interfering with each other or causing data loss.
+]
+.pull-right[
 
-* **Healthcare Systems**: Patient records, treatment histories, and medical research data are all stored in databases.
+* **To Provide Robust Security and Access Control**: Databases offer fine-grained security features. 
+
+* **To Support Powerful Querying and Complex Analysis**: Using a language like SQL, you can ask complex questions and combine data from different sources easily.
+
+* **To Ensure Data Persistence and Reliability**: Databases are built to be durable. Once data is saved, it is protected from system failures and remains permanent until intentionally deleted.
+
+* **To Separate Data from Applications (Data Independence)**: The data is stored separately from the application logic. 
+]
 
 ---
+
+
+
+name: DB-Design 
+class: inverse1 center middle 
+
+<h2 align = "center" style = "font-variant: small-caps;">A Glance at Database Design </h2>
+
+---
+
+
+
 
 
 name: DataAbstraction
@@ -141,12 +177,22 @@ name: DataAbstraction
 <h2 align = "center" style = "font-variant: small-caps;">Data Abstraction</h2>
 <hr>
 
+.pull-left[
+<br><br>
 * **Physical level**: Describe how the data are actually stored (words or bytes)
 
 * **Conceptual level**: Describe what data are actually stored in the database (Structure). It gives a Schematic representation of phenomena 
 
 * **View level**: Describe only a part of the entire database. Many users of the database may be concerned with a subset of information. The system may provide many views for the same database
+]
 
+.pull-right[
+
+```{r echo = FALSE, fig.align='center', out.width= "99%"}
+include_graphics("img/DataAbstraction.png")
+```
+
+]
 ---
 
 
@@ -155,15 +201,44 @@ name:dataModels
 <h2 align = "center" style = "font-variant: small-caps;">Data Models </h2>
 <hr>
 
+.pull-left[
+
+A data model's framework is a structured set of components that work together to provide a complete blueprint for data. 
+
+It's not just about structure; it's about meaning, rules, and operations.
+
+The core framework can be broken down into three fundamental components, which are then applied across different levels of abstraction, as shown in the flowchart.
+
+A data model is the essential blueprint used in the design of a database. It acts as a guide and a plan, ensuring the final database is structured correctly, efficiently, and in a way that accurately represents the real-world system it's meant to support.
+
+]
+
+.pull-right[
+
+```{r echo = FALSE, fig.align='center', out.width= "70%"}
+include_graphics("img/DataModels.png")
+```
+]
+---
+
+name:dataModelTypes
+
+<h2 align = "center" style = "font-variant: small-caps;">Types of Data Models </h2>
+<hr>
+
 Different data models define different databases. The common data models are
 
-* **Object oriented model**
+.pull-left[ 
+* **Hierarchical model**:  A collection of records connected through parent-child relationships. Each parent record can have multiple children, but each child has exactly one parent. This forms a tree structure.
 
-* **Hierarchical model**
+* **Network model**:  A collection of records (nodes) connected by links (edges). A record can have multiple parent and child records, forming a graph or network.
+]
 
-* **Network model**
+.pull-right[
+* **Relational model**: Data is organized in tables (relations) with rows (tuples) and columns (attributes). All data is represented as values in tables. This model revolutionized database technology by focusing on logical representation rather than physical storage.
 
-* **Relational model**
+* **Object oriented model**:  Data is stored as objects, just like in object-oriented programming. Objects are instances of classes, which have attributes (data) and methods (behavior).
+]
 
 We will only focus on **relational database** defined based on relational data model.
 
@@ -176,62 +251,106 @@ name: relationalDatabase
 <h2 align = "center" style = "font-variant: small-caps;">Reasons to use  Relational Model </h2>
 <hr>
 
+.pull-left[
+* **Data Integrity**: Guarantees accuracy and consistency through ACID (Autpmicity, Consistency, Isolation, and Dureability) compliance and built-in constraints, ensuring data is always valid and reliable.
 
-* **Independence of the physical data storage and logical database structure**. Results users do not need to understand the underlying physical layout of the data to access data from a logical structure, such as a table
+* **SQL & Powerful Querying**: The standardized SQL language allows for expressive, ad-hoc, and complex queries to retrieve and manipulate data efficiently.
 
-* **Variable and easy access to all data**. Results in access to data are not predefined as in hierarchical databases in which users must understand and navigate through the hierarchy to retrieve data
+* **Reduced Redundancy**: Normalization eliminates data duplication by storing information in one place and referencing it, which conserves storage and prevents update anomalies.
 
-* **Flexible in database design**. i.e complex objects are expressed as simple tables and relationships
+]
+.pull-right[
 
-* *Applying relational design methods reduces data redundancy (Normalization) and storage requirements*
+* **Logical Data Independence**: The logical design (tables, columns) is separate from the physical storage. This allows changes to how data is stored without affecting how applications access it.
+
+* **Flexibility & Ad-Hoc Analysis**: The simple tabular structure and powerful SQL engine enable easy exploration and reporting of data for business intelligence without predefined access paths.
+
+* **Maturity & Ecosystem**: A proven, decades-old technology with robust vendor support, sophisticated management tools, strong security features, and a vast global talent pool.
+
+]
+---
+
+
+name: DB-DBMS
+class: inverse1 center middle 
+
+<h2 align = "center" style = "font-variant: small-caps;">Relational Database Management Systems </h2>
 
 ---
 
 
 
+
 name: RDBMS1
 
-<h2 align = "center" style = "font-variant: small-caps;">Relational Database Management System (RDBMS) </h2>
+<h2 align = "center" style = "font-variant: small-caps;">Special Aspects of RDBMS </h2>
  <hr>
 
-* **Aspects of an RDBMS**
+* **Physical Data Independence**: The ability to change how the data is physically stored (e.g., on disk) without needing to change the application code that accesses it.
 
-  + **Structures**: Well defined objects
-  + **Operations**: Clearly defined actions
-  + **Integrity Rules**: Rules that control which operations are allowed on the data and structures of the database
+* **Logical Data Independence**: The ability to change the logical structure of the database (e.g., adding a new table or column) without disrupting existing applications that don't need that new data.
+
+* **Declarative Querying (SQL)**: The user (or application) declares what data they want using a high-level language (SQL), not how to get it. 
+
+* **Set-Based Processing**: Operations work on entire sets of rows at a time (e.g., `UPDATE all customers SET status = 'active' WHERE country = 'US'`).
+
+* **The Relational Model (Based on Mathematical Set Theory)**: All data is represented as simple tuples (rows) grouped into relations (tables). There are no physical pointers or hierarchical paths linking the data. Relationships between tables are represented by data values (foreign keys), not storage structures.
+---
 
 
-* **Components of a Relational Database**
 
-  + **Table**: collection of rows all containing the same columns
-  + **Row**: Horizontal components of a table. Consists of values for each column. Each row is equivalent to a record
-  + **Column**: Vertical component of a table. Each column in the record is often referred to as a field
+
+
+
+
+
+
+name: RDBMS1
+
+<h2 align = "center" style = "font-variant: small-caps;">Key Components of RDBMS </h2>
+ <hr>
+ <br>
+ 
+The following five components work together seamlessly to provide the structured, reliable, and high-performance environment that defines an RDBMS.
+<br><br>
+
+| **Component** |	**Analogy** | **Primary Function**|
+|:-----------------|:---------------------------|:-----------------------------|
+|Relational Engine	|The Brain	|Processes commands and optimizes performance.|
+|Storage Engine	|The Filing Clerk	|Manages physical storage and guarantees ACID.|
+|Database Schema|	The Blueprint|	Defines structure and enforces data rules.|
+|SQL	|The Language	|The universal interface for all communication.|
+|Index|	The Book's Index|	Dramatically speeds up data retrieval.|
+
+
 
 ---
 
 
 name: RDBMS2
 
-<h2 align = "center" style = "font-variant: small-caps;">Relational Database Management System (RDBMS) </h2>
+<h2 align = "center" style = "font-variant: small-caps;">The Essential Rules of Relational Tables </h2>
 <hr>
 
-* **Relational Database Rules**
-  + Each column in a table **must be unique**
-  + The order of the rows in a table **is not meaningful**
-  + The order of the columns in a table **is not meaningful**
-  + All data in a column **must be the same type**
-  + Every table has a **primary key**, each column in the primary key **must have a value**. 
+|	**Rule** | **Description**	| **Purpose**|
+|:---------------|:-------------------------------------|:---------------------|
+| Unique Primary Key	| Every row must be uniquely identifiable.	| Uniqueness and relationships.| 
+| Atomic Columns (1NF)| 	Cells contain single, indivisible values.| 	Data integrity and accurate querying.| 
+| Non-Redundant Data	| Data is stored in one place and referenced.	| Prevents inconsistencies and saves space.| 
+| Foreign Key | Relationships	Tables are linked by values, not pointers.	| Creates logical, flexible connections.| 
+| Same Domain Values	| All values in a column are of the same type.	| Ensures consistency and valid operations.| 
+| No Order Dependency	| The order of rows and columns is not meaningful.	| Data is accessed by content, not location.| 
+| Single Entity per Table	| A table represents one "thing" or concept.	| Clear design and minimizes redundancy.| 
+
+---
 
 
-* **Primary Key and Foreign Key**
 
-  + Relational database use **primary keys** and **foreign keys** to allow mapping of information from one table to another 
-  
-  + A **foreign key** is a column or group of columns in a table whose value matches those of the **primary key** of another table
-  
-  + Values in the **primary key** column must be unique e.g. social security number (SSN) 
 
-  + **Referential Integrity** refers to the integrity of the reference from the primary key in one table to a foreign key in another table.
+name: RelBetweenTables 
+class: inverse1 center middle 
+
+<h2 align = "center" style = "font-variant: small-caps;">Relationships between Relational Tables </h2>
 
 ---
 
@@ -247,16 +366,6 @@ include_graphics("img/1to1.png")
 ```
 
 ---
-
-
-
-name: RelBetweenTables 
-class: inverse1 center middle 
-
-<h2 align = "center" style = "font-variant: small-caps;">Relationships between Tables </h2>
-
----
-
 
 
 
@@ -331,6 +440,74 @@ SQL has gained wide acceptance in commercial products
 ---
 
 
+class: SQL-Classification
+
+<h2 align = "center" style = "font-variant: small-caps;">Fundamental Classification of SQL Commands</h2>
+<hr>
+SQL commands are categorized based on their primary function in managing databases.
+
+* **DQL (Data Query Language)** retrieves data from databases. No modification of data; It often combines with clauses like WHERE, JOIN, GROUP BY.
+
+* **DDL (Data Definition Language)** defines or modifies the structure of database objects (e.g., tables, schemas). It requires explicit COMMIT or ROLLBACK for permanent changes.
+
+* **DML (Data Manipulation Language)** manipulates data within tables (insert, update, delete). It requires explicit COMMIT or ROLLBACK for permanent changes.
+
+* **DCL (Data Control Language)** controls access to data (permissions and security). It manages roles and permissions.
+
+* **TCL (Transaction Control Language)** manages transactions (ensure data consistency). Ir ensures ACID properties (Atomicity, Consistency, Isolation, Durability).
+
+---
+
+
+name: SQLStructure
+
+<h2 align = "center" style = "font-variant: small-caps;">Query Syntax</h2>
+<hr>
+
+```{r echo=FALSE, fig.align ="center",  out.width = '90%'}
+  knitr::include_graphics("img/SQL-Nutshell-Crop.gif")
+```
+
+---
+
+
+
+
+class: ExecuationOrder
+
+<h2 align = "center" style = "font-variant: small-caps;">Order of SQL Execution</h2>
+<hr>
+
+Understanding the logical order of execution (the "thought process" of the database engine) is crucial for writing correct and efficient SQL queries.
+
+
+| Order| 	Clause |	Purpose |
+|:---|:-----------------------------:|:-----------------------------------|
+| 1	| FROM| 	Identifies and loads the base table(s). If there are joins, they happen here.| 
+| 2	| WHERE| 	Filters rows from the source table(s) based on a condition.| 
+| 3	| GROUP BY| 	Groups the filtered rows into buckets based on identical values in specified columns.| 
+| 4	| HAVING| 	Filters the created groups based on a condition (works on aggregated data).| 
+| 5	| SELECT| 	Projects (selects) the final columns and calculates any expressions or aggregates.| 
+| 6	| DISTINCT| 	Removes duplicate rows from the final result set.| 
+| 7	| ORDER BY| 	Sorts the final result set.| 
+| 8	| LIMIT / OFFSET| 	Restricts the number of rows returned.| 
+
+---
+
+
+name: SQLDataTypes
+
+<h2 align = "center" style = "font-variant: small-caps;">A SQL Example</h2>
+<hr>
+
+```{r echo = FALSE, fig.align='center', out.width="99%"}
+include_graphics("img/SQL.png")
+```
+
+
+
+---
+
 
 name: SQLDataTypes
 
@@ -354,40 +531,6 @@ name: SQLDataTypes
 
 
 
-
-name: SQLStructure
-
-<h2 align = "center" style = "font-variant: small-caps;">Query Syntax</h2>
-<hr>
-
-**A typical SQL query has the form**		
-
-```
-    SELECT A1, A2, ..., An				
-    FROM r1, r2, ..., rm			  	
-    WHERE P						
-```    
-    
-* Each $A_i$ represents an attribute and each ri a relation. 
-* P is a predicate (selection). The list of attributes 
-* $A_1, \cdots, A_n$ can be replaced by (*) to select all attributes
-
-The result of an SQL query is a relation (table)
-
-
-**Keyword “DISTINCT”**
-
-Used after `SELECT` to force the elimination of duplicates. For example, find all customer names having a balance equal to $6000	
-
-```
-	SELECT DISTINCT customer-name			   
-	FROM AccCust				  
-	WHERE balance = 6000
-```		       
-
-SQL supports union, intersect, and minus 
-
----
 
 
 name: BasicJoins 
@@ -448,10 +591,23 @@ name: fullJoin
 ```
 ---
 
+name: fullJoin
+
+<h2 align = "center" style = "font-variant: small-caps;">Summary of SQL Joins</h2>
+<hr>
+
+
+
+```{r echo=FALSE, fig.align ="center",  out.width = '70%'}
+  knitr::include_graphics("img/SQL-Joins.png")
+```
+---
+
+
 
 
 name: ThankyouPage 
-class: inverse2 center middle 
+class: inverse1 center middle 
 
 <h2 align = "center" style = "font-variant: small-caps;"><b>Thank You</b> </h2>
 
