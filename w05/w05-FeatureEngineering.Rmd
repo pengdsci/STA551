@@ -3,6 +3,18 @@ title: 'Basic Techniques for Feature Engineering'
 author: "Cheng Peng"
 date: " STA 511 - Foudations of Data Science"
 output:
+  pdf_document: 
+    toc: yes
+    toc_depth: 4
+    fig_caption: yes
+    number_sections: yes
+    fig_width: 3
+    fig_height: 3
+  word_document: 
+    toc: yes
+    toc_depth: 4
+    fig_caption: yes
+    keep_md: yes
   html_document: 
     toc: yes
     toc_depth: 4
@@ -13,25 +25,12 @@ output:
     code_download: yes
     smooth_scroll: yes
     theme: lumen
-  word_document: 
-    toc: yes
-    toc_depth: 4
-    fig_caption: yes
-    keep_md: yes
-  pdf_document: 
-    toc: yes
-    toc_depth: 4
-    fig_caption: yes
-    number_sections: yes
-    fig_width: 3
-    fig_height: 3
 editor_options: 
   chunk_output_type: inline
 ---
 
-```{=html}
 
-<style type="text/css">
+```{css, echo = FALSE}
 
 /* Cascading Style Sheets (CSS) is a stylesheet language used to describe the presentation of a document written in HTML or XML. it is a simple mechanism for adding style (e.g., fonts, colors, spacing) to Web documents. */
 
@@ -91,8 +90,9 @@ body { background-color:white; }
 
 p { background-color:white; }
 
-</style>
 ```
+
+
 
 ```{r setup, include=FALSE}
 # code chunk specifies whether the R code, warnings, and output 
@@ -189,7 +189,7 @@ In this note, we will explore some techniques that are used to engineer impactfu
 Some of the above tasks are initiated from exploratory data analysis while others can be initiated from modeling. In the next few sections, we will discuss each of the above feature engineering tasks with some examples. A case study with EDA and feature engineering with some illustrative examples.
 
 
-# EDA-based Feature Engineering 
+# EDA-Driven Feature Engineering 
 
 We have introduced EDA to identify patterns such as distribution, relationships, missing values, etc. When building models and implementing algorithms, we need to assess the assumption based on which the models and algorithms were developed. For example, extremely skewed or multi-modal predictor variables may cause inaccurate prediction, sparse categorical variables (some categories have extremely small counts) cause unstable prediction, etc. We need to use various techniques to create new features to improve the performance of modeling. 
 
@@ -256,6 +256,7 @@ print(data)
 
 Equal frequency binning divides the data into intervals that contain approximately the same number of observations. This method is sometimes used to develop a chi-squared test for the goodness-of-fit test. The following is a simple example with R code.
 
+
 ```{r}
 # Sample data
 data <- data.frame(value = c(1.1, 2.3, 3.5, 4.7, 5.9))
@@ -265,6 +266,7 @@ data$bin <- cut(data$value, breaks = quantile(data$value, probs = seq(0, 1, by =
                 include.lowest = TRUE, include.highest = TRUE, labels = c("Low", "Medium", "High"))
 print(data)
 ```
+
 
 ### Other Binning Methods
 
@@ -296,6 +298,7 @@ y_{\text{new}} = \left\{
    \end{array}
  \right.
 $$
+
 Parameter $\lambda$ is estimated from the data. We can see that the log transformation is a special Box-cox transformation.
 
 The Box-cox transformation is used for 
@@ -310,6 +313,7 @@ The Box-cox transformation is used for
 The $y$ has negative values, we need to use the modified version of Box-cox or use other transformations to convert $y$ into a positive variable before applying the Box-cox transformation.
 
 **Example**: To perform a Box-Cox transformation in R, you can use the `boxcox` function from the MASS package. This function helps find the optimal $\lambda$ value to transform the given data to approximate a normal distribution. 
+
 
 ```{r fig.align='center', fig.width=7, fig.height=4, fig.cap="Box-Cox Transformation Demonstration"}
 
@@ -367,6 +371,7 @@ include_graphics("img/PCA.png")
 
 The technical description will be discussed later. Here’s a step-by-step example of how to perform PCA in R using the *USArrests dataset*, which contains data on arrests per 100,000 residents for various crimes in each U.S. state. The data set is built in the library *tidyverse*. The following R code implements PCA.
 
+
 ```{r fig.align='center', fig.width=8, fig.height=5, fig.cap="Implementing principal component analysis (PCA)"}
 # Load the dataset
 data("USArrests")
@@ -388,6 +393,7 @@ screeplot(pca_result, type = "lines")
 #biplot(pca_result, scale = 0)
 ```
 
+
 The next step is to extract the new feature variables. For comparison, we add the new features to the original data set.
 
 ```{r}
@@ -395,6 +401,7 @@ PCA.scores = round(pca_result$x,5)
 combined.data = cbind(USArrests, PCA.scores)
 head(combined.data )
 ```
+
 
 **Comments**: A few comments on PCA:
 
@@ -411,6 +418,7 @@ head(combined.data )
 6. The method of PCA is also one of the information aggregation methods.
 
 \
+
 
 ## Cluster Analysis
 
@@ -449,6 +457,7 @@ kmeans_result <- kmeans(df, centers = 3, nstart = 25)
 # Visualize clusters
 fviz_cluster(kmeans_result, data = df, xlab="PC1", ylab = "PC2")
 ```
+
 
 **What is the new feature?** - <font color = "red">*\color{red}The new feature extracted from the data is the vector of the cluster labels!*</font>.
 
@@ -552,10 +561,13 @@ print(week_of_year) # 35
 Feature scaling, including standardization, is a crucial step in data preprocessing, especially for machine learning models. It ensures that all features contribute equally to the model and prevents features with larger scales from dominating. Here are some common methods for feature scaling in R.
 
 ### Standardization
+
 Standardization scales the data so that it has a mean of 0 and a standard deviation of 1. This is done using the formula
+
 $$
 z = \frac{x-\mu}{\sigma}
 $$
+
 where $x$ is the original feature value, $\mu$ is the mean of the feature, and $\sigma$ is the standard deviation. We can also use the `scale()` function in R to standardize the data. The following is an example of standardization.
 
 ```{r}
@@ -597,9 +609,12 @@ print(head(data.normalized))
 
 Robust scaling uses the median and the interquartile range (IQR) to scale the data, making it less sensitive to outliers. The formula is
 
+
 $$
 x^\prime =\frac{x - \text{median}(x)}{\text{IQR}(x)}
 $$
+
+
 Here is an example in R of robust scaling in R.
 
 ```{r}
@@ -632,6 +647,7 @@ Feature engineering is an input-process-out (IPO) model that can be capsulated a
 ```{r echo = FALSE, fig.align='center', out.width="90%", fig.cap = "Wrapping up feature engineering."}
 include_graphics("img/FeatureEngineeringFunction.png")
 ```
+
 
 The idea is to write a function to accept records from the integrated data and produce engineered records to feed candidate models for prediction.
 

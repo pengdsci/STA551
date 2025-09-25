@@ -3,6 +3,18 @@ title: 'Exploratory Data Analysis - Case Study'
 author: "Cheng Peng"
 date: " STA 511 - Foudations of Data Science"
 output:
+  pdf_document: 
+    toc: yes
+    toc_depth: 4
+    fig_caption: yes
+    number_sections: yes
+    fig_width: 3
+    fig_height: 3
+  word_document: 
+    toc: yes
+    toc_depth: 4
+    fig_caption: yes
+    keep_md: yes
   html_document: 
     toc: yes
     toc_depth: 4
@@ -13,26 +25,11 @@ output:
     code_download: yes
     smooth_scroll: yes
     theme: lumen
-  word_document: 
-    toc: yes
-    toc_depth: 4
-    fig_caption: yes
-    keep_md: yes
-  pdf_document: 
-    toc: yes
-    toc_depth: 4
-    fig_caption: yes
-    number_sections: yes
-    fig_width: 3
-    fig_height: 3
 editor_options: 
   chunk_output_type: inline
 ---
 
-```{=html}
-
-<style type="text/css">
-
+```{css, echo = FALSE}
 /* Cascading Style Sheets (CSS) is a stylesheet language used to describe the presentation of a document written in HTML or XML. it is a simple mechanism for adding style (e.g., fonts, colors, spacing) to Web documents. */
 
 h1.title {  /* Title - font specifications of the report title */
@@ -90,7 +87,6 @@ body { background-color:white; }
 
 p { background-color:white; }
 
-</style>
 ```
 
 ```{r setup, include=FALSE}
@@ -113,7 +109,7 @@ if (!require("ggridges")) {
    library(ggridges)
 }
 knitr::opts_chunk$set(echo = TRUE,       # include code chunk in the output file
-                      warnings = FALSE,  # sometimes, you code may produce warning messages,
+                      warning = FALSE,   # sometimes, you code may produce warning messages,
                                          # you can choose to include the warning messages in
                                          # the output file. 
                       results = TRUE,    # you can also decide whether to include the output
@@ -169,6 +165,8 @@ There are two versions of the data available in the public domain. This case stu
 `diabetes`: outcome class variable ('neg' or 'pos')
 
 A copy of this publicly available data is stored at <https://pengdsci.github.io/datasets/PimaDiabetes/PimaIndiansDiabetes2.csv>.
+
+
 
 ```{r}
 PimaDiabetes = read.csv("https://pengdsci.github.io/datasets/PimaDiabetes/PimaIndiansDiabetes2.csv")[, -1]
