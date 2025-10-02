@@ -31,9 +31,7 @@ editor_options:
   chunk_output_type: inline
 ---
 
-```{=html}
-
-<style type="text/css">
+```{css, echo = FALSE}
 
 /* Cascading Style Sheets (CSS) is a stylesheet language used to describe the presentation of a document written in HTML or XML. it is a simple mechanism for adding style (e.g., fonts, colors, spacing) to Web documents. */
 
@@ -93,7 +91,6 @@ body { background-color:white; }
 
 /*p { background-color:white; } */
 
-</style>
 ```
 
 
@@ -112,9 +109,12 @@ if (!require("forecast")) {
    install.packages("forecast")
    library(forecast)
 }
-
+if (!require("plotly")) {
+   install.packages("plotly")
+   library(plotly)
+}
 knitr::opts_chunk$set(echo = TRUE,       
-                      warnings = FALSE,   
+                      warning = FALSE,   
                       results = TRUE,   
                       message = FALSE,
                       fig.align='center', 
@@ -192,6 +192,52 @@ legend(16, 0.9, c("logistic curve", "linear regresion line"),
 
 
 Since the response variable is binary (i.e., it can only take on two distinct values, 0 and 1 in this example), the linear regression line is a bad choice since (1) the response variable is not continuous, (2) the fitted regression line can take on any values between negative infinity and positive infinity. The response variable takes on only either 0 or 1 (see the dark red straight line).
+
+The next 3D plot shows the data cloud, with the binary response on the vertical axis. The surface represents a fitted logistic regression model.
+
+
+```{r fig.align='center', fig.width=5, fig.height=5}
+### Variables
+flies = read.table("https://pengdsci.github.io/STA551/w06/FruitFlies.txt", header = TRUE)
+logist = glm(IndReprod ~ Longevity  + ThxLength, family = binomial(link = "logit"), data = flies)
+param = coef(logist)
+phat = exp(param[1]+param[2]*flies$Longevity + param[3]*flies$ThxLength)/(1 + exp(param[1]+param[2]*flies$Longevity + param[3]*flies$ThxLength))
+flies$phat = phat
+##
+## coefficients
+ff = function(x1, x2){exp(param[1]+param[2]*x1 + param[3]*x2)/(1 + exp(param[1]+param[2]*x1 + param[3]*x2))}
+
+# Create a grid of points covering the feature space
+grid_resolution <- .1         # grid size
+x1_range <- seq(min(flies$Longevity), max(flies$Longevity), by = grid_resolution)
+x2_range <- seq(min(flies$ThxLength), max(flies$ThxLength), by = grid_resolution)
+
+# Convert to matrix for plotly surface
+z_matrix <- t(outer(x1_range,x2_range, ff))   # height of grid point on the surface
+                     
+## 3D Surface Plot
+plot_ly(flies, x = ~Longevity, y = ~ThxLength, z = ~phat, color = ~IndReprod, 
+        colors = c('#BF382A', 'blue'), showscale=FALSE,
+        text = ~paste('IndReprod:', IndReprod, '<br>Prob:', phat), type = "scatter3d") %>%
+         # add points
+         add_markers() %>% 
+         # adding intersecting plane
+         add_trace(x = ~x1_range,    
+                   y = ~x2_range, 
+                   z =  ~z_matrix,
+                   colors = "darkgreen",
+                   type="surface",
+                   opacity = 0.5)   %>%
+         layout(showlegend = FALSE) 
+
+```
+
+
+
+
+
+
+
 
 A meaningful approach to assess the association between the binary response variable and the predictor variable by looking at how the predictor variables impact the probability of observing the **bigger** value of the response variable. <font color = "red">**\color{red} If the response is a character variable, the one that has a higher alphabetical order for the character response is called a "bigger" value**</font>. The above **S** curve describes the relationship between the values of the predictor variable(s) and the probability of observing the **bigger** value of the response variable.
 
