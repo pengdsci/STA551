@@ -1,5 +1,5 @@
 ---
-title: "An Overview of Commonly Used Suoervised ML Algorithms"
+title: "An Overview of Common Supervised Machine Learning Algorithms"
 author: "Cheng Peng"
 date: "STA 551 Foundation of Data Science "
 output:
@@ -30,7 +30,7 @@ output:
     theme: lumen
 ---
 
-```{=html}
+```{css echo = FALSE}
 <style type="text/css">
 
 div#TOC li {
@@ -208,7 +208,7 @@ The next table compares the two categories of algorithms from different perspect
 
  
 ```{r fig.align='center', out.width="90%", fig.cap="The comparison of instance-based and model-based supervised learning algorithms"}
-include_graphics("img/InstabceModel-basedLearning.jpg")
+include_graphics("img/InstabceModel-basedLearning.png")
 ```
  
 In the next subsections, we will provide some of the instance-based and model-based algorithms with some illustrative examples (based on small data sets) to explain the rough ideas of these algorithms. 
@@ -809,7 +809,6 @@ legend("bottomright", c(paste("gini.1.1,  AUC =", giniROC11$AUC),
 ```
 
 
-
 The above ROC curves represent various decision trees and their corresponding AUC. The model with the largest AUC is considered the best decision tree among the existing ones. 
 
 
@@ -881,6 +880,7 @@ Optm.cutoff(in.data = train, fp=1, fn=10, purity="information")
 Optm.cutoff(in.data = train, fp=10, fn=1, purity="gini")
 Optm.cutoff(in.data = train, fp=10, fn=1, purity="information")
 ```
+
 
 As anticipated, different trees have their own optimal cut-off. Please keep in mind that the cut-off is random (based on the randomly split training data), there may be different cut-offs in different runs. It is dependent on the tree size, sometimes, we may end up with multiple optimal cut-offs. Technically speaking, we choose any one of them for implementation. A better recommendation is to choose the average of these multiple cut-offs and the final cut-off to be used on the testing data set.
 
