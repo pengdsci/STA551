@@ -3,12 +3,6 @@ title: "Algorithms for Anomaly Detection"
 author: "Cheng Peng"
 date: "STA551 Foundations of Data Science"
 output:
-  pdf_document: 
-    toc: yes
-    toc_depth: 4
-    number_sections: yes
-    fig_width: 5
-    fig_height: 4
   html_document: 
     toc: yes
     toc_float: yes
@@ -23,6 +17,12 @@ output:
     smooth_scroll: yes
     theme: lumen
     df_print: kable
+  pdf_document: 
+    toc: yes
+    toc_depth: 4
+    number_sections: yes
+    fig_width: 5
+    fig_height: 4
   word_document: 
     toc: yes
     toc_depth: 4
@@ -30,7 +30,7 @@ output:
     keep_md: yes
 ---
 
-```{=html}
+```{css echo = FALSE}
 <style type="text/css">
 
 div#TOC li {
@@ -273,11 +273,27 @@ Machine learning algorithms are widely utilized for anomaly detection, with thei
 
 **K-Nearest Neighbors (kNN)**: Though typically a supervised learning algorithm used for classification, kNN can be adapted for unsupervised anomaly detection techniques. It involves defining what constitutes normal and abnormal values without traditional training processes. This flexibility makes kNN suitable for both small and large data sets and facilitates straightforward visualization of results.
 
+The following figure shows how to use the mean distance of points in a 5-point neighborhood to 
+
+```{r echo=FALSE, fig.align='center', out.width="80%"}
+include_graphics("img/kNN-AnomalyDetection.jpg")
+```
+
+
 **Support Vector Machines (SVM)**: As a supervised anomaly detection learning method, SVM classifies data by separating them into classes with hyper-planes in a multi-dimensional space. For AD, SVM can be tailored to single-class scenarios where the model learns to identify the 'normal' class and flags data not fitting this classification as anomalies.
 
-**DBSCAN (Density-Based Spatial Clustering of Applications with Noise) **: This unsupervised anomaly detection algorithm relies on density-based clustering. It identifies clusters in large data sets by evaluating the local density of data points, with outliers marked as -1, indicating they do not belong to any cluster.
 
-**Autoencoders**: Utilizing artificial neural networks, autoencoders compress data into a reduced dimension before reconstructing it to its original form. This process helps in retaining essential information in the compressed representation, which is useful for spotting outliers. Bayesian Networks: Effective in high-dimensional data scenarios, Bayesian networks are valuable for identifying subtle anomalies that are not easily detectable through conventional plotting techniques.
+```{r echo=FALSE, fig.align='center', out.width="80%"}
+include_graphics("img/OCSVM-AnonalyDetection.jpg")
+```
+
+
+**DBSCAN (Density-Based Spatial Clustering of Applications with Noise)**: This unsupervised anomaly detection algorithm relies on density-based clustering. It identifies clusters in large data sets by evaluating the local density of data points, with outliers marked as -1, indicating they do not belong to any cluster.
+
+
+```{r echo=FALSE, fig.align='center', out.width="60%"}
+include_graphics("img/DBSCAN-AnomalyDetection.jpg")
+```
 
 
 In the following section, we introduce one outlier detection - the local outlier factor (LOF) score method to detect outliers (anomaly).
@@ -313,7 +329,7 @@ include_graphics("img/ManhatanDistanceExample.jpg")
 
 ### k-distance (kD)
 
-For the pre-selected k, k-distance is defined to be the distance of a (new) point to its kth neighbor (i.e., k-th point). For example, if k was 3, the k-distance of A, denoted by `k-distance(A)`, would be the distance of point A to its `third closest` point which is D (B is the first closest neighbor, C is the second closest neighbor), see the following Figure.
+For the pre-selected k, k-distance is defined to be the distance of a (new) point to its kth neighbor (i.e., k-th point). For example, if k was 3, **the k-distance of A**, denoted by `k-distance(A)`, **would be the distance of point A to its** `third closest` point which is D (B is the first closest neighbor, C is the second closest neighbor), see the following Figure.
 
 ```{r echo=FALSE, fig.align='center', out.width="50%",  fig.cap="Figure 4.  An illustration of k-distance with k = 3."}
 include_graphics("img/K-Distance.jpg")
