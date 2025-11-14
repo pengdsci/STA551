@@ -352,6 +352,7 @@ $$
 
 where `normal-distance(A, D)` could be any "statistical distance" that is used in `k-distance(D)`.
 
+
 ```{r echo=FALSE, fig.align='center', out.width="65%",  fig.cap="Figure 6.  Illustration of reachability distance."}
 include_graphics("img/ReachabilityDistance02.jpg")
 ```
@@ -382,6 +383,7 @@ include_graphics("img/kNN-count.jpg")
 
 
 With the above notations, we define them in the following algebraic form. Assume the working data set has records $\{A_1, A_2, \cdots, A_n \}$ and using the neighborhood containing k closest neighbors. The local reachability density ($\mathbf{LRD}_k(A_i)$) of every point (i.e., neighbor) in the neighborhood around $A_i$ with k-nearest neighbors is given by
+
 
 $$
 \mathbf{LRD}_k(A_i) = \frac{1}{\frac{\sum_{A\in N_k(A_i)} \mathbf{RD}_k(A)}{||N_k(A_i)||}} 
