@@ -30,7 +30,7 @@ output:
     keep_md: yes
 ---
 
-```{=html}
+```{css echo = FALSE}
 <style type="text/css">
 
 div#TOC li {
@@ -118,15 +118,14 @@ if (!require("knitr")) {
    install.packages("knitr")
    library(knitr)
 }
-
-# knitr::opts_knit$set(root.dir = "C:/Users/75CPENG/OneDrive - West Chester University of PA/Documents")
-# knitr::opts_knit$set(root.dir = "C:\\STA490\\w05")
-
+## 
 knitr::opts_chunk$set(echo = TRUE,       
                       warning = FALSE,   
-                      result = TRUE,   
+                      results = TRUE,   
                       message = FALSE)
 ```
+
+\
 
 # Introduction
 
@@ -142,21 +141,79 @@ Several statistical methods relevant to feature selection have been discussed in
 
 ## Filter Methods
 
-Filter methods are statistical-based feature selection methods that involve evaluating the relationship between each input variable and the target (response) variable using statistics and selecting those input variables that have the strongest relationship with the target variable. These methods can be fast and effective, although the choice of statistical measures depends on the data type of both the input and output variables. Here are some of these methods with brief descriptions.
+Filter methods are statistical-based feature selection methods that involve evaluating the relationship between each **input variable** and the **target (response) variable** using statistical relationships and selecting those input variables that have the strongest relationship with the target variable. These methods can be fast and effective, although the choice of statistical measures depends on the data type of both the input and output variables. Here are some of these methods with brief descriptions.
 
 ### Information Gain
 
-Information gain calculates the reduction in entropy from the transformation of a data set. It can be used for feature selection by evaluating the Information gain of each variable in the context of the target variable. We have briefly described this method in decision induction.
+**Information gain** calculates the reduction in entropy from the transformation of a data set. It can be used for feature selection by evaluating the Information gain of each variable in the context of the target variable. **Information Gain** answers this by measuring how much **information** a feature gives us about the target class. This amount of information is used to rank features by their ability to reduce uncertainty about the target variable. We have briefly described this method in decision induction.
+
+**Information Gain** is NOT based on **Gini** - it's fundamentally based on **Entropy**.
+
+Let $S$ be a dataset with $n$ classes in the target variable, the entropy of the data set is defined to be
+
+$$
+H(S) = -\sum_{i=1}^n p_i \log (p_i)
+$$
+
+$p_i$ is the proportion (probability) of instances belonging to class $i$. Assume feature variable $A$ is used as a partition variable to split the original data set into small datasets based on the distinct values of $A$. Then we can calculate the weighted sum of the entropy in the following.
+
+$$
+H(S|A) = \sum_{v\in \text{Values}(A)} \frac{|S_v|}{|S|}\cdot H(S_v)
+$$
+Where:
+
+**Values(A)**: All possible values of feature A
+
+**$S_v$**:  Subset of data where feature $A$ has value $v$
+
+**$||S_v$**: Number of instances in subset $S_v$
+
+**|S|**: Total number of instances in the dataset 
+
+**$H(S_v)$**: Entropy of subset $S_v$.
+
+Using the above notations, we define the information gain in the following
+
+$$
+IG(S,A) = H(S) - H(S|A).
+$$
+
+* Information Gain is natively designed for **categorical features**. The process is straightforward:
+  + Split by each category: Create subsets for each unique value
+  + Calculate entropy for each subset
+  + Compute weighted average entropy
+
+
+* For continuous features that have infinite possible values, so we can't split on each unique value. We need to **discretize them** first. The **binary splitting** is most common. The objective is to find the optimal threshold (splitting point) that maximizes information gain.
+  + Sort the feature values;
+  + Consider potential split points (typically midpoints between consecutive values);
+  + Calculate IG for each potential split;
+  + Choose the split with maximum IG.
+
 
 ### Chi-square Test
 
-Let’s consider a scenario where we need to determine the relationship between the independent category feature (predictor) and dependent category feature(response). In feature selection, we aim to select the features which are highly dependent on the response. We calculate Chi-square between each feature and the response variable. and select the desired number of features with the best Chi-square scores. 
+Let’s consider a scenario where we need to determine the relationship between the independent category feature (predictor) and dependent category feature(response). In feature selection, we aim to select the features which are highly dependent on the response. We calculate Chi-square between each feature and the response variable. and select the desired number of features with the **best (highest) Chi-square scores**. 
 
-In order to correctly apply the chi-squared test for the relationship between various features in the data set and the target variable, the following conditions have to be met: the variables have to be categorical, sampled independently and values should have an expected frequency greater than 5. 
+In order to correctly apply the chi-squared test for the relationship between various features in the data set and the target variable, the following conditions have to be met:
+
+* the variables have to be categorical, 
+* sampled independently, and 
+* values should have an expected frequency greater than 5. 
+
 
 ### Fisher's Score 
 
-Fisher score is one of the most widely used supervised feature selection methods. It seeks features with the best discriminant ability. It is based on maximizing the distances between data points of different classes and minimizing the distances among points of the same class. To rank the features in the order of their relevancy, they are sorted in the decreasing order of their obtained fisher score. Thus, as the value of an assigned score to a feature increases, its importance also increases.
+Fisher score is one of the most widely used supervised feature selection methods. It measures the **separability** between classes for each feature. It evaluates how well a feature can distinguish between different classes by looking at:
+
+* **Between-class variance**: How far apart the class means are
+
+* **Within-class variance**: How spread out the data is within each class
+
+**High Fisher Score** = Feature has good separation between classes
+**Low Fisher Score** = Feature has poor separation between classes
+
+It seeks features with the best discriminant ability. To rank the features in the order of their relevancy, they are sorted in the decreasing order of their obtained fisher score. Thus, as the value of an assigned score to a feature increases, its importance also increases.
 
 Let $Y$ be the categorical variable with $C$ categories and $X$ be a numerical variable. The Fisher's score of $X$ is defined by
 
@@ -175,12 +232,12 @@ Correlation is a measure of the linear relationship of 2 or more variables. Thro
 
 ### Variance Threshold
 
-The variance threshold is a simple baseline approach to feature selection. It removes all features which variance does not meet some threshold. The logic for this method is that features with a higher variance may contain more useful information. 
+The variance threshold is a simple baseline approach to feature selection. It removes all features which variance does not meet some threshold. The logic for this method is that **features with a higher variance may contain more useful information**. 
 
 
 ## Wrapper Methods
 
-Wrappers require some method to search the space of all possible subsets of features, assessing their quality by learning and evaluating a classifier with that feature subset. The feature selection process is based on a specific machine learning algorithm that we are trying to fit on a given data set. It follows a greedy search approach by evaluating all the possible combinations of features against the evaluation criterion. The wrapper methods usually result in better predictive accuracy than filter methods.
+**Wrappers** require some method to search the space of all possible subsets of features, assessing their quality by learning and evaluating a classifier with that feature subset. The feature selection process is based on a specific machine learning algorithm that we are trying to fit on a given data set. It follows a greedy search approach by evaluating all the possible combinations of features against the evaluation criterion. **The wrapper methods usually result in better predictive accuracy than filter methods**.
 
 The following are a few such methods.
 
@@ -188,14 +245,68 @@ The following are a few such methods.
 
 This is an iterative method we start with the best performing variable against the target. Next, we select another variable that gives the best performance in combination with the first selected variable. This process continues until the preset criterion is achieved.
 
+**The general algorithm**:
+
+* Start with an empty feature set
+* For each remaining feature not in the set:
+  + Temporarily add the feature to the current set
+  + Train a model and evaluate performance using cross-validation
+  + Record the performance metric
+* Select the feature that gives the highest improvement
+* Repeat steps 2-3 until stopping criterion is met
+* Return the best feature subset found
+
+
 ### Backward Feature Elimination
 
 This method works exactly opposite to the Forward Feature Selection method. Here, we start with all the features available and build a model. Next, we the variable from the model which gives the best evaluation measure value. This process is continued until the preset criterion is achieved.
+
+**The General Algorithm**:
+
+* Start with all features in the model
+
+* For each feature currently in the set:
+  + Temporarily remove the feature
+  + Train a model and evaluate performance using cross-validation
+  + Record the performance metric
+  
+* Remove the feature that causes the smallest performance decrease (or largest increase)
+* Repeat steps 2-3 until stopping criterion is met
+* Return the best feature subset found
+
 
 ### Subset Feature Selection
 
 This is the most robust feature selection method covered so far. This is a brute-force evaluation of each feature subset. This means that it tries every possible combination of the variables and returns the best-performing subset.
 
+**The General Algorithm**:
+
+* Generate all possible feature subsets of sizes 1 to n (where n is total number of features)
+
+* For each feature subset:
+  + Train a model on the subset
+  + Evaluate performance using cross-validation
+  + Record the performance metric
+  
+* Select the feature subset with the best performance
+
+* Return the optimal feature subset
+
+**Types of Subset Selection**
+
+* Exhaustive Search (All Possible Subsets)
+  + Evaluates all $2^n - 1$ possible non-empty subsets
+  + Guaranteed to find the optimal subset
+  + Computationally prohibitive for $n > 20$
+
+* Best Subset Selection
+  + Evaluates subsets of each size (1 feature, 2 features, etc.)
+  + For each size k, finds the best subset of that size
+  + More manageable than exhaustive search
+
+* Genetic Algorithm-based
+  + Uses evolutionary algorithms to search the feature space
+  + More efficient for high-dimensional data
 
 ## Embedded Methods
 
@@ -203,11 +314,61 @@ These methods encompass the benefits of both the wrapper and filter methods, by 
 
 ### LASSO Regularization 
 
-Regularization consists of adding a penalty to the different parameters of the machine learning model to reduce the freedom of the model, i.e. to avoid over-fitting. In linear model regularization, the penalty is applied over the coefficients that multiply each of the predictors. From the different types of regularization, Lasso or L1 has the property that can shrink some of the coefficients to zero. Therefore, that feature can be removed from the model.
+**LASSO (Least Absolute Shrinkage and Selection Operator)** regularization is a powerful embedded method for feature selection that performs both feature selection and regularization simultaneously. It's particularly effective for dealing with high-dimensional data.
+
+**LASSO** consists of adding a penalty to the different parameters of the machine learning model to reduce the freedom of the model, i.e. to avoid over-fitting. In linear model regularization, the penalty is applied over the coefficients that multiply each of the predictors. From the different types of regularization, Lasso or L1 has the property that can shrink some of the coefficients to zero. Therefore, that feature can be removed from the model.
+
+
+For a standard linear regression model
+
+$$
+\min_{\beta}\left(\frac{1}{2n}\sum_{i=1}^n \left[ y_i - \beta_0-\sum_{k=1}^p \beta_k x_k\right]^2\right)
+$$
+
+The corresponding LASSO linear regression is
+
+$$
+\min_{\beta}\left(\frac{1}{2n}\sum_{i=1}^n \left[ y_i - \beta_0-\sum_{k=1}^p \beta_k x_k\right]^2 + \lambda\sum_{j=1}^p |\beta_j|\right)
+$$
+
+The solution to the optimization problems based on the above two models are illustrated in the following figures.
+
+
+```{r echo=FALSE, fig.align='center',out.width="95%", fig.cap="Figure 0. LASSO Linear Regression."}
+include_graphics("img/lasso.png")
+```
+
 
 ### Random Forest Importance
 
 Random Forests is a kind of a Bagging Algorithm that aggregates a specified number of decision trees. The tree-based strategies used by random forests naturally rank by how well they improve the purity of the node, or in other words a decrease in the impurity (Gini impurity) over all trees. Nodes with the greatest decrease in impurity happen at the start of the trees, while notes with the least decrease in impurity occur at the end of trees. Thus, by pruning trees below a particular node, we can create a subset of the most important features.
+
+**How Random Forest Calculates Feature Importance?**
+
+* Mean Decrease in Impurity (MDI/Gini Importance)
+  + Based on how much each feature decreases impurity (Gini/Entropy) across all trees
+  + Calculated during training
+
+* Permutation Importance
+  + Based on how much permuting a feature decreases model performance
+  + Computed after training
+  + More reliable but computationally expensive
+
+
+**Advantages and Limitations of Random Forest Importance**
+
+* Advantages 
+  + *Handles non-linear relationships*: Captures complex feature interactions
+  + *Robust to outliers*: Less sensitive to extreme values
+  + *No distribution assumptions*: Works with various data types
+  + *Provides reliable rankings*: Generally stable across different samples
+  + *Interpretable results*: Easy to understand and explain
+
+* Limitations
+  + *Biased towards high-cardinality features*: May favor features with more categories
+  + *Correlated features*: Importance can be spread among correlated features
+  + *Computational cost*: Can be slow with large datasets and many trees
+  + *Randomness*: Results can vary with different random seeds
 
 
 ## Hybrid Methods
@@ -215,6 +376,8 @@ Random Forests is a kind of a Bagging Algorithm that aggregates a specified numb
 Hybrid methods try to exploit the qualities of both approaches, filter, and wrapper, trying to have a good compromise between efficiency (computational effort) and effectiveness (quality in the associated objective task when using the selected features).
 
 To take advantage of the filter and wrapper approaches, hybrid methods, in a filter stage, the features are ranked or selected applying a measure based on intrinsic properties of the data. While, in a wrapper stage, certain feature subsets are evaluated for finding the best one, through a specific clustering algorithm. We can distinguish two types of hybrid methods: methods based on ranking and methods non-based on the ranking of features.
+
+
 
 # Feature Extraction Methods
 
@@ -247,7 +410,7 @@ include_graphics("img/w10-PCA.jpg")
 
 ## Linear Discriminant Analysis (LDA)
 
-Linear discriminant analysis (LDA) also creates linear combinations of your original features. However, unlike PCA, LDA doesn't maximize explained variance. Instead, it maximizes the separability between classes.
+Linear discriminant analysis (LDA) also creates linear combinations of your original features. However, unlike PCA, **LDA doesn't maximize explained variance**. Instead, it **maximizes the separability between classes**.
 
 In other words, the goal of an LDA is to project a feature space (a data set n-dimensional samples) onto a smaller subspace k (where $k \le n-1$) while maintaining the class-discriminatory information.
 
@@ -356,6 +519,7 @@ The most common and effective statistical methods of Forecasting are Simple Movi
 
 We will not discuss these methods in this note but will introduce the exponential smoothing method for the time series next week.
 
+
 ### Machine Learning Algorithms
 
 One of the most important properties an algorithm needs in order to be considered a time-series algorithm is the ability to extrapolate patterns outside of the domain of training data. Many machine learning algorithms do not have this capability, as they tend to be restricted to a domain that is defined by training data. Therefore, they are not suited for time series, as the objective of time series is to project into the future.
@@ -374,9 +538,11 @@ include_graphics("img/w10-ANN-TS.jpg")
 
 Since the machine learning method can incorporate both lagged predictors and additional features to improve the forecast accuracy, we can extract some features from the underlying features. The following figure illustrates the process of how to extract features from time-series data.
 
+
 ```{r echo=FALSE, fig.align='center', fig.width=3, fig.height=3, fig.cap="Figure 6. How to extract features from time series."}
 include_graphics("img/w10-Serial-Feature-Extraction.jpg")
 ```
+
 
 As shown in the above figure, three types of features can be extracted from time-series data.
 
@@ -401,11 +567,13 @@ Process control is the ability to monitor and adjust a process to give the desir
 
 Both control chart and process capability index use the same key characteristics of the underlying process in their construction:
 
+
 * **Specification limits** can be defined as targets that are set for a particular process or a product either by the customer or based on the performance of the market. In other words, it can also be defined as a result that is expected from a particular metric. Specification limits are set by customers or the management.
 
 * **Control limits** on the other hand help in indicating the changes which occur in the performance of a particular process. Control limits also provide real-time value. Control limits are dependent on the underlying process.
 
 Control limits can be either upper control limit (UCL) or lower control limit (LCL). Similarly, specification limits can be either upper specification limit (USL) or lower specification limit (LSL).
+
 
 ```{r echo=FALSE, fig.align='center', fig.width=3, fig.height=3, fig.cap="Figure 7. Structure of a control chart."}
 include_graphics("img/w10-control-spec-limits.jpg")
